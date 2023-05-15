@@ -12,4 +12,8 @@ class Sector extends Model
     protected $fillable = [
         'descripcion',
     ];
+    
+     public function sala(){
+        return $this->hasMany('App\Models\Sala','idSector','id');
+    }
 }
