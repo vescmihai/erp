@@ -13,5 +13,9 @@ class Paciente extends Model
         'tutor',
         'nroTutor',
     ];
+    
+    public function cita(){
+        return $this->hasMany('App\Models\Cita','idPaciente','id');
+    }
 }
 
