@@ -13,4 +13,12 @@ class Especialidad extends Model
         'nombre',
         'descripcion',
     ];
+    
+    public function cita(){
+        return $this->hasMany('App\Models\Cita','idCita','id');
+    }
+
+    public function doctores(){
+        return $this->hasMany('App\Models\Doctor','idEspecialidad','id');
+    }
 }
