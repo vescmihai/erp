@@ -49,4 +49,8 @@ class Personal extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function cita(){
+        return $this->hasMany('App\Models\Cita','idPersonal','id');
+    }
 }
