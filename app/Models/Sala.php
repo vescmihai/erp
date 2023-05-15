@@ -15,4 +15,13 @@ class Sala extends Model
         'tipo',
         'idSector',
     ];
+    
+    public function sector()
+    {
+        return $this->hasOne('App\Models\Sector', 'id', 'idSector');
+    }
+
+    public function doctores(){
+        return $this->hasMany('App\Models\Doctor','idSala','id');
+    }
 }
