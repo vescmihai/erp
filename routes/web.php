@@ -7,6 +7,9 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\TurnoController;
+use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\CitaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,4 +38,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('pacientes', PacienteController::class);
     Route::resource('personal', PersonalController::class);
+    Route::resource('turno', TurnoController::class);
+    Route::resource('cita', CitaController::class);
+    Route::resource('agenda', AgendaController::class);
 });
