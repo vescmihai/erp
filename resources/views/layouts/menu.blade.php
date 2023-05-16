@@ -52,6 +52,21 @@
             <i class="fas fa-user-shield"></i><span>Gestionar roles</span>
         </a>
     </li>
+    <li class="side-menu-item">
+        <a href="/turno">
+            <i class="fas fa-user-shield"></i><span>Gestionar Turno</span>
+        </a>
+    </li>
+    <li class="side-menu-item">
+        <a href="/cita">
+            <i class="fas fa-user-shield"></i><span>Gestionar Cita</span>
+        </a>
+    </li>
+    <li class="side-menu-item">
+        <a href="/agenda">
+            <i class="fas fa-user-shield"></i><span>Gestionar Agenda</span>
+        </a>
+    </li>
 </ul>
 
 
