@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConsultaTable extends Migration
+class CreateEspecialidadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateConsultaTable extends Migration
      */
     public function up()
     {
-        Schema::create('consulta', function (Blueprint $table) {
+        Schema::create('especialidads', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre', 100);
             $table->string('descripcion', 100);
-            $table->integer('idDoctor')->unsigned();
             $table->timestamps();
-
-            $table->foreign('idDoctor')
-            ->references('id')
-            ->on('doctores')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
         });
     }
 
@@ -34,6 +28,6 @@ class CreateConsultaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('consulta');
+        Schema::dropIfExists('especialidads');
     }
 }

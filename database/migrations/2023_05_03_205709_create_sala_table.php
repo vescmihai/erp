@@ -13,7 +13,7 @@ class CreateSalaTable extends Migration
      */
     public function up()
     {
-        Schema::create('sala', function (Blueprint $table) {
+        Schema::create('salas', function (Blueprint $table) {
             $table->id();
             $table->integer('nroSala');
             $table->integer('capacidad');
@@ -23,7 +23,7 @@ class CreateSalaTable extends Migration
 
             $table->foreign('idSector')
                   ->references('id')
-                  ->on('especialidad')
+                  ->on('sectors')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
         });
@@ -36,6 +36,6 @@ class CreateSalaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sala');
+        Schema::dropIfExists('salas');
     }
 }

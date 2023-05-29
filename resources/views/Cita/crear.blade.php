@@ -54,7 +54,7 @@
                                         {{ Form::label('Seleccionar doctor') }}
                                         <select name="idDoctor" class="focus border-primary  form-control">
                                             @foreach ($doctores as $doctor)
-                                                <option value="{{ $doctor->id }}">{{ $doctor->nombre }}</option>
+                                                <option value="{{ $doctor->id }}">{{ $doctor->cargo }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -63,7 +63,7 @@
                                         {{ Form::label('Seleccionar Paciente') }}
                                         <select name="idPaciente" class="focus border-primary  form-control">
                                             @foreach ($pacientes as $paciente)
-                                                <option value="{{ $paciente->id }}">{{ $paciente->nombre }}</option>
+                                                <option value="{{ $paciente->id }}">{{ $paciente->tutor }}</option>
                                             @endforeach
                                         </select>
                                     </div>

@@ -10,7 +10,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <a class="btn btn-dark" href="{{ route('agenda.create') }}">Nuevo</a>
+                            <a class="btn btn-dark" href="{{ route('cita.create') }}">Nuevo</a>
 
                             <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">

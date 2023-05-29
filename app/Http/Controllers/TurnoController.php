@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Controllers\Controller;
 use App\Models\Turno;
-use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
@@ -19,7 +16,7 @@ class TurnoController extends Controller
         return view('turno.index', compact('turnos'));
     }
 
-    public function create()
+    public function create() 
     {
         return view('turno.crear');
     }
@@ -28,8 +25,8 @@ class TurnoController extends Controller
     {
         $this->validate($request, [
             'descripcion' => 'required',
-            'horaInicio' => 'required|time',
-            'horaFin' => 'required|time',
+            'horaInicio' => 'required|date_format:H:i',
+            'horaFin' => 'required|date_format:H:i',
         ]);
 
         $input = $request->all();
@@ -50,8 +47,8 @@ class TurnoController extends Controller
     {
         $this->validate($request, [
             'descripcion' => 'required',
-            'horaInicio' => 'required|time',
-            'horaFin' => 'required|time',
+            'horaInicio' => 'required|date_format:H:i',
+            'horaFin' => 'required|date_format:H:i',
         ]);
 
         $input = $request->all();

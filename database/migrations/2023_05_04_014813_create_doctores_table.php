@@ -13,24 +13,25 @@ class CreateDoctoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('doctores', function (Blueprint $table) {
+        Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->string('formacion', 100);
             $table->string('cargo', 100);
-            /*$table->integer('idEspecialidad')->unsigned();
+            $table->integer('idEspecialidad')->unsigned();
             $table->integer('idSala')->unsigned();
-    
+            $table->timestamps(); 
+            
             $table->foreign('idEspecialidad')
                   ->references('id')
-                  ->on('especialidad')
+                  ->on('especialidads')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
                   
             $table->foreign('idSala')
                   ->references('id')
-                  ->on('sala')
+                  ->on('salas')
                   ->onUpdate('cascade')
-                  ->onDelete('cascade');*/
+                  ->onDelete('cascade');
         });
     }    
 
@@ -46,6 +47,6 @@ class CreateDoctoresTable extends Migration
             $table->dropForeign(['idSala']);
         });*/
     
-        Schema::dropIfExists('doctor');
+        Schema::dropIfExists('doctors');
     }
 }

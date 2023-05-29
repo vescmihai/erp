@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSectorTable extends Migration
+class CreateConsultaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,17 @@ class CreateSectorTable extends Migration
      */
     public function up()
     {
-        Schema::create('sector', function (Blueprint $table) {
+        Schema::create('consultas', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion', 100);
+            $table->integer('idDoctor')->unsigned();
             $table->timestamps();
+
+            $table->foreign('idDoctor')
+            ->references('id')
+            ->on('doctors')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 
@@ -27,6 +34,6 @@ class CreateSectorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sector');
+        Schema::dropIfExists('consultas');
     }
 }

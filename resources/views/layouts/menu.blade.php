@@ -27,6 +27,9 @@
             <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
         </a>
     </li>
+    <div style="text-align: center;">
+        <h5>Módulo pacientes</h5>
+    </div>
     <li class="side-menu-item">
         <a href="/pacientes">
             <i class="fas fa-procedures"></i><span>Gestionar pacientes</span>
@@ -37,8 +40,11 @@
             <i class="fas fa-user-nurse"></i><span>Gestionar personal</span>
         </a>
     </li>
+    <div style="text-align: center;">
+        <h5>Módulo administrador</h5>
+    </div>
     <li class="side-menu-item">
-        <a href="/doctores">
+        <a href="/doctors">
             <i class="fas fa-user-md"></i><span>Gestionar doctores</span>
         </a>
     </li>
@@ -49,24 +55,50 @@
     </li>
     <li class="side-menu-item">
         <a href="/roles">
-            <i class="fas fa-user-shield"></i><span>Gestionar roles</span>
+            <i class="fas fa-user-tag"></i><span>Gestionar roles</span>
+        </a>
+    </li>
+
+    <div style="text-align: center;">
+        <h5>Módulo ambientes</h5>
+    </div>
+    <li class="side-menu-item">
+        <a href="/sectores">
+            <i class="fas fa-building"></i><span>Gestionar sectores</span>
+        </a>
+    </li>
+    <div style="text-align: center;">
+        <h5>Módulo servicios</h5>
+    </div>
+    <li class="side-menu-item">
+        <a href="/cita">
+            <i class="fas fa-calendar-check"></i><span>Gestionar cita</span>
+        </a>
+    </li>
+    <li class="side-menu-item">
+        <a href="/especialidades">
+            <i class="fas fa-stethoscope"></i><span>Gestionar especialidades</span>
         </a>
     </li>
     <li class="side-menu-item">
         <a href="/turno">
-            <i class="fas fa-user-shield"></i><span>Gestionar Turno</span>
+            <i class="fas fa-clock"></i><span>Gestionar turno</span>
         </a>
     </li>
-    <li class="side-menu-item">
-        <a href="/cita">
-            <i class="fas fa-user-shield"></i><span>Gestionar Cita</span>
-        </a>
-    </li>
+
+
     <li class="side-menu-item">
         <a href="/agenda">
-            <i class="fas fa-user-shield"></i><span>Gestionar Agenda</span>
+            <i class="fas fa-calendar-alt"></i><span>Gestionar agenda</span>
         </a>
     </li>
-</ul>
 
+    <li class="side-menu-item">
+        <a href="/salas">
+            <i class="fas fa-door-open"></i><span>Gestionar salas</span>
+        </a>
+    </li>
+      
+
+</ul>
 

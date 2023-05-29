@@ -6,10 +6,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\TurnoController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\EspecialidadController;
+use App\Http\Controllers\SalaController;
+use App\Http\Controllers\SectorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,8 +41,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('pacientes', PacienteController::class);
+    Route::resource('doctors', DoctorController::class);
     Route::resource('personal', PersonalController::class);
-    Route::resource('turno', TurnoController::class);
+    Route::resource('turno', TurnoController::class); 
     Route::resource('cita', CitaController::class);
     Route::resource('agenda', AgendaController::class);
+    Route::resource('especialidades', EspecialidadController::class);
+    Route::resource('salas', SalaController::class);
+    Route::resource('sectores', SectorController::class);
 });

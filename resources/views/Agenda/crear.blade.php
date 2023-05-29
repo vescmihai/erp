@@ -18,7 +18,7 @@
                                         {{ Form::label('Seleccionar doctor') }}
                                         <select name="idDoctor" class="focus border-primary  form-control">
                                             @foreach ($doctores as $doctor)
-                                                <option value="{{ $doctor->id }}">{{ $doctor->nombre }}</option>
+                                                <option value="{{ $doctor->id }}">{{ $doctor->formacion }}</option>
                                             @endforeach
                                         </select>
                                     </div>
