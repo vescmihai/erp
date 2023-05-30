@@ -99,6 +99,23 @@
         </a>
     </li>
       
+    <li class="side-menu-item">
+        <a href="/bitacora">
+            <i class="fas fa-door-open"></i><span>Gestionar bitacora</span>
+        </a>
+    </li>
+
+    <li class="side-menu-item">
+        <a href="/expedientes">
+            <i class="fas fa-door-open"></i><span>Gestionar expedientes</span>
+        </a>
+    </li>
+
+    <li class="side-menu-item">
+        <a href="/hojaConsulta">
+            <i class="fas fa-door-open"></i><span>Gestionar hoja de consulta</span>
+        </a>
+    </li>
 
 </ul>
 

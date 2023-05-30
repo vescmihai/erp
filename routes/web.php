@@ -15,6 +15,8 @@ use App\Http\Controllers\EspecialidadController;
 use App\Http\Controllers\SalaController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\BitacoraController;
+use App\Http\Controllers\ExpedienteController;
+use App\Http\Controllers\HojaConsultaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,5 +53,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('salas', SalaController::class);
     Route::resource('sectores', SectorController::class);
     Route::resource('bitacora',BitacoraController::class)->names('bitacora');
+    Route::resource('expedientes', \App\Http\Controllers\ExpedienteController::class);
+    Route::resource('hojaConsulta', HojaConsultaController::class);
 
 });
