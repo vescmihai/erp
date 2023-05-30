@@ -11,6 +11,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use Spatie\Activitylog\Models\Activity;
 
 class UsuarioController extends Controller
 {
@@ -64,6 +65,12 @@ class UsuarioController extends Controller
     
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Usuarios')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $user->id;
+        $lastActivity->save();
     
         return redirect()->route('usuarios.index');
     }

@@ -14,6 +14,7 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\EspecialidadController;
 use App\Http\Controllers\SalaController;
 use App\Http\Controllers\SectorController;
+use App\Http\Controllers\BitacoraController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,4 +50,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('especialidades', EspecialidadController::class);
     Route::resource('salas', SalaController::class);
     Route::resource('sectores', SectorController::class);
+    Route::resource('bitacora',BitacoraController::class)->names('bitacora');
+
 });
