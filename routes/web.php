@@ -54,6 +54,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('sectores', SectorController::class);
     Route::resource('bitacora',BitacoraController::class)->names('bitacora');
     Route::resource('expedientes', \App\Http\Controllers\ExpedienteController::class);
-    Route::resource('hojaConsulta', HojaConsultaController::class);
+    Route::resource('hojaConsultas', HojaConsultaController::class);
 
 });

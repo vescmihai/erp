@@ -1,7 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
-<section class="section">
+<div class="container-xl">
+
+    <section class="section">
   <div class="section-header">
       <h3 class="page__heading">Usuarios</h3>
   </div>
@@ -61,5 +63,6 @@
               </div>
           </div>
       </div>
-</section>
+    </section>
+</div>
 @endsection

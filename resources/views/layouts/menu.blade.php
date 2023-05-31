@@ -112,7 +112,7 @@
     </li>
 
     <li class="side-menu-item">
-        <a href="/hojaConsulta">
+        <a href="/hojaConsultas">
             <i class="fas fa-door-open"></i><span>Gestionar hoja de consulta</span>
         </a>
     </li>

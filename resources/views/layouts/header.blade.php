@@ -13,7 +13,7 @@
                      class="rounded-circle mr-1 thumbnail-rounded user-thumbnail ">
                 <div class="d-sm-none d-lg-inline-block">
                     ¡Hola! {{\Illuminate\Support\Facades\Auth::user()->first_name}}</div>
-            </a>
+            </a> 
 
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">
