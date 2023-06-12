@@ -14,11 +14,12 @@ class CreateDoctoresTable extends Migration
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->id();
+            $table->engine="InnoDB";
+            $table->bigIncrements('id');
             $table->string('formacion', 100);
             $table->string('cargo', 100);
-            $table->integer('idEspecialidad')->unsigned();
-            $table->integer('idSala')->unsigned();
+            $table->bigInteger('idEspecialidad')->unsigned()->nullable();
+            $table->bigInteger('idSala')->unsigned()->nullable();
             $table->timestamps(); 
             
             $table->foreign('idEspecialidad')

@@ -14,10 +14,10 @@ class CreateAgendaTable extends Migration
     public function up()
     {
         Schema::create('agendas', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->date('fecha');
-            $table->integer('idDoctor')->unsigned();
-            $table->integer('idCita')->unsigned();
+            $table->bigInteger('idDoctor')->unsigned()->nullable();
+            $table->bigInteger('idCita')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('idDoctor')

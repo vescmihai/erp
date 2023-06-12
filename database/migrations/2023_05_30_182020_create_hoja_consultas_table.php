@@ -14,7 +14,7 @@ class CreateHojaConsultasTable extends Migration
     public function up()
     {
         Schema::create('hoja_consultas', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('diagnostico', 100);
             $table->string('indicación', 100);
             $table->string('proximaConsulta', 100);
