@@ -19,7 +19,7 @@ class AgendaController extends Controller
         $citas=Cita::all();
         $doctores=Doctor::all();
         $agendas = Agenda::paginate(5);
-        return view('Agenda.index', compact('agendas','doctores','citas'));
+        return view('agenda.index', compact('agendas','doctores','citas'));
     }
 
     public function create()
@@ -27,7 +27,7 @@ class AgendaController extends Controller
         $agendas=new Agenda();
         $citas=Cita::all();
         $doctores=Doctor::all();
-        return view('Agenda.crear',compact('agendas','doctores','citas'));
+        return view('agenda.crear',compact('agendas','doctores','citas'));
     }
 
     public function store(Request $request)
@@ -42,7 +42,7 @@ class AgendaController extends Controller
 
         Agenda::create($input);
 
-        return redirect()->route('Agenda.index');
+        return redirect()->route('agenda.index');
     }
 
     public function edit($id)
@@ -50,7 +50,7 @@ class AgendaController extends Controller
         $agenda = Agenda::find($id);
         $citas=Cita::all();
         $doctores=Doctor::all();
-        return view('Agenda.editar', compact('agenda','doctores','citas'));
+        return view('agenda.editar', compact('agenda','doctores','citas'));
     }
 
     public function update(Request $request, $id)
@@ -66,12 +66,12 @@ class AgendaController extends Controller
         $Agenda = Agenda::find($id);
         $Agenda->update($input);
 
-        return redirect()->route('Agenda.index');
+        return redirect()->route('agenda.index');
     }
 
     public function destroy($id)
     {
         Agenda::find($id)->delete();
-        return redirect()->route('Agenda.index');
+        return redirect()->route('agenda.index');
     }
 }
