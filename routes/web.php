@@ -18,6 +18,8 @@ use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\HojaConsultaController;
 use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\HorariosController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,4 +59,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('expedientes', \App\Http\Controllers\ExpedienteController::class);
     Route::resource('hojaConsultas', HojaConsultaController::class);
     Route::resource('consulta', ConsultaController::class);
+    Route::resource('horarios',HorariosController::class);
 });

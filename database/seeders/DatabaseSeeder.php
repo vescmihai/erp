@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AgendaSeeder::class);
         $this->call(ExpedienteSeeder::class);
         $this->call(HojaConsultaSeeder::class);
+        $this->call(HorarioSeeder::class);
     }
 }

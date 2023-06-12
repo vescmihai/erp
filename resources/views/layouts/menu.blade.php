@@ -117,5 +117,11 @@
         </a>
     </li>
 
+    <li class="side-menu-item">
+        <a href="/horarios">
+            <i class="fas fa-door-open"></i><span>Gestionar Horarios de atencion</span>
+        </a>
+    </li>
+
 </ul>
 
