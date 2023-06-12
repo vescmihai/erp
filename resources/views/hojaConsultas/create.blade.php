@@ -4,7 +4,7 @@
 <div class="container-xl">
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Editar Turno</h3>
+            <h3 class="page__heading">Crear Hoja de Consultas</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -22,36 +22,26 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                            @endif 
+                            @endif
 
-                            {!! Form::model($turno, ['method' => 'PATCH', 'route' => ['turno.update', $turno->id]]) !!}
+                            {!! Form::open(array('route' => 'hojaConsultas.store','method'=>'POST')) !!}
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <label for="descripcion">Descripcion</label>
-                                        {!! Form::text('descripcion', null, ['class' => 'form-control']) !!}
+                                        <label for="diagnostico">Diagnóstico</label>
+                                        {!! Form::text('diagnostico', null, array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <label for="horaInicio">Ingrese la hora de Inicio</label>
-                                        <input type="time" name="horaInicio" class="form-control"
-                                            value="{{ old('horaInicio') }}" autocomplete="off" placeholder="07:00" required>
-                                        @error('horaInicio')
-                                            <small>*{{ $message }}</small>
-                                            <br><br>
-                                        @enderror
+                                        <label for="indicacion">Indicación</label>
+                                        {!! Form::text('indicacion', null, array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <label for="horaFin">Ingrese la hora Final</label>
-                                        <input type="time" name="horaFin" class="form-control"
-                                            value="{{ old('horaFin') }}" autocomplete="off" placeholder="13:00" required>
-                                        @error('horaFin')
-                                            <small>*{{ $message }}</small>
-                                            <br><br>
-                                        @enderror
+                                        <label for="proximaConsulta">Próxima Consulta</label>
+                                        {!! Form::date('proximaConsulta', null, array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -65,5 +55,5 @@
             </div>
         </div>
     </section>
-    </div>
+</div>
 @endsection

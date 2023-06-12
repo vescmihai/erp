@@ -65,9 +65,9 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::find($id);
         $especialidades = Especialidad::all()->pluck('nombre', 'id'); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Especialidades
-        $salas = Sala::all()->pluck('nombre', 'id'); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Salas
+        $salas = Sala::all()->pluck('nroSala', 'id'); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Salas
     
-        return view('doctors.editar', compact('doctor', 'especialidades', 'salas'));
+        return view('doctors.edit', compact('doctor', 'especialidades', 'salas'));
     }
 
     /**

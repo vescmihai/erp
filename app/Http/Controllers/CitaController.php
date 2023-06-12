@@ -61,13 +61,13 @@ class CitaController extends Controller
 
     public function edit($id)
     {
-        $cita = Cita::find($id);
+        $citas = Cita::find($id);
         $consultas=Consulta::all();
         $especialidades=Especialidad::all();
         $pacientes=Paciente::all();
         $personales=Personal::all();
         $doctores=Doctor::all();
-        return view('Cita.editar', compact('citas','doctores','consultas','especialidades','pacientes','personales'));
+        return view('Cita.edit', compact('citas','doctores','consultas','especialidades','pacientes','personales'));
     }
 
     public function update(Request $request, $id)

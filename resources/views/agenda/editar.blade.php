@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Editar Agenda</h3>
@@ -23,7 +24,7 @@
                                 </div>
                             @endif
 
-                            {!! Form::model($agendas, ['method' => 'PATCH', 'route' => ['agenda.update', $agendas->id]]) !!}
+                            {!! Form::model($agenda, ['method' => 'PATCH', 'route' => ['agenda.update', $agenda->id]]) !!}
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
@@ -31,7 +32,7 @@
                                         {{ Form::label('Seleccionar doctor') }}
                                         <select name="idDoctor" class="focus border-primary  form-control">
                                             @foreach ($doctores as $doctor)
-                                                <option value="{{ $doctor->id }}">{{ $doctor->nombre }}</option>
+                                                <option value="{{ $doctor->id }}">{{ $doctor->cargo }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -60,4 +61,5 @@
             </div>
         </div>
     </section>
+    </div>
 @endsection

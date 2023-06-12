@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Editar Sector</h3>
@@ -28,7 +29,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <label for="descripcion">Descripcion</label>
-                                        {!! Form::text('descripcion', null, ['class' => 'form-control']) !!}
+                                        {!! Form::text('descripcion', null, ['class' => 'form-control mb-3']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -42,4 +43,5 @@
             </div>
         </div>
     </section>
+</div>
 @endsection

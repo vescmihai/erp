@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
 <section class="section">
   <div class="section-header">
       <h3 class="page__heading">Doctores</h3>
@@ -15,11 +16,11 @@
                             <table class="table table-striped mt-2">
                               <thead style="background-color:#6777ef">                                     
                                   <th style="display: none;">ID</th>
-                                  <th style="color:#fff;">Formación</th>
-                                  <th style="color:#fff;">Cargo</th>
-                                  <th style="color:#fff;">Especialidad</th>
-                                  <th style="color:#fff;">Sala</th>
-                                  <th style="color:#fff;">Acciones</th>                                                                   
+                                  <th style=>Formación</th>
+                                  <th style=>Cargo</th>
+                                  <th style=>Especialidad</th>
+                                  <th style=>Sala</th>
+                                  <th style=>Acciones</th>                                                                   
                               </thead>
                               <tbody>
                                 @foreach ($doctores as $doctor)
@@ -28,7 +29,7 @@
                                     <td>{{ $doctor->formacion }}</td>
                                     <td>{{ $doctor->cargo }}</td>
                                     <td>{{ $doctor->especialidad->nombre }}</td>
-                                    <td>{{ $doctor->sala->nombre }}</td>
+                                    <td>{{ $doctor->sala->nroSala }}</td>
                                     <td>                                  
                                       <a class="btn btn-primary" href="{{ route('doctors.edit',$doctor->id) }}">Editar</a>
 
@@ -51,4 +52,5 @@
           </div>
       </div>
     </section>
+    </div>
 @endsection

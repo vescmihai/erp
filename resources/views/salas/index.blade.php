@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
 <section class="section">
   <div class="section-header">
       <h3 class="page__heading">Salas</h3>
@@ -15,11 +16,11 @@
                             <table class="table table-striped mt-2">
                               <thead style="background-color:#6777ef">                                     
                                   <th style="display: none;">ID</th>
-                                  <th style="color:#fff;">Nro Sala</th>
-                                  <th style="color:#fff;">Capacidad</th>
-                                  <th style="color:#fff;">Tipo</th>
-                                  <th style="color:#fff;">Sector</th>
-                                  <th style="color:#fff;">Acciones</th>                                                                   
+                                  <th style=>Nro Sala</th>
+                                  <th style=>Capacidad</th>
+                                  <th style=>Tipo</th>
+                                  <th style=>Sector</th>
+                                  <th style=>Acciones</th>                                                                   
                               </thead>
                               <tbody>
                                 @foreach ($salas as $sala)
@@ -28,7 +29,7 @@
                                     <td>{{ $sala->nroSala }}</td>
                                     <td>{{ $sala->capacidad }}</td>
                                     <td>{{ $sala->tipo }}</td>
-                                    <td>{{ $sala->sector->nombre }}</td>
+                                    <td>{{ $sala->idsector }}</td>
                                     <td>                                  
                                       <a class="btn btn-primary" href="{{ route('salas.edit', $sala->id) }}">Editar</a>
 
@@ -51,4 +52,5 @@
           </div>
       </div>
     </section>
+    </div>
 @endsection

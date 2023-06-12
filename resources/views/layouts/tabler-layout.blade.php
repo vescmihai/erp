@@ -133,14 +133,17 @@
                               </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                              <a href="#" class="dropdown-item">Reportes</a>
-                              <a href="./profile.html" class="dropdown-item">Perfil</a>
-                              <div class="dropdown-divider"></div>
-                              <a href="./settings.html" class="dropdown-item">Ajustes</a>
-                              <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger">Cerrar sesión</a>
-                              <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
-                                {{ csrf_field() }}
-                            </form>
+                                <a href="#" class="dropdown-item">Reportes</a>
+                                <a href="./profile.html" class="dropdown-item">Perfil</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./settings.html" class="dropdown-item">Ajustes</a>
+                                <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
+                                    onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt"></i> Cerrar sesión 
+                                </a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
+                                    {{ csrf_field() }}
+                                </form>
                             </div>
                           </div>
                     </div>

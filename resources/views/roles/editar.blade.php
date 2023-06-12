@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Editar Rol</h3>
@@ -23,30 +24,31 @@
                             </div>
                         @endif
 
-                    {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label for="">Nombre del Rol:</label>      
-                                {!! Form::text('name', null, array('class' => 'form-control')) !!}
+                        {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="">Nombre del Rol:</label>      
+                                    {!! Form::text('name', null, ['class' => 'form-control mb-3']) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="">Permisos para este Rol:</label>
+                                    <br/>
+                                    @foreach($permission as $value)
+                                        <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, ['class' => 'name']) }}
+                                        {{ $value->name }}</label>
+                                        <br/>
+                                    @endforeach
+                                </div>
+                            </div>
+                            
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label for="">Permisos para este Rol:</label>
-                                <br/>
-                                @foreach($permission as $value)
-                                    <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                                    {{ $value->name }}</label>
-                                <br/>
-                                @endforeach
-                            </div>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                        
-                    </div>
-                    {!! Form::close() !!}
+                        {!! Form::close() !!}
 
                         </div>
                     </div>
@@ -54,4 +56,5 @@
             </div>
         </div>
     </section>
+</div>
 @endsection

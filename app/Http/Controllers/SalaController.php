@@ -37,8 +37,8 @@ class SalaController extends Controller
     public function edit($id)
     {
         $sala = Sala::find($id);
-        $sectores = Sector::all()->pluck('nombre', 'id'); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Sectores
-        return view('salas.edit', compact('sala', 'sectores'));
+        $sectores = Sector::all()->pluck('descripcion', 'id'); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Sectores
+        return view('salas.editar', compact('sala', 'sectores'));
     }
 
     public function update(Request $request, $id)

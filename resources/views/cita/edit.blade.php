@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Editar Cita</h3>
@@ -26,17 +27,17 @@
                             {!! Form::model($citas, ['method' => 'PATCH', 'route' => ['cita.update', $citas->id]]) !!}
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label for="motivo">Motivo</label>
                                         {!! Form::text('motivo', null, array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label for="fecha">Ingrese la fecha</label>
                                         <input type="text" name="fecha" class="form-control"
                                             value="{{ old('fecha') }}" id="datetimepicker" autocomplete="off"
-                                            placeholder="2023/05/16 07:00"required>
+                                            placeholder="2023/05/16 07:00" required>
                                         @error('fecha')
                                             <small>*{{ $message }}</small>
                                             <br><br>
@@ -44,15 +45,15 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label for="citaConfirmada">Confirmacion</label>
                                         {!! Form::text('citaConfirmada', null, array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label for="idConsulta">Consulta</label>
-                                        <select name="idConsulta" class="focus border-primary  form-control">
+                                        <select name="idConsulta" class="focus border-primary form-control">
                                             @foreach ($consultas as $consulta)
                                                 <option value="{{ $consulta->id }}">{{ $consulta->descripcion }}</option>
                                             @endforeach
@@ -60,10 +61,9 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label for="idEspecialidad">Especialidad</label>
-                                        {{ Form::label('Seleccionar Especialidad') }}
-                                        <select name="idEspecialidad" class="focus border-primary  form-control">
+                                        <select name="idEspecialidad" class="focus border-primary form-control">
                                             @foreach ($especialidades as $especialidad)
                                                 <option value="{{ $especialidad->id }}">{{ $especialidad->nombre }}</option>
                                             @endforeach
@@ -71,10 +71,9 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label for="idDoctor">Doctor</label>
-                                        {{ Form::label('Seleccionar doctor') }}
-                                        <select name="idDoctor" class="focus border-primary  form-control">
+                                        <select name="idDoctor" class="focus border-primary form-control">
                                             @foreach ($doctores as $doctor)
                                                 <option value="{{ $doctor->id }}">{{ $doctor->nombre }}</option>
                                             @endforeach
@@ -82,29 +81,27 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label for="idPaciente">Paciente</label>
-                                        {{ Form::label('Seleccionar Paciente') }}
-                                        <select name="idPaciente" class="focus border-primary  form-control">
+                                        <select name="idPaciente" class="focus border-primary form-control">
                                             @foreach ($pacientes as $paciente)
-                                                <option value="{{ $paciente->id }}">{{ $paciente->nombre}}</option>
+                                                <option value="{{ $paciente->id }}">{{ $paciente->nombre }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label for="idAdministrativo">Personal</label>
-                                        {{ Form::label('Seleccionar Personal') }}
-                                        <select name="idAdministrativo" class="focus border-primary  form-control">
+                                        <select name="idAdministrativo" class="focus border-primary form-control">
                                             @foreach ($personales as $personal)
-                                                <option value="{{ $personal->id }}">{{ $personal->nombre}}</option>
+                                                <option value="{{ $personal->id }}">{{ $personal->nombre }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="col-xs-12 col-sm-12 col-md-12 my-4">
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
                             </div>
@@ -115,4 +112,5 @@
             </div>
         </div>
     </section>
+</div>
 @endsection
