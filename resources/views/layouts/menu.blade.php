@@ -2,7 +2,7 @@
     .side-menu-item {
         margin-bottom: 10px;
     }
-    
+
     .side-menu-item a {
         display: flex;
         align-items: center;
@@ -11,11 +11,11 @@
         padding: 10px 15px;
         border-radius: 5px;
     }
-    
+
     .side-menu-item a:hover {
         background-color: #f8f9fa;
     }
-    
+
     .side-menu-item a i {
         margin-right: 10px;
     }
@@ -76,6 +76,11 @@
         </a>
     </li>
     <li class="side-menu-item">
+        <a href="/consulta">
+            <i class="fas fa-calendar-check"></i><span>Gestionar consulta</span>
+        </a>
+    </li>
+    <li class="side-menu-item">
         <a href="/especialidades">
             <i class="fas fa-stethoscope"></i><span>Gestionar especialidades</span>
         </a>
@@ -98,7 +103,7 @@
             <i class="fas fa-door-open"></i><span>Gestionar salas</span>
         </a>
     </li>
-      
+
     <li class="side-menu-item">
         <a href="/bitacora">
             <i class="fas fa-door-open"></i><span>Gestionar bitacora</span>
@@ -118,4 +123,3 @@
     </li>
 
 </ul>
-

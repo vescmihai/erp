@@ -18,7 +18,7 @@
                                   <th style="color:#fff;">Fecha</th>
                                   <th style="color:#fff;">Doctor</th>
                                   <th style="color:#fff;">Cita</th>
-                                  <th style="color:#fff;">Acciones</th>  
+                                  <th style="color:#fff;">Acciones</th>
                               </thead>
                               <tbody>
                                 @foreach ($agendas as $agenda)
@@ -27,16 +27,16 @@
                                     <td>{{ $agenda->fecha }}</td>
                                     @foreach ($doctores as $doctor)
                                         @if ($doctor->id == $agenda->idDoctor)
-                                            <td>{{ $doctor->nombre }}</td>
+                                            <td>{{ $doctor->cargo }}</td>
                                         @endif
                                     @endforeach
                                     @foreach ($citas as $cita)
                                     @if ($cita->id == $agenda->idCita)
-                                        <td>{{ $cita->fecha }}</td>
+                                        <td>{{ $cita->citaConfirmada }}</td>
                                     @endif
                                 @endforeach
                                     <td>
-                                      <a class="btn btn-primary" href="{{ route('personal.edit',$agenda->id) }}">Editar</a>
+                                      <a class="btn btn-primary" href="{{ route('agenda.edit',$agenda->id) }}">Editar</a>
 
                                       {!! Form::open(['method' => 'DELETE','route' => ['agenda.destroy', $agenda->id],'style'=>'display:inline']) !!}
                                           {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}

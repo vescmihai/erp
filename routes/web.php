@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 //agregamos los siguientes controladores
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RolController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\SectorController;
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\HojaConsultaController;
+use App\Http\Controllers\ConsultaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,20 +42,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //y creamos un grupo de rutas protegidas para los controladores
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('pacientes', PacienteController::class);
     Route::resource('doctors', DoctorController::class);
     Route::resource('personal', PersonalController::class);
-    Route::resource('turno', TurnoController::class); 
+    Route::resource('turno', TurnoController::class);
     Route::resource('cita', CitaController::class);
     Route::resource('agenda', AgendaController::class);
     Route::resource('especialidades', EspecialidadController::class);
     Route::resource('salas', SalaController::class);
     Route::resource('sectores', SectorController::class);
-    Route::resource('bitacora',BitacoraController::class)->names('bitacora');
+    Route::resource('bitacora', BitacoraController::class)->names('bitacora');
     Route::resource('expedientes', \App\Http\Controllers\ExpedienteController::class);
     Route::resource('hojaConsultas', HojaConsultaController::class);
-
+    Route::resource('consulta', ConsultaController::class);
 });

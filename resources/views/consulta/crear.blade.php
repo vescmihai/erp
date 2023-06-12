@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Nueva Agenda</h3>
+            <h3 class="page__heading">Alta de Consulta</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -23,42 +23,28 @@
                                 </div>
                             @endif
 
-                            {!! Form::open(['route' => 'agenda.store', 'method' => 'POST']) !!}
+                            {!! Form::open(['route' => 'consulta.store', 'method' => 'POST']) !!}
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <label for="fecha">Ingrese la fecha</label>
-                                        <input type="date" name="fecha" class="form-control"
-                                            value="{{ old('fecha') }}" id="datetimepicker" autocomplete="off"
-                                            placeholder="2023/06/11 15:00"required>
-                                        @error('fecha')
-                                            <small>*{{ $message }}</small>
-                                            <br><br>
-                                        @enderror
+                                        <label for="descripcion">Descripción</label>
+                                        {!! Form::text('descripcion', null, ['class' => 'form-control']) !!}
                                     </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <label for="idDoctor">Doctor</label>
-                                        {{ Form::label('Seleccionar doctor') }}
+                                        {{ Form::label('Seleccionar Doctor') }}
                                         <select name="idDoctor" class="focus border-primary  form-control">
                                             @foreach ($doctores as $doctor)
                                                 <option value="{{ $doctor->id }}">{{ $doctor->cargo }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="idCita">Cita</label>
-                                        {{ Form::label('Seleccionar Confirmacion') }}
-                                        <select name="idCita" class="focus border-primary  form-control">
-                                            @foreach ($citas as $cita)
-                                                <option value="{{ $cita->id }}">{{ $cita->citaConfirmada }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                <a href="{{ route('agenda.index') }}" class="btn btn-danger">Cancelar</a>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
                             </div>
                             {!! Form::close() !!}
                         </div>

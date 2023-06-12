@@ -25,18 +25,17 @@ class CitaController extends Controller
         $personales=Personal::all();
         $doctores=Doctor::all();
         $citas = Cita::paginate(5);
-        return view('Cita.index', compact('citas','doctores','consultas','especialidades','pacientes','personales'));
+        return view('cita.index', compact('citas','doctores','consultas','especialidades','pacientes','personales'));
     }
 
     public function create()
     {
-        $citas=new Cita();
         $consultas=Consulta::all();
         $especialidades=Especialidad::all();
         $pacientes=Paciente::all();
         $personales=Personal::all();
         $doctores=Doctor::all();
-        return view('Cita.crear',compact('citas','doctores','consultas','especialidades','pacientes','personales'));
+        return view('cita.crear',compact('doctores','consultas','especialidades','pacientes','personales'));
     }
 
     public function store(Request $request)
@@ -56,7 +55,7 @@ class CitaController extends Controller
 
         Cita::create($input);
 
-        return redirect()->route('Cita.index');
+        return redirect()->route('cita.index');
     }
 
     public function edit($id)
@@ -67,7 +66,7 @@ class CitaController extends Controller
         $pacientes=Paciente::all();
         $personales=Personal::all();
         $doctores=Doctor::all();
-        return view('Cita.editar', compact('citas','doctores','consultas','especialidades','pacientes','personales'));
+        return view('cita.editar', compact('citas','doctores','consultas','especialidades','pacientes','personales'));
     }
 
     public function update(Request $request, $id)
@@ -88,12 +87,12 @@ class CitaController extends Controller
         $cita = Cita::find($id);
         $cita->update($input);
 
-        return redirect()->route('Cita.index');
+        return redirect()->route('cita.index');
     }
 
     public function destroy($id)
     {
         Cita::find($id)->delete();
-        return redirect()->route('Cita.index');
+        return redirect()->route('cita.index');
     }
 }

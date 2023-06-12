@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Agenda</h3>
+            <h3 class="page__heading">Cita</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -22,7 +22,7 @@
                                     <th style="color:#fff;">Especialidad</th>
                                     <th style="color:#fff;">Doctor</th>
                                     <th style="color:#fff;">Paciente</th>
-                                    <th style="color:#fff;">Acciones</th>  
+                                    <th style="color:#fff;">Acciones</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($citas as $cita)
@@ -43,7 +43,7 @@
                                             @endforeach
                                             @foreach ($doctores as $doctor)
                                                 @if ($doctor->id == $cita->idDoctor)
-                                                    <td>{{ $doctor->nombre }}</td>
+                                                    <td>{{ $doctor->cargo }}</td>
                                                 @endif
                                             @endforeach
                                             @foreach ($pacientes as $paciente)
@@ -52,10 +52,10 @@
                                                 @endif
                                             @endforeach
                                             @foreach ($personales as $personal)
-                                            @if ($personal->id == $cita->idAdministrativo)
-                                                <td>{{ $personal->nombre }}</td>
-                                            @endif
-                                        @endforeach
+                                                @if ($personal->id == $cita->idAdministrativo)
+                                                    <td>{{ $personal->nombre }}</td>
+                                                @endif
+                                            @endforeach
                                             <td>
                                                 <a class="btn btn-primary"
                                                     href="{{ route('cita.edit', $cita->id) }}">Editar</a>

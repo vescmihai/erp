@@ -10,6 +10,19 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
+
+                            @if ($errors->any())
+                                <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                                    <strong>¡Revise los campos!</strong>
+                                    @foreach ($errors->all() as $error)
+                                        <span class="badge badge-danger">{{ $error }}</span>
+                                    @endforeach
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+
                             {!! Form::open(['route' => 'cita.store', 'method' => 'POST']) !!}
                             <div class="row">
                                 <div class="col-md-6">
@@ -19,9 +32,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="fecha">Ingrese la fecha</label>
-                                        <input type="text" name="fecha" class="form-control"
+                                        <input type="date" name="fecha" class="form-control"
                                             value="{{ old('fecha') }}" id="datetimepicker" autocomplete="off"
-                                            placeholder="2023/05/16 07:00"required>
+                                            placeholder="2023/06/11 15:00"required>
                                         @error('fecha')
                                             <small>*{{ $message }}</small>
                                             <br><br>
@@ -45,7 +58,7 @@
                                         {{ Form::label('Seleccionar Especialidad') }}
                                         <select name="idEspecialidad" class="focus border-primary  form-control">
                                             @foreach ($especialidades as $especialidad)
-                                                <option value="{{ $especialidad->id }}">{{ $especialidad->nombre}}</option>
+                                                <option value="{{ $especialidad->id }}">{{ $especialidad->nombre }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -70,7 +83,7 @@
                                     <div class="form-group">
                                         <label for="idAdministrativo">Personal</label>
                                         {{ Form::label('Seleccionar Personal') }}
-                                        <select name="idPersonal" class="focus border-primary  form-control">
+                                        <select name="idAdministrativo" class="focus border-primary  form-control">
                                             @foreach ($personales as $personal)
                                                 <option value="{{ $personal->id }}">{{ $personal->nombre }}</option>
                                             @endforeach
@@ -90,3 +103,24 @@
         </div>
     </section>
 @endsection
+
+@section('scripts')
+    <script>
+        $(function() {
+            $("#datetimepicker").datepicker();
+        });
+    </script>
+@endsection
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('datetimepicker/jquery.datetimepicker.css') }}">
+@stop
+
+@section('js')
+    <script src="{{ asset('datetimepicker/jquery.js') }}"></script>
+    <script src="{{ asset('datetimepicker/build/jquery.datetimepicker.full.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            jQuery('#datetimepicker').datetimepicker();
+        });
+    </script>
+@stop
