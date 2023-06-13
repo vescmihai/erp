@@ -23,7 +23,7 @@ use App\Http\Controllers\InternacionController;
 use App\Http\Controllers\RecetaController;
 use App\Http\Controllers\MedicamentoController;
 use App\Http\Controllers\RecetaMedicaController;
-use App\Models\RecetaMedica;
+use App\Http\Controllers\HorariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,8 +64,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('expedientes', ExpedienteController::class);
     Route::resource('hojaConsultas', HojaConsultaController::class);
     Route::resource('consulta', ConsultaController::class);
-    Route::resource('internacion',InternacionController::class);
-    Route::resource('receta', RecetaController::class);
-    Route::resource('medicamento', MedicamentoController::class);
-    Route::resource('recetamedica', RecetaMedicaController::class);
+    Route::resource('horarios',HorariosController::class);
 });

@@ -105,6 +105,7 @@
                                     <li><a class="dropdown-item" href="/turno">Gestionar turnos</a></li>
                                     <li><a class="dropdown-item" href="/agenda">Gestionar agenda</a></li>
                                     <li><a class="dropdown-item" href="/hojaConsultas">Gestionar hoja de consulta</a></li>
+                                    <li><a class="dropdown-item" href="/horarios">Gestionar Horarios de atencion</a></li>
                                 </ul>
                             </li>
 
