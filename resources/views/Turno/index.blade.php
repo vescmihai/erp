@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
 <section class="section">
   <div class="section-header">
       <h3 class="page__heading">Personal</h3>
@@ -15,10 +16,10 @@
                             <table class="table table-striped mt-2">
                               <thead style="background-color:#6777ef">
                                   <th style="display: none;">ID</th>
-                                  <th style="color:#fff;">Descripcion</th>
-                                  <th style="color:#fff;">Hora Inicio</th>
-                                  <th style="color:#fff;">Hora Fin</th>
-                                  <th style="color:#fff;">Acciones</th>
+                                  <th style=>Descripcion</th>
+                                  <th style=>Hora Inicio</th>
+                                  <th style=>Hora Fin</th>
+                                  <th style=>Acciones</th>
                               </thead>
                               <tbody>
                                 @foreach ($turnos as $turno)
@@ -49,4 +50,5 @@
           </div>
       </div>
     </section>
+    </div>
 @endsection

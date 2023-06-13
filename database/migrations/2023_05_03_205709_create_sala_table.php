@@ -14,11 +14,12 @@ class CreateSalaTable extends Migration
     public function up()
     {
         Schema::create('salas', function (Blueprint $table) {
-            $table->id();
+            $table->engine="InnoDB";
+            $table->bigIncrements('id');
             $table->integer('nroSala');
             $table->integer('capacidad');
             $table->string('tipo', 100);
-            $table->integer('idSector')->unsigned();
+            $table->bigInteger('idSector')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('idSector')

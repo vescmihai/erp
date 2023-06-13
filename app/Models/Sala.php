@@ -15,7 +15,7 @@ class Sala extends Model
         'tipo',
         'idSector',
     ];
-    
+
     public function sector()
     {
         return $this->hasOne('App\Models\Sector', 'id', 'idSector');
@@ -24,4 +24,10 @@ class Sala extends Model
     public function doctores(){
         return $this->hasMany('App\Models\Doctor','idSala','id');
     }
+
+    public function internaciones(){
+        return $this->hasMany('App\Models\Internacion','idSala','id');
+    }
+
+    
 }

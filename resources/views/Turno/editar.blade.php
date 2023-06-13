@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Editar Turno</h3>
@@ -21,9 +22,9 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                            @endif
+                            @endif 
 
-                            {!! Form::model($turnos, ['method' => 'PATCH', 'route' => ['turno.update', $turnos->id]]) !!}
+                            {!! Form::model($turno, ['method' => 'PATCH', 'route' => ['turno.update', $turno->id]]) !!}
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
@@ -64,4 +65,5 @@
             </div>
         </div>
     </section>
+    </div>
 @endsection

@@ -14,7 +14,7 @@ class CreateBitacoraTable extends Migration
     public function up()
     {
         Schema::create('bitacora', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('descripcion', 100);
             $table->timestamp('fecha');
             $table->unsignedBigInteger('idUsuario');

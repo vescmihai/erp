@@ -15,5 +15,10 @@ class HojaConsulta extends Model
         'proximaConsulta',
     ];
 
+    public function receta()
+    {
+        return $this->hasOne('App\Models\Receta', 'id', 'idReceta');
+    }
+
 }
 

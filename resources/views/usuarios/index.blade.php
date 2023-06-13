@@ -21,10 +21,10 @@
                                   <thead style="background-color:#6777ef">
                                   <tr>
                                       <th style="display: none; color:#fff;">ID</th>
-                                      <th style="color:#fff;">Nombre</th>
-                                      <th style="color:#fff;">E-mail</th>
-                                      <th style="color:#fff;">Rol</th>
-                                      <th style="color:#fff;">Acciones</th>
+                                      <th style=>Nombre</th>
+                                      <th style=>E-mail</th>
+                                      <th style=>Rol</th>
+                                      <th style=>Acciones</th>
                                   </tr>
                                   </thead>
                                   <tbody>

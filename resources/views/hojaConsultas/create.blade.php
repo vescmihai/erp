@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Editar Agenda</h3>
+            <h3 class="page__heading">Crear Hoja de Consultas</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -23,32 +24,26 @@
                                 </div>
                             @endif
 
-                            {!! Form::model($agendas, ['method' => 'PATCH', 'route' => ['agenda.update', $agendas->id]]) !!}
+                            {!! Form::open(array('route' => 'hojaConsultas.store','method'=>'POST')) !!}
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <label for="idDoctor">Doctor</label>
-                                        {{ Form::label('Seleccionar doctor') }}
-                                        <select name="idDoctor" class="focus border-primary  form-control">
-                                            @foreach ($doctores as $doctor)
-                                                <option value="{{ $doctor->id }}">{{ $doctor->nombre }}</option>
-                                            @endforeach
-                                        </select>
+                                        <label for="diagnostico">Diagnóstico</label>
+                                        {!! Form::text('diagnostico', null, array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <label for="idCita">Cita</label>
-                                        {{ Form::label('Seleccionar Confirmacion') }}
-                                        <select name="idCita" class="focus border-primary  form-control">
-                                            @foreach ($citas as $cita)
-                                                <option value="{{ $cita->id }}">{{ $cita->fecha }}</option>
-                                            @endforeach
-
-                                        </select>
+                                        <label for="indicación">Indicación</label>
+                                        {!! Form::text('indicación', null, array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
-
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <label for="proximaConsulta">Próxima Consulta</label>
+                                        {!! Form::date('proximaConsulta', null, array('class' => 'form-control')) !!}
+                                    </div>
+                                </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
@@ -60,4 +55,5 @@
             </div>
         </div>
     </section>
+</div>
 @endsection

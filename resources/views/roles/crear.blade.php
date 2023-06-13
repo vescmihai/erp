@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Crear Rol</h3>
@@ -29,7 +30,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="">Nombre del Rol:</label>                                    
-                                    {!! Form::text('name', null, array('class' => 'form-control')) !!}
+                                    {!! Form::text('name', null, ['class' => 'form-control mb-3']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -37,9 +38,9 @@
                                     <label for="">Permisos para este Rol:</label>
                                     <br/>
                                     @foreach($permission as $value)
-                                        <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
+                                        <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
                                         {{ $value->name }}</label>
-                                    <br/>
+                                        <br/>
                                     @endforeach
                                 </div>
                             </div>        
@@ -52,4 +53,5 @@
             </div>
         </div>
     </section>
+</div>
 @endsection

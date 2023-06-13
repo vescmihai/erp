@@ -18,5 +18,16 @@ class DatabaseSeeder extends Seeder
         $this->call(SeederTablaPermisos::class);
         $this->call(UserSeeder::class);
         $this->call(PacientesSeeder::class);
+        $this->call(PersonalSeeder::class);
+        $this->call(EspecialidadesSeeder::class);
+        $this->call(SectoresSeeder::class);
+        $this->call(SalasSeeder::class);
+        $this->call(DoctoresSeeder::class);
+        $this->call(ConsultaSeeder::class);
+        $this->call(CitaSeeder::class);
+        $this->call(TurnoSeeder::class);
+        $this->call(AgendaSeeder::class);
+        $this->call(ExpedienteSeeder::class);
+        $this->call(HojaConsultaSeeder::class);
     }
 }

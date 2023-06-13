@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
 <section class="section">
   <div class="section-header">
       <h3 class="page__heading">Especialidades</h3>
@@ -15,9 +16,9 @@
                             <table class="table table-striped mt-2">
                               <thead style="background-color:#6777ef">                                     
                                   <th style="display: none;">ID</th>
-                                  <th style="color:#fff;">Nombre</th>
-                                  <th style="color:#fff;">Descripción</th>
-                                  <th style="color:#fff;">Acciones</th>                                                                   
+                                  <th style=>Nombre</th>
+                                  <th style=>Descripción</th>
+                                  <th style=>Acciones</th>                                                                   
                               </thead>
                               <tbody>
                                 @foreach ($especialidades as $especialidad)
@@ -47,4 +48,5 @@
           </div>
       </div>
     </section>
+    </div>
 @endsection

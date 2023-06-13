@@ -19,6 +19,12 @@ use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\HojaConsultaController;
 use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\InternacionController;
+use App\Http\Controllers\RecetaController;
+use App\Http\Controllers\MedicamentoController;
+use App\Http\Controllers\RecetaMedicaController;
+use App\Models\RecetaMedica;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,7 +61,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('salas', SalaController::class);
     Route::resource('sectores', SectorController::class);
     Route::resource('bitacora', BitacoraController::class)->names('bitacora');
-    Route::resource('expedientes', \App\Http\Controllers\ExpedienteController::class);
+    Route::resource('expedientes', ExpedienteController::class);
     Route::resource('hojaConsultas', HojaConsultaController::class);
     Route::resource('consulta', ConsultaController::class);
+    Route::resource('internacion',InternacionController::class);
+    Route::resource('receta', RecetaController::class);
+    Route::resource('medicamento', MedicamentoController::class);
+    Route::resource('recetamedica', RecetaMedicaController::class);
 });

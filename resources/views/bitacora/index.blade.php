@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -75,5 +76,6 @@
 
             </div>
         </div>
+    </div>
     </div>
 @endsection

@@ -60,7 +60,7 @@ class CitaController extends Controller
 
     public function edit($id)
     {
-        $cita = Cita::find($id);
+        $citas = Cita::find($id);
         $consultas=Consulta::all();
         $especialidades=Especialidad::all();
         $pacientes=Paciente::all();

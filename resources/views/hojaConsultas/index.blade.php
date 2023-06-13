@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
 <section class="section">
   <div class="section-header">
       <h3 class="page__heading">Hoja Consultas</h3>
@@ -15,10 +16,10 @@
                             <table class="table table-striped mt-2">
                               <thead style="background-color:#6777ef">                                     
                                   <th style="display: none;">ID</th>
-                                  <th style="color:#fff;">Diagnóstico</th>
-                                  <th style="color:#fff;">Indicación</th>
-                                  <th style="color:#fff;">Próxima Consulta</th>
-                                  <th style="color:#fff;">Acciones</th>                                                                   
+                                  <th style=>Diagnóstico</th>
+                                  <th style=>Indicación</th>
+                                  <th style=>Próxima Consulta</th>
+                                  <th style=>Acciones</th>                                                                   
                               </thead>
                               <tbody>
                                 @foreach ($hojaConsultas as $hojaConsulta)
@@ -49,4 +50,5 @@
           </div>
       </div>
     </section>
+    </div>
 @endsection

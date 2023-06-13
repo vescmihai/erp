@@ -1,31 +1,30 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
-    <section class="section">
-        <div class="section-header">
-            <h3 class="page__heading">Sectores</h3>
-        </div>
-        <div class="section-body">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <a class="btn btn-dark" href="{{ route('sectores.create') }}">Nuevo</a>
+<section class="section">
+  <div class="section-header">
+      <h3 class="page__heading">Sectores</h3>
+  </div>
+  <div class="section-body">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="card">
+                  <div class="card-body">
+                      <a class="btn btn-dark" href="{{ route('sectores.create') }}">Nuevo</a>
 
-                            <table class="table table-striped mt-2">
-                                <thead style="background-color:#6777ef">
-                                    <th style="display: none;">ID</th>
-                                    <th style="color:#fff;">Descripción</th>
-                                    <th style="color:#fff;">Acciones</th>
-                                </thead>
-                                <tbody>
-                                    @foreach ($sectores as $sector)
-                                        <tr>
-                                            <td style="display: none;">{{ $sector->id }}</td>
-                                            <td>{{ $sector->descripcion }}</td>
-                                            <td>
-                                                <a class="btn btn-primary"
-                                                    href="{{ route('sectores.edit', $sector->id) }}">Editar</a>
+                      <table class="table table-striped mt-2">
+                        <thead style="background-color:#6777ef">
+                            <th style="display: none;">ID</th>
+                            <th style="color:#010101;">Descripción</th>
+                            <th style="color:#000000;">Acciones</th>
+                        </thead>
+                        <tbody>
+                          @foreach ($sectores as $sector)
+                            <tr>
+                              <td style="display: none;">{{ $sector->id }}</td>
+                              <td>{{ $sector->descripcion }}</td>
+                              <td>
+                                <a class="btn btn-primary" href="{{ route('sectores.edit',$sector->id) }}">Editar</a>
 
                                                 {!! Form::open([
                                                     'method' => 'DELETE',
@@ -44,10 +43,10 @@
                                 {!! $sectores->links() !!}
                             </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
 @endsection

@@ -11,13 +11,15 @@ class SalaController extends Controller
     public function index(Request $request)
     {
         $salas = Sala::paginate(5);
-        return view('salas.index', compact('salas'));
+        $sectores = Sector::all();
+        return view('salas.index', compact('salas','sectores'));
     }
 
     public function create()
     {
-        $sectores = Sector::all()->pluck('descripcion', 'id'); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Sectores
-        return view('salas.crear', compact('sectores'));
+        $salas = new Sala();
+        $sectores = Sector::all(); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Sectores
+        return view('salas.crear', compact('salas','sectores'));
     }
 
     public function store(Request $request)
@@ -26,7 +28,7 @@ class SalaController extends Controller
             'nroSala' => 'required',
             'capacidad' => 'required|integer',
             'tipo' => 'required',
-            'idSector' => 'required|integer',
+            'idSector' => 'required',
         ]);
 
         $input = $request->all();
@@ -37,8 +39,8 @@ class SalaController extends Controller
     public function edit($id)
     {
         $sala = Sala::find($id);
-        $sectores = Sector::all()->pluck('nombre', 'id'); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Sectores
-        return view('salas.edit', compact('sala', 'sectores'));
+        $sectores = Sector::all(); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Sectores
+        return view('salas.editar', compact('sala', 'sectores'));
     }
 
     public function update(Request $request, $id)
@@ -47,7 +49,7 @@ class SalaController extends Controller
             'nroSala' => 'required',
             'capacidad' => 'required|integer',
             'tipo' => 'required',
-            'idSector' => 'required|integer',
+            'idSector' => 'required',
         ]);
 
         $input = $request->all();

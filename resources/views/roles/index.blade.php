@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Roles</h3>
@@ -18,8 +19,8 @@
                 
                             <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">                                                       
-                                    <th style="color:#fff;">Rol</th>
-                                    <th style="color:#fff;">Acciones</th>
+                                    <th style=>Rol</th>
+                                    <th style=>Acciones</th>
                                 </thead>  
                                 <tbody>
                                 @foreach ($roles as $role)
@@ -51,4 +52,5 @@
                 </div>
             </div>
         </section>
+        </div>
 @endsection

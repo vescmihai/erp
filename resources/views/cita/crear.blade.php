@@ -34,7 +34,7 @@
                                         <label for="fecha">Ingrese la fecha</label>
                                         <input type="date" name="fecha" class="form-control"
                                             value="{{ old('fecha') }}" id="datetimepicker" autocomplete="off"
-                                            placeholder="2023/06/11 15:00"required>
+                                            placeholder="2023/06/11"required>
                                         @error('fecha')
                                             <small>*{{ $message }}</small>
                                             <br><br>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInternacionTable extends Migration
+class CreateRecetasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,16 @@ class CreateInternacionTable extends Migration
      */
     public function up()
     {
-        Schema::create('internacion', function (Blueprint $table) {
+        Schema::create('recetas', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('idHojadeConsulta')->unsigned()->nullable();
             $table->timestamps();
+
+            $table->foreign('idHojadeConsulta')
+            ->references('id')
+            ->on('hoja_consultas')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 
@@ -26,6 +33,6 @@ class CreateInternacionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('internacion');
+        Schema::dropIfExists('recetas');
     }
 }

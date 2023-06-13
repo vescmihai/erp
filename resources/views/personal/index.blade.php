@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.tabler-layout')
 
 @section('content')
+<div class="container-xl">
 <section class="section">
   <div class="section-header">
       <h3 class="page__heading">Personal</h3>
@@ -15,15 +16,15 @@
                             <table class="table table-striped mt-2">
                               <thead style="background-color:#6777ef">                                     
                                   <th style="display: none;">ID</th>
-                                  <th style="color:#fff;">Nombre</th>
-                                  <th style="color:#fff;">Apellido Paterno</th>
-                                  <th style="color:#fff;">Apellido Materno</th>
-                                  <th style="color:#fff;">Sexo</th>
-                                  <th style="color:#fff;">Edad</th>
-                                  <th style="color:#fff;">Dirección</th>
-                                  <th style="color:#fff;">Estado</th>
-                                  <th style="color:#fff;">Tipo</th>
-                                  <th style="color:#fff;">Acciones</th>                                                                   
+                                  <th style=>Nombre</th>
+                                  <th style=>Apellido Paterno</th>
+                                  <th style=>Apellido Materno</th>
+                                  <th style=>Sexo</th>
+                                  <th style=>Edad</th>
+                                  <th style=>Dirección</th>
+                                  <th style=>Estado</th>
+                                  <th style=>Tipo</th>
+                                  <th style=>Acciones</th>                                                                   
                               </thead>
                               <tbody>
                                 @foreach ($personal as $persona)
@@ -59,4 +60,5 @@
           </div>
       </div>
     </section>
+    </div>
 @endsection

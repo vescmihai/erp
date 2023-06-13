@@ -50,7 +50,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="pacientesDropdown">
                                     <li><a class="dropdown-item" href="/pacientes">Gestionar pacientes</a></li>
-                                    <li><a class="dropdown-item" href="/personal">Gestionar personal</a></li>
+                                    <li><a class="dropdown-item" href="/expedientes">Gestionar expedientes</a></li>
 
                                 </ul>
                             </li>
@@ -66,8 +66,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="pacientesDropdown">
                                     <li><a class="dropdown-item" href="/usuarios">Gestionar usuarios</a></li>
+                                    <li><a class="dropdown-item" href="/personal">Gestionar personal</a></li>
                                     <li><a class="dropdown-item" href="/doctors">Gestionar doctores</a></li>
                                     <li><a class="dropdown-item" href="/roles">Gestionar roles</a></li>
+                                    <li><a class="dropdown-item" href="/bitacora">Gestionar bitácora</a></li>
                                 </ul>
                             </li>
 
@@ -82,6 +84,8 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="pacientesDropdown">
                                     <li><a class="dropdown-item" href="/sectores">Gestionar sectores</a></li>
+                                    <li><a class="dropdown-item" href="/internacion">Gestionar Internacion</a></li>
+                                    <li><a class="dropdown-item" href="/salas">Gestionar salas</a></li>
                                 </ul>
                             </li>
 
@@ -95,15 +99,28 @@
                                     </span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="pacientesDropdown">
-                                    <li><a class="dropdown-item" href="/consulta">Gestionar Consulta</a></li>
                                     <li><a class="dropdown-item" href="/cita">Gestionar citas</a></li>
+                                    <li><a class="dropdown-item" href="/consulta">Gestionar Consulta</a></li>
                                     <li><a class="dropdown-item" href="/especialidades">Gestionar especialidades</a></li>
                                     <li><a class="dropdown-item" href="/turno">Gestionar turnos</a></li>
                                     <li><a class="dropdown-item" href="/agenda">Gestionar agenda</a></li>
-                                    <li><a class="dropdown-item" href="/salas">Gestionar salas</a></li>
-                                    <li><a class="dropdown-item" href="/bitacora">Gestionar bitácora</a></li>
-                                    <li><a class="dropdown-item" href="/expedientes">Gestionar expedientes</a></li>
                                     <li><a class="dropdown-item" href="/hojaConsultas">Gestionar hoja de consulta</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown {{ Request::is('pacientes*') ? 'active' : '' }}">
+                                <a class="nav-link dropdown-toggle" href="#" id="pacientesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                                      </span>
+                                    <span class="nav-link-title">
+                                        Módulo
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="pacientesDropdown">
+                                    <li><a class="dropdown-item" href="/receta">Gestionar Recetas</a></li>
+                                    <li><a class="dropdown-item" href="/medicamento">Gestionar Medicamento</a></li>
+                                    <li><a class="dropdown-item" href="/recetamedica">Gestionar Receta Medica</a></li>
                                 </ul>
                             </li>
 
@@ -134,14 +151,17 @@
                               </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                              <a href="#" class="dropdown-item">Reportes</a>
-                              <a href="./profile.html" class="dropdown-item">Perfil</a>
-                              <div class="dropdown-divider"></div>
-                              <a href="./settings.html" class="dropdown-item">Ajustes</a>
-                              <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger">Cerrar sesión</a>
-                              <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
-                                {{ csrf_field() }}
-                            </form>
+                                <a href="#" class="dropdown-item">Reportes</a>
+                                <a href="./profile.html" class="dropdown-item">Perfil</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./settings.html" class="dropdown-item">Ajustes</a>
+                                <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
+                                    onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                                </a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
+                                    {{ csrf_field() }}
+                                </form>
                             </div>
                           </div>
                     </div>
