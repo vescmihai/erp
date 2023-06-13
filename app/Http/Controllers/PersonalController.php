@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Personal;
+use Spatie\Activitylog\Models\Activity;
 
 class PersonalController extends Controller
 {
@@ -49,8 +50,13 @@ class PersonalController extends Controller
             'tipo' => 'required'
         ]);
 
-        $input = $request->all();
-        Personal::create($input);
+        $personal = Personal::create($request->all());
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Personal')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $personal->id;
+        $lastActivity->save(); 
 
         return redirect()->route('personal.index');
     }
@@ -75,6 +81,12 @@ class PersonalController extends Controller
     public function edit($id)
     {
         $personal = Personal::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Personal')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $personal->id;
+        $lastActivity->save(); 
         return view('personal.editar', compact('personal'));
     }
 
@@ -115,7 +127,15 @@ class PersonalController extends Controller
      */
     public function destroy($id)
     {
-        Personal::find($id)->delete();
+        $personal = Personal::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Personal')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $personal->id;
+        $lastActivity->save();
+
+        $personal->delete();
         return redirect()->route('personal.index');
     }
 }

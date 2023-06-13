@@ -16,14 +16,14 @@
                             <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">
                                     <th style="display: none;">ID</th>
-                                    <th style="color:#fff;">Motivo</th>
-                                    <th style="color:#fff;">Fecha</th>
-                                    <th style="color:#fff;">Confirmacion</th>
-                                    <th style="color:#fff;">Consulta</th>
-                                    <th style="color:#fff;">Especialidad</th>
-                                    <th style="color:#fff;">Doctor</th>
-                                    <th style="color:#fff;">Paciente</th>
-                                    <th style="color:#fff;">Acciones</th>
+                                    <th style=>Motivo</th>
+                                    <th style=>Fecha</th>
+                                    <th style=>Confirmacion</th>
+                                    <th style=>Consulta</th>
+                                    <th style=>Especialidad</th>
+                                    <th style=>Doctor</th>
+                                    <th style=>Paciente</th>
+                                    <th style=>Acciones</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($citas as $cita)

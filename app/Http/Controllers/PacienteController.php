@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paciente;
+use Spatie\Activitylog\Models\Activity;
 
 class PacienteController extends Controller
 {
@@ -41,9 +42,13 @@ class PacienteController extends Controller
             'nroTutor' => 'required|integer',
         ]);
 
-        $input = $request->all();
+        $paciente = Paciente::create($request->all());
 
-        Paciente::create($input);
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Paciente')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $paciente->id;
+        $lastActivity->save(); 
 
         return redirect()->route('pacientes.index');
     }
@@ -69,6 +74,11 @@ class PacienteController extends Controller
     {
         $paciente = Paciente::find($id);
 
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Paciente')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $paciente->id;
+        $lastActivity->save(); 
         return view('pacientes.editar', compact('paciente'));
     }
 
@@ -102,7 +112,15 @@ class PacienteController extends Controller
      */
     public function destroy($id)
     {
-        Paciente::find($id)->delete();
+        $paciente = Paciente::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Paciente')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $paciente->id;
+        $lastActivity->save();
+
+        $paciente->delete();
         return redirect()->route('pacientes.index');
     }
 }

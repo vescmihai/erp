@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sala;
 use App\Models\Sector;
+use Spatie\Activitylog\Models\Activity;
 
 class SalaController extends Controller
 {
@@ -31,8 +32,16 @@ class SalaController extends Controller
             'idSector' => 'required',
         ]);
 
-        $input = $request->all();
-        Sala::create($input);
+      
+
+        
+        $sala = Sala::create($request->all());
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Sala')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $sala->id;
+        $lastActivity->save(); 
         return redirect()->route('salas.index');
     }
 
@@ -55,12 +64,26 @@ class SalaController extends Controller
         $input = $request->all();
         $sala = Sala::find($id);
         $sala->update($input);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Salas')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $sala->id;
+        $lastActivity->save(); 
         return redirect()->route('salas.index');
     }
 
     public function destroy($id)
     {
-        Sala::find($id)->delete();
+        $sala = Sala::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Salas')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $sala->id;
+        $lastActivity->save();
+
+        $sala->delete();
         return redirect()->route('salas.index');
     }
 }

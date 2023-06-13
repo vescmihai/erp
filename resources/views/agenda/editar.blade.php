@@ -28,24 +28,23 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
+                                        <label for="fecha">Fecha</label>
+                                        {!! Form::date('fecha', null, ['class' => 'form-control']) !!}
+                                    </div>
+                                    <div class="form-group">
                                         <label for="idDoctor">Doctor</label>
-                                        {{ Form::label('Seleccionar doctor') }}
                                         <select name="idDoctor" class="focus border-primary  form-control">
                                             @foreach ($doctores as $doctor)
-                                                <option value="{{ $doctor->id }}">{{ $doctor->cargo }}</option>
+                                                <option value="{{ $doctor->id }}" @if($agenda->idDoctor == $doctor->id) selected @endif>{{ $doctor->cargo }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <label for="idCita">Cita</label>
-                                        {{ Form::label('Seleccionar Confirmacion') }}
                                         <select name="idCita" class="focus border-primary  form-control">
                                             @foreach ($citas as $cita)
-                                                <option value="{{ $cita->id }}">{{ $cita->fecha }}</option>
+                                                <option value="{{ $cita->id }}" @if($agenda->idCita == $cita->id) selected @endif>{{ $cita->fecha }}</option>
                                             @endforeach
-
                                         </select>
                                     </div>
                                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Expediente;
+use Spatie\Activitylog\Models\Activity;
 
 class ExpedienteController extends Controller
 {
@@ -41,9 +42,13 @@ class ExpedienteController extends Controller
             'fechaRegistro' => 'required',
         ]);
 
-        $input = $request->all();
+        $expediente = Expediente::create($request->all());
 
-        Expediente::create($input);
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Expediente')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $expediente->id;
+        $lastActivity->save(); 
 
         return redirect()->route('expedientes.index');
     }
@@ -57,6 +62,11 @@ class ExpedienteController extends Controller
     public function edit($id)
     {
         $expediente = Expediente::find($id);
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Expediente')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $expediente->id;
+        $lastActivity->save(); 
         return view('expedientes.edit', compact('expediente'));
     }
 
@@ -90,7 +100,15 @@ class ExpedienteController extends Controller
      */
     public function destroy($id)
     {
-        Expediente::find($id)->delete();
+        $expediente = Expediente::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Expediente')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $expediente->id;
+        $lastActivity->save();
+
+        $expediente->delete();
         return redirect()->route('expedientes.index');
     }
 }

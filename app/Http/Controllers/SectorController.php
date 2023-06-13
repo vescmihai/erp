@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sector;
+use Spatie\Activitylog\Models\Activity;
 
 class SectorController extends Controller
 {
@@ -24,9 +25,14 @@ class SectorController extends Controller
             'descripcion' => 'required',
         ]);
 
-        $input = $request->all();
 
-        Sector::create($input);
+        $sector = Sector::create($request->all());
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Sectores')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $sector->id;
+        $lastActivity->save(); 
 
         return redirect()->route('sectores.index');
     }
@@ -34,6 +40,13 @@ class SectorController extends Controller
     public function edit($id)
     {
         $sector = Sector::find($id);
+
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Sectores')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $sector->id;
+        $lastActivity->save(); 
         return view('sectores.editar', compact('sector'));
     }
 
@@ -53,7 +66,16 @@ class SectorController extends Controller
 
     public function destroy($id)
     {
-        Sector::find($id)->delete();
+
+        $sector = Sector::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Sectores')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $sector->id;
+        $lastActivity->save();
+
+        $sector->delete();
         return redirect()->route('sectores.index');
     }
 }

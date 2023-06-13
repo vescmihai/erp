@@ -32,17 +32,17 @@
                                         {!! Form::text('motivo', null, array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group mb-3">
-                                        <label for="fecha">Ingrese la fecha</label>
-                                        <input type="text" name="fecha" class="form-control"
-                                            value="{{ old('fecha') }}" id="datetimepicker" autocomplete="off"
-                                            placeholder="2023/05/16 07:00" required>
-                                        @error('fecha')
-                                            <small>*{{ $message }}</small>
-                                            <br><br>
-                                        @enderror
-                                    </div>
+                           
+
+                                <div class="form-group">
+                                    <label for="fecha">Ingrese la fecha</label>
+                                    <input type="date" name="fecha" class="form-control"
+                                        value="{{ old('fecha') }}" id="datetimepicker" autocomplete="off"
+                                        placeholder="2023/06/11"required>
+                                    @error('fecha')
+                                        <small>*{{ $message }}</small>
+                                        <br><br>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group mb-3">
@@ -75,7 +75,7 @@
                                         <label for="idDoctor">Doctor</label>
                                         <select name="idDoctor" class="focus border-primary form-control">
                                             @foreach ($doctores as $doctor)
-                                                <option value="{{ $doctor->id }}">{{ $doctor->nombre }}</option>
+                                                <option value="{{ $doctor->id }}">{{ $doctor->cargo }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -85,7 +85,7 @@
                                         <label for="idPaciente">Paciente</label>
                                         <select name="idPaciente" class="focus border-primary form-control">
                                             @foreach ($pacientes as $paciente)
-                                                <option value="{{ $paciente->id }}">{{ $paciente->nombre }}</option>
+                                                <option value="{{ $paciente->id }}">{{ $paciente->tutor }}</option>
                                             @endforeach
                                         </select>
                                     </div>

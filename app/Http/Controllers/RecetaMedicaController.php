@@ -6,6 +6,7 @@ use App\Models\Medicamento;
 use App\Models\Receta;
 use App\Models\RecetaMedica;
 use Illuminate\Http\Request;
+use Spatie\Activitylog\Models\Activity;
 
 class RecetaMedicaController extends Controller
 {
@@ -35,9 +36,13 @@ class RecetaMedicaController extends Controller
             'idMedicamento' => 'required',
         ]);
 
-        $input = $request->all();
+        $recetamedica = RecetaMedica::create($request->all());
 
-        RecetaMedica::create($input);
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Receta Medica')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $recetamedica->id;
+        $lastActivity->save(); 
 
         return redirect()->route('recetamedica.index');
     }
@@ -65,12 +70,26 @@ class RecetaMedicaController extends Controller
         $Recetamedica = RecetaMedica::find($id);
         $Recetamedica->update($input);
 
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Receta Medica')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $Recetamedica->id;
+        $lastActivity->save(); 
+
         return redirect()->route('recetamedica.index');
     }
 
     public function destroy($id)
     {
-        RecetaMedica::find($id)->delete();
+        $recetamedica = RecetaMedica::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Receta Medica')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $recetamedica->id;
+        $lastActivity->save();
+
+        $recetamedica->delete();
         return redirect()->route('recetamedica.index');
     }
 }

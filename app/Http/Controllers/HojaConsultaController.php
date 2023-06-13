@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\HojaConsulta;
+use Spatie\Activitylog\Models\Activity;
 
 class HojaConsultaController extends Controller
 {
@@ -42,9 +43,13 @@ class HojaConsultaController extends Controller
             'proximaConsulta' => 'required',
         ]);
 
-        $input = $request->all();
+        $hoja = HojaConsulta::create($request->all());
 
-        HojaConsulta::create($input);
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('HojaConsulta')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $hoja->id;
+        $lastActivity->save(); 
 
         return redirect()->route('hojaConsultas.index');
     }
@@ -69,7 +74,11 @@ class HojaConsultaController extends Controller
     public function edit($id)
     {
         $hojaConsulta = HojaConsulta::find($id);
-
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('HojaConsulta')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $hojaConsulta->id;
+        $lastActivity->save(); 
         return view('hojaConsultas.edit', compact('hojaConsulta'));
     }
 
@@ -104,7 +113,15 @@ class HojaConsultaController extends Controller
      */
     public function destroy($id)
     {
-        HojaConsulta::find($id)->delete();
+        $hoja = HojaConsulta::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Hoja Consulta')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $hoja->id;
+        $lastActivity->save();
+
+        $hoja->delete();
         return redirect()->route('hojaConsultas.index');
     }
 }

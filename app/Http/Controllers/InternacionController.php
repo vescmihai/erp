@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Internacion;
 use App\Models\Sala;
+use Spatie\Activitylog\Models\Activity;
 
 class InternacionController extends Controller
 {
@@ -28,8 +29,13 @@ class InternacionController extends Controller
             'idSala' => 'required|integer',
         ]);
 
-        $input = $request->all();
-        Internacion::create($input);
+        $internacion = Internacion::create($request->all());
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Internacion')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $internacion->id;
+        $lastActivity->save(); 
         return redirect()->route('internacion.index');
     }
 
@@ -37,6 +43,11 @@ class InternacionController extends Controller
     {
         $internacion = Internacion::find($id);
         $salas = Sala::all(); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Sectores
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Internacion')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $internacion->id;
+        $lastActivity->save(); 
         return view('internacion.editar', compact('internacion', 'salas'));
     }
 
@@ -55,7 +66,15 @@ class InternacionController extends Controller
 
     public function destroy($id)
     {
-        Internacion::find($id)->delete();
+        $internacion = Internacion::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Internacion')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $internacion->id;
+        $lastActivity->save();
+
+        $internacion->delete();
         return redirect()->route('internacion.index');
     }
 }

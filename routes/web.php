@@ -24,6 +24,7 @@ use App\Http\Controllers\RecetaController;
 use App\Http\Controllers\MedicamentoController;
 use App\Http\Controllers\RecetaMedicaController;
 use App\Http\Controllers\HorariosController;
+use App\Http\Controllers\HistoriaClinicaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,4 +70,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('receta',RecetaController::class);
     Route::resource('medicamento',MedicamentoController::class);
     Route::resource('recetamedica',RecetaMedicaController::class);
+    Route::resource('historiaclinica',HistoriaClinicaController::class);
 });

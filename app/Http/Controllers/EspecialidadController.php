@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Especialidad;
+use Spatie\Activitylog\Models\Activity;
 
 class EspecialidadController extends Controller
 {
@@ -40,10 +41,13 @@ class EspecialidadController extends Controller
             'nombre' => 'required',
             'descripcion' => 'required',
         ]);
+        $especialidad = Especialidad::create($request->all());
 
-        $input = $request->all();
-
-        Especialidad::create($input);
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Especialidad')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $especialidad->id;
+        $lastActivity->save(); 
 
         return redirect()->route('especialidades.index');
     }
@@ -57,6 +61,11 @@ class EspecialidadController extends Controller
     public function edit($id)
     {
         $especialidad = Especialidad::find($id);
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Especialidad')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $especialidad->id;
+        $lastActivity->save(); 
         return view('especialidades.edit', compact('especialidad'));
     }
 
@@ -90,7 +99,15 @@ class EspecialidadController extends Controller
      */
     public function destroy($id)
     {
-        Especialidad::find($id)->delete();
+        $especialidad = Especialidad::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Especialidad')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $especialidad->id;
+        $lastActivity->save();
+
+        $especialidad->delete();
         return redirect()->route('especialidades.index');
     }
 }

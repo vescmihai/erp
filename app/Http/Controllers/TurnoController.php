@@ -7,6 +7,7 @@ use App\Models\Turno;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use Spatie\Activitylog\Models\Activity;
 
 class TurnoController extends Controller
 {
@@ -29,9 +30,14 @@ class TurnoController extends Controller
             'horaFin' => 'required|date_format:H:i',
         ]);
 
-        $input = $request->all();
 
-        Turno::create($input);
+        $turno = Turno::create($request->all());
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Turnos')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $turno->id;
+        $lastActivity->save(); 
 
         return redirect()->route('turno.index');
     }
@@ -56,12 +62,27 @@ class TurnoController extends Controller
         $turno = Turno::find($id);
         $turno->update($input);
 
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Turnos')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $turno->id;
+        $lastActivity->save(); 
+
         return redirect()->route('turno.index');
     }
 
     public function destroy($id)
     {
-        Turno::find($id)->delete();
+
+        $turno = Turno::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Turnos')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $turno->id;
+        $lastActivity->save();
+
+        $turno->delete();
         return redirect()->route('turno.index');
     }
 }

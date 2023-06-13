@@ -97,6 +97,12 @@ class UsuarioController extends Controller
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Usuarios')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $user->id;
+        $lastActivity->save();
     
         return view('usuarios.editar',compact('user','roles','userRole'));
     }
@@ -142,7 +148,17 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        
+        $user = User::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Usuarios')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $user->id;
+        $lastActivity->save();
+
+        $user->delete();
+
         return redirect()->route('usuarios.index');
     }
 }

@@ -14,6 +14,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use Spatie\Activitylog\Models\Activity;
 
 class CitaController extends Controller
 {
@@ -51,9 +52,13 @@ class CitaController extends Controller
             'idAdministrativo' => 'required',
         ]);
 
-        $input = $request->all();
+        $cita = Cita::create($request->all());
 
-        Cita::create($input);
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Cita')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $cita->id;
+        $lastActivity->save(); 
 
         return redirect()->route('cita.index');
     }
@@ -66,7 +71,13 @@ class CitaController extends Controller
         $pacientes=Paciente::all();
         $personales=Personal::all();
         $doctores=Doctor::all();
-        return view('cita.editar', compact('citas','doctores','consultas','especialidades','pacientes','personales'));
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Cita')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $citas->id;
+        $lastActivity->save(); 
+        return view('cita.edit', compact('citas','doctores','consultas','especialidades','pacientes','personales'));
     }
 
     public function update(Request $request, $id)
@@ -92,7 +103,15 @@ class CitaController extends Controller
 
     public function destroy($id)
     {
-        Cita::find($id)->delete();
+        $cita = Cita::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Cita')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $cita->id;
+        $lastActivity->save();
+
+        $cita->delete();
         return redirect()->route('cita.index');
     }
 }

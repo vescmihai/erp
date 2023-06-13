@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Especialidad;
 use App\Models\Sala;
+use Spatie\Activitylog\Models\Activity;
 
 class DoctorController extends Controller
 {
@@ -48,9 +49,13 @@ class DoctorController extends Controller
             'idSala' => 'required|integer',
         ]);
 
-        $input = $request->all();
+        $doctor = Doctor::create($request->all());
 
-        Doctor::create($input);
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Doctor')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $doctor->id;
+        $lastActivity->save(); 
 
         return redirect()->route('doctors.index');
     }
@@ -67,6 +72,11 @@ class DoctorController extends Controller
         $especialidades = Especialidad::all()->pluck('nombre', 'id'); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Especialidades
         $salas = Sala::all()->pluck('nroSala', 'id'); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Salas
     
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Doctor')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $doctor->id;
+        $lastActivity->save(); 
         return view('doctors.edit', compact('doctor', 'especialidades', 'salas'));
     }
 
@@ -102,7 +112,15 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        Doctor::find($id)->delete();
+        $doctor = Doctor::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Doctor')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $doctor->id;
+        $lastActivity->save();
+
+        $doctor->delete();
         return redirect()->route('doctors.index');
     }
 }

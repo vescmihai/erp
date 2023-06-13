@@ -11,6 +11,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use Spatie\Activitylog\Models\Activity;
 
 class AgendaController extends Controller
 {
@@ -38,9 +39,13 @@ class AgendaController extends Controller
             'idCita' => 'required',
         ]);
 
-        $input = $request->all();
+        $agenda = Agenda::create($request->all());
 
-        Agenda::create($input);
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Agenda')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $agenda->id;
+        $lastActivity->save(); 
 
         return redirect()->route('agenda.index');
     }
@@ -50,6 +55,12 @@ class AgendaController extends Controller
         $agenda = Agenda::find($id);
         $citas = Cita::all();
         $doctores = Doctor::all();
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Agenda')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $agenda->id;
+        $lastActivity->save(); 
         return view('agenda.editar', compact('agenda', 'doctores', 'citas'));
     }
 
@@ -71,7 +82,15 @@ class AgendaController extends Controller
 
     public function destroy($id)
     {
-        Agenda::find($id)->delete();
+        $agenda = Agenda::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Agenda')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $agenda->id;
+        $lastActivity->save();
+
+        $agenda->delete();
         return redirect()->route('agenda.index');
     }
 }

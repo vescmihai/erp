@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Consulta;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Spatie\Activitylog\Models\Activity;
 
 class ConsultaController extends Controller
 {
@@ -17,9 +18,10 @@ class ConsultaController extends Controller
 
     public function create()
     {
-        $doctores= Doctor::all()->pluck('cargo', 'id');
+        $doctores= Doctor::all();
         return view('consulta.crear', compact('doctores'));
     }
+    
 
     public function store(Request $request)
     {
@@ -28,9 +30,13 @@ class ConsultaController extends Controller
             'idDoctor'=>'required'
         ]);
 
-        $input = $request->all();
+        $consulta = Consulta::create($request->all());
 
-        Consulta::create($input);
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Consulta')->log('Registró')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $consulta->id;
+        $lastActivity->save(); 
 
         return redirect()->route('consulta.index');
     }
@@ -39,7 +45,13 @@ class ConsultaController extends Controller
     {
         $consulta = Consulta::find($id);
         $doctores = Doctor::all()->pluck('cargo', 'id');
-        return view('consulta.editar', compact('consulta','doctores'));
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Consulta')->log('Editó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $consulta->id;
+        $lastActivity->save(); 
+        return view('consulta.edit', compact('consulta','doctores'));
     }
 
     public function update(Request $request, $id)
@@ -59,7 +71,15 @@ class ConsultaController extends Controller
 
     public function destroy($id)
     {
-        Consulta::find($id)->delete();
+        $consulta = Consulta::find($id);
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Consulta')->log('Eliminó')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $consulta->id;
+        $lastActivity->save();
+
+        $consulta->delete();
         return redirect()->route('consulta.index');
     }
 }
