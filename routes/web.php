@@ -65,4 +65,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('hojaConsultas', HojaConsultaController::class);
     Route::resource('consulta', ConsultaController::class);
     Route::resource('horarios',HorariosController::class);
+    Route::resource('internacion',InternacionController::class);
+    Route::resource('receta',RecetaController::class);
+    Route::resource('medicamento',MedicamentoController::class);
+    Route::resource('recetamedica',RecetaMedicaController::class);
 });
