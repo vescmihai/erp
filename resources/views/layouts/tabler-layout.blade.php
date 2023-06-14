@@ -80,6 +80,10 @@
                                     <li><a class="dropdown-item" href="/doctors">Gestionar doctores</a></li>
                                     <li><a class="dropdown-item" href="/roles">Gestionar roles</a></li>
                                     <li><a class="dropdown-item" href="/bitacora">Gestionar bitácora</a></li>
+                                    <form method="POST" action="{{ route('backup.create') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item" href="/bitacora">Crear Respaldo</button>
+                                    </form>
                                 </ul>
                             </li>
 

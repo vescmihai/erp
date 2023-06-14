@@ -25,6 +25,7 @@ use App\Http\Controllers\MedicamentoController;
 use App\Http\Controllers\RecetaMedicaController;
 use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\HistoriaClinicaController;
+use App\Http\Controllers\BackupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,5 +73,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('recetamedica',RecetaMedicaController::class);
     Route::resource('historiaclinica',HistoriaClinicaController::class);
     Route::get('historiaclinica/pdf/{historiaClinica}', 'App\Http\Controllers\HistoriaClinicaController@pdf')->name('historiaclinica.pdf');
+
+    Route::post('/backup', [BackupController::class, 'create'])->name('backup.create');
 
 });
