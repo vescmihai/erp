@@ -56,6 +56,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="pacientesDropdown">
                                     <li><a class="dropdown-item" href="/pacientes">Gestionar pacientes</a></li>
                                     <li><a class="dropdown-item" href="/expedientes">Gestionar expedientes</a></li>
+                                    <li><a class="dropdown-item" href="/historiaclinica">Gestionar historias clinicas</a></li>
 
                                 </ul>
                             </li>

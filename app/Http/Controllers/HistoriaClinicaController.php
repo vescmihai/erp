@@ -8,6 +8,7 @@ use App\Models\HistoriaClinica;
 use App\Models\Expediente;
 use App\Models\Personal;
 use Spatie\Activitylog\Models\Activity;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class HistoriaClinicaController extends Controller
 {
@@ -94,4 +95,21 @@ class HistoriaClinicaController extends Controller
         $historiaClinica->delete();
         return redirect()->route('historiaclinica.index');
     }
+
+    public function pdf(HistoriaClinica $historiaClinica) 
+    {
+        $expedientes = Expediente::all();
+        $personales = Personal::all();
+        $historiasClinicas = HistoriaClinica::where('id', $historiaClinica->id)->get();
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('HistoriaClinica')->log('Generó reporte')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $historiaClinica->id;
+        $lastActivity->save();
+
+        $pdf = PDF::loadView('historiaclinica.pdf', compact('historiaClinica','historiasClinicas','expedientes','personales'));
+        return $pdf->download('historia_clinica_'.$historiaClinica->id.'.pdf');
+    }
+
 }

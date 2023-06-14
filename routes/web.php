@@ -71,4 +71,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('medicamento',MedicamentoController::class);
     Route::resource('recetamedica',RecetaMedicaController::class);
     Route::resource('historiaclinica',HistoriaClinicaController::class);
+    Route::get('historiaclinica/pdf/{historiaClinica}', 'App\Http\Controllers\HistoriaClinicaController@pdf')->name('historiaclinica.pdf');
+
 });

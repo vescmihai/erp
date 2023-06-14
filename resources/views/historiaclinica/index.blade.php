@@ -43,8 +43,9 @@
                                                 @endif
                                             @endforeach
                                             <td>
-                                                <a class="btn btn-primary"
-                                                    href="{{ route('historiaclinica.edit', $historiaClinica->id) }}">Editar</a>
+                                                <a class="btn btn-primary" href="{{ route('historiaclinica.edit', $historiaClinica->id) }}">Editar</a>
+
+                                                <a class="btn btn-success" href="{{ route('historiaclinica.pdf', $historiaClinica->id) }}">Descargar</a>
 
                                                 {!! Form::open(['method' => 'DELETE', 'route' => ['historiaclinica.destroy', $historiaClinica->id], 'style' => 'display:inline']) !!}
                                                 {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
@@ -52,6 +53,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
+
                                 </tbody>
                             </table>
                             <!-- Centramos la paginacion a la derecha -->
