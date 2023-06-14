@@ -8,7 +8,7 @@ use App\Models\HistoriaClinica;
 use App\Models\Expediente;
 use App\Models\Personal;
 use Spatie\Activitylog\Models\Activity;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\pdf;
 
 class HistoriaClinicaController extends Controller
 {
@@ -108,7 +108,7 @@ class HistoriaClinicaController extends Controller
         $lastActivity->subject_id= $historiaClinica->id;
         $lastActivity->save();
 
-        $pdf = PDF::loadView('historiaclinica.pdf', compact('historiaClinica','historiasClinicas','expedientes','personales'));
+        $pdf =PDF::loadView('historiaclinica.pdf', compact('historiaClinica','historiasClinicas','expedientes','personales'));
         return $pdf->download('historia_clinica_'.$historiaClinica->id.'.pdf');
     }
 

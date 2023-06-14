@@ -43,7 +43,8 @@
                                                 <td>
                                                     <a class="btn btn-primary"
                                                         href="{{ route('recetamedica.edit', $recetamedica->id) }}">Editar</a>
-
+                                                        <a class="btn btn-success"
+                                                        href="{{ route('recetamedica.pdf', $recetamedica->id) }}">Descargar</a>
                                                     {!! Form::open([
                                                         'method' => 'DELETE',
                                                         'route' => ['recetamedica.destroy', $recetamedica->id],

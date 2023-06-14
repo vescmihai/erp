@@ -28,6 +28,7 @@
                                     <td>{{ $paciente->nroTutor }}</td>
                                     <td>                                  
                                       <a class="btn btn-primary" href="{{ route('pacientes.edit',$paciente->id) }}">Editar</a>
+                                      <a class="btn btn-success" href="{{ route('pacientes.pdf',$paciente->id) }}">Descargar</a>
 
                                       {!! Form::open(['method' => 'DELETE','route' => ['pacientes.destroy', $paciente->id],'style'=>'display:inline']) !!}
                                           {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}

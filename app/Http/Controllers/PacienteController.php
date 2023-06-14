@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paciente;
 use Spatie\Activitylog\Models\Activity;
+use Barryvdh\DomPDF\Facade\pdf;
 
 class PacienteController extends Controller
 {
@@ -122,5 +123,20 @@ class PacienteController extends Controller
 
         $paciente->delete();
         return redirect()->route('pacientes.index');
+    }
+
+    public function pdf(Paciente $pacientes) 
+    {
+
+        $paciente = Paciente::all();
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Paciente')->log('Generó reporte')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $pacientes->id;
+        $lastActivity->save();
+
+        $pdf =PDF::loadView('pacientes.pdf', compact('pacientes','paciente'));
+        return $pdf->download('pacientes'.$pacientes->id.'.pdf');
     }
 }

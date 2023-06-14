@@ -58,9 +58,8 @@
                                                 @endif
                                             @endforeach
                                             <td>
-                                                <a class="btn btn-primary"
-                                                    href="{{ route('cita.edit', $cita->id) }}">Editar</a>
-
+                                                <a class="btn btn-primary" href="{{ route('cita.edit', $cita->id) }}">Editar</a>
+                                                <a class="btn btn-success" href="{{ route('cita.pdf', $cita->id) }}">Descargar</a>
                                                 {!! Form::open(['method' => 'DELETE', 'route' => ['cita.destroy', $cita->id], 'style' => 'display:inline']) !!}
                                                 {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
                                                 {!! Form::close() !!}

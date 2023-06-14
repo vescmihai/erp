@@ -30,7 +30,7 @@
                                     <td>{{ $hojaConsulta->proximaConsulta }}</td>
                                     <td>                                  
                                       <a class="btn btn-primary" href="{{ route('hojaConsultas.edit', $hojaConsulta->id) }}">Editar</a>
-
+                                      <a class="btn btn-success" href="{{ route('hojaConsultas.pdf', $hojaConsulta->id) }}">Descargar</a>
                                       {!! Form::open(['method' => 'DELETE','route' => ['hojaConsultas.destroy', $hojaConsulta->id],'style'=>'display:inline']) !!}
                                           {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
                                       {!! Form::close() !!}

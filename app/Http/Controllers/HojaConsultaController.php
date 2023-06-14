@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\HojaConsulta;
 use Spatie\Activitylog\Models\Activity;
+use Barryvdh\DomPDF\Facade\pdf;
 
 class HojaConsultaController extends Controller
 {
@@ -123,5 +124,20 @@ class HojaConsultaController extends Controller
 
         $hoja->delete();
         return redirect()->route('hojaConsultas.index');
+    }
+
+    public function pdf(HojaConsulta $hojas) 
+    {
+        $hoja= HojaConsulta::all();
+
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('HojaConsulta')->log('Generó reporte')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $hojas->id;
+        $lastActivity->save();
+
+        $pdf =PDF::loadView('hojaConsultas.pdf', compact('hojas','hoja'));
+        return $pdf->download('hojaconsulta-'.$hojas->id.'.pdf');
     }
 }

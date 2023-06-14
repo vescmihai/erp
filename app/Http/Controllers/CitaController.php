@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use Spatie\Activitylog\Models\Activity;
+use Barryvdh\DomPDF\Facade\pdf;
 
 class CitaController extends Controller
 {
@@ -113,5 +114,24 @@ class CitaController extends Controller
 
         $cita->delete();
         return redirect()->route('cita.index');
+    }
+
+    public function pdf(Cita $citas) 
+    {
+        $consultas=Consulta::all();
+        $especialidades=Especialidad::all();
+        $pacientes=Paciente::all();
+        $personales=Personal::all();
+        $doctores=Doctor::all();
+        $cita = Cita::where('id', $citas->id)->get();
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('cita')->log('Generó reporte')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $citas->id;
+        $lastActivity->save();
+
+        $pdf =PDF::loadView('cita.pdf', compact('citas','cita','doctores','consultas','especialidades','pacientes','personales'));
+        return $pdf->download('cita-'.$citas->id.'.pdf');
     }
 }

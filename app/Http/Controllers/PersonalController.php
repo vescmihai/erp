@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Personal;
 use Spatie\Activitylog\Models\Activity;
+use Barryvdh\DomPDF\Facade\pdf;
 
 class PersonalController extends Controller
 {
@@ -137,5 +138,20 @@ class PersonalController extends Controller
 
         $personal->delete();
         return redirect()->route('personal.index');
+    }
+
+    public function pdf(Personal $personals) 
+    {
+
+        $personal = Personal::all();
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Personal')->log('Generó reporte')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $personals->id;
+        $lastActivity->save();
+
+        $pdf =PDF::loadView('personal.pdf', compact('personals','personal'));
+        return $pdf->download('personal-'.$personals->id.'.pdf');
     }
 }

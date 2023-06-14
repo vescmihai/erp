@@ -32,7 +32,7 @@
                                     <td>{{ $doctor->sala->nroSala }}</td>
                                     <td>                                  
                                       <a class="btn btn-primary" href="{{ route('doctors.edit',$doctor->id) }}">Editar</a>
-
+                                      <a class="btn btn-success" href="{{ route('doctors.pdf',$doctor->id) }}">Descargar</a>
                                       {!! Form::open(['method' => 'DELETE','route' => ['doctors.destroy', $doctor->id],'style'=>'display:inline']) !!}
                                           {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
                                       {!! Form::close() !!}

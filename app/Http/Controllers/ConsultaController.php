@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Consulta;
 use App\Models\Doctor;
+use App\Models\Paciente;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
+use Barryvdh\DomPDF\Facade\pdf;
 
 class ConsultaController extends Controller
 {
@@ -81,5 +83,20 @@ class ConsultaController extends Controller
 
         $consulta->delete();
         return redirect()->route('consulta.index');
+    }
+    public function pdf(Consulta $consulta) 
+    {
+        $consultas=Consulta::all();
+        $doctores=Doctor::all();
+
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Consulta')->log('Generó reporte')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $consulta->id;
+        $lastActivity->save();
+
+        $pdf =PDF::loadView('consulta.pdf', compact('consulta','consultas','doctores'));
+        return $pdf->download('consulta-'.$consulta->id.'.pdf');
     }
 }

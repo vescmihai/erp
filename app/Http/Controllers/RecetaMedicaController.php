@@ -7,6 +7,7 @@ use App\Models\Receta;
 use App\Models\RecetaMedica;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
+use Barryvdh\DomPDF\Facade\pdf;
 
 class RecetaMedicaController extends Controller
 {
@@ -91,5 +92,21 @@ class RecetaMedicaController extends Controller
 
         $recetamedica->delete();
         return redirect()->route('recetamedica.index');
+    }
+
+    public function pdf(RecetaMedica $recetamedicas) 
+    {
+        $recetas = Receta::all();
+        $medicamentos = Medicamento::all();
+        $recetamedica = RecetaMedica::all();
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('RecetaMedica')->log('Generó reporte')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $recetamedicas->id;
+        $lastActivity->save();
+
+        $pdf =PDF::loadView('recetamedica.pdf', compact('recetamedicas','recetamedica','recetas','medicamentos'));
+        return $pdf->download('recetamedica-'.$recetamedicas->id.'.pdf');
     }
 }

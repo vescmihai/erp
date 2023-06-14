@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Models\Especialidad;
 use App\Models\Sala;
 use Spatie\Activitylog\Models\Activity;
+use Barryvdh\DomPDF\Facade\pdf;
 
 class DoctorController extends Controller
 {
@@ -122,5 +123,21 @@ class DoctorController extends Controller
 
         $doctor->delete();
         return redirect()->route('doctors.index');
+    }
+
+    public function pdf(Doctor $doctors) 
+    {
+        $doctor = Doctor::all();
+        $especialidades = Especialidad::all(); // Asegúrate de que 'nombre' y 'id' sean columnas válidas en tu tabla de Especialidades
+        $salas = Sala::all();
+
+        date_default_timezone_set("America/La_Paz");
+        activity()->useLog('Doctor')->log('Generó reporte')->subject();
+        $lastActivity=Activity::all()->last();
+        $lastActivity->subject_id= $doctors->id;
+        $lastActivity->save();
+
+        $pdf =PDF::loadView('doctors.pdf', compact('doctors','doctor','especialidades','salas'));
+        return $pdf->download('Doctor-'.$doctors->id.'.pdf');
     }
 }

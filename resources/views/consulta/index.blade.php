@@ -34,7 +34,8 @@
                                             <td>
                                                 <a class="btn btn-primary"
                                                     href="{{ route('consulta.edit', $consulta->id) }}">Editar</a>
-
+                                                    <a class="btn btn-success"
+                                                    href="{{ route('consulta.pdf', $consulta->id) }}">Descargar</a>
                                                 {!! Form::open([
                                                     'method' => 'DELETE',
                                                     'route' => ['consulta.destroy', $consulta->id],

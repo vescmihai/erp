@@ -40,7 +40,7 @@
                                     <td>{{ $persona->tipo }}</td>
                                     <td>                                  
                                       <a class="btn btn-primary" href="{{ route('personal.edit',$persona->id) }}">Editar</a>
-
+                                      <a class="btn btn-success" href="{{ route('personal.pdf',$persona->id) }}">Descargar</a>
                                       {!! Form::open(['method' => 'DELETE','route' => ['personal.destroy', $persona->id],'style'=>'display:inline']) !!}
                                           {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
                                       {!! Form::close() !!}

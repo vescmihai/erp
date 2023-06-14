@@ -72,7 +72,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('medicamento',MedicamentoController::class);
     Route::resource('recetamedica',RecetaMedicaController::class);
     Route::resource('historiaclinica',HistoriaClinicaController::class);
+    
+    
     Route::get('historiaclinica/pdf/{historiaClinica}', 'App\Http\Controllers\HistoriaClinicaController@pdf')->name('historiaclinica.pdf');
+    Route::get('pacientes/pdf/{pacientes}', 'App\Http\Controllers\PacienteController@pdf')->name('pacientes.pdf');
+    Route::get('citas/pdf/{citas}', 'App\Http\Controllers\CitaController@pdf')->name('cita.pdf');
+    Route::get('personals/pdf/{personals}', 'App\Http\Controllers\PersonalController@pdf')->name('personal.pdf');
+    Route::get('doctors/pdf/{doctors}', 'App\Http\Controllers\DoctorController@pdf')->name('doctors.pdf');
+    Route::get('consulta/pdf/{consulta}', 'App\Http\Controllers\ConsultaController@pdf')->name('consulta.pdf');
+    Route::get('hojas/pdf/{hojas}', 'App\Http\Controllers\HojaConsultaController@pdf')->name('hojaConsultas.pdf');
+    Route::get('recetamedicas/pdf/{recetamedicas}', 'App\Http\Controllers\RecetaMedicaController@pdf')->name('recetamedica.pdf');
+
 
     Route::post('/backup', [BackupController::class, 'create'])->name('backup.create');
 
