@@ -7,7 +7,7 @@ use App\Models\Doctor;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
-use Barryvdh\DomPDF\Facade\pdf;
+use \PDF;
 
 class ConsultaController extends Controller
 {

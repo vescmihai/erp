@@ -24,7 +24,7 @@
                     <div class="container">
                         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                             <a href=".">
-                              <img src="/img/log.jpg" width="150" height="82" alt="Tabler" class="navbar-brand-image">
+                              <img src="/img/log.jpg" width="150" height="32" alt="Tabler" class="navbar-brand-image">
                             </a>
                           </h1> 
 
@@ -193,12 +193,33 @@
                                 </form>
                             </div>
                           </div>
+                          <a href="https://wa.me/59179069876">
+                            <img src="/img/wp.png" width="150" height="32" alt="Tabler" class="navbar-brand-image">
+                          </a>
+                        
                     </div>
 
                 </div>
 
                 <div class="page-content">
+                    <div class="container-xl">
+                        
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+</div>
+</div>
                     @yield('content')
+                    
                 </div>
 
                 <!-- Aquí iría el código del pie de página de Tabler -->
