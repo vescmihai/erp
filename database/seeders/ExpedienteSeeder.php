@@ -67,6 +67,7 @@ class ExpedienteSeeder extends Seeder
             'codigoRegistro'=>'110',
             'fechaRegistro'=>'2023-05-10'
         ]);
+        
         DB::table('expedientes')->insert([
             'codigoRegistro'=>'111',
             'fechaRegistro'=>'2023-05-12'
