@@ -18,34 +18,34 @@ class SalasSeeder extends Seeder
         'nroSala'=>'10',
         'capacidad'=>'8',
         'tipo'=>'Sala de espera',
-        'idsector'=>'1'
+        'idSector'=>'1'
         ]);
 
         DB::table('salas')->insert([
         'nroSala'=>'11',
         'capacidad'=>'20',
         'tipo'=>'Sala de enfermeria',
-        'idsector'=>'2'
+        'idSector'=>'2'
         ]);
 
         DB::table('salas')->insert([
             'nroSala'=>'12',
             'capacidad'=>'30',
             'tipo'=>'Sala Terapia intensiva',
-            'idsector'=>'3'
+            'idSector'=>'3'
         ]);
         DB::table('salas')->insert([
             'nroSala'=>'13',
             'capacidad'=>'40',
             'tipo'=>'Sala de Maternidad',
-            'idsector'=>'4'
+            'idSector'=>'4'
         ]);
 
         DB::table('salas')->insert([
             'nroSala'=>'14',
             'capacidad'=>'12',
             'tipo'=>'Sala de Pediatria',
-            'idsector'=>'5'
+            'idSector'=>'5'
             ]);
     }
 }
