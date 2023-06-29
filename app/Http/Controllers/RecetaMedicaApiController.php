@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HistoriaClinica;
+use App\Models\RecetaMedica;
 use Illuminate\Http\Request;
 
-class historiaClinicaApiController extends Controller
+class RecetaMedicaApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class historiaClinicaApiController extends Controller
     public function index()
     {
         //
-        return HistoriaClinica::all();
+        return RecetaMedica::all();
     }
 
     /**
@@ -38,17 +38,16 @@ class historiaClinicaApiController extends Controller
     {
         //
         $this->validate($request,[
-            'enfermedad'=>'required|string',
-            'manifestaciones'=>'required|string',
-            'fechaRegistro'=>'required|date',
-            'estadoPaciente'=>'required|string',
-            'idExpediente'=>'required',
-            'idAdministrativo'=>'required',
+            'catnidad'=>'required',
+            'dosis'=>'required',
+            'frecuencia'=>'required',
+            'idReceta'=>'required',
+            'idMedicamento'=>'required',
         ]);
+        $recetaMedica=RecetaMedica::create($request->all());
+        $recetaMedica->save();
+        return $recetaMedica;
 
-        $historiaClinica=HistoriaClinica::create($request->all());
-        $historiaClinica->save();
-        return $historiaClinica;
     }
 
     /**
@@ -57,10 +56,11 @@ class historiaClinicaApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(HistoriaClinica $historiaClinica)
+    public function show($id)
     {
         //
-        return $historiaClinica;
+        $recetaMedic=RecetaMedica::find($id);
+        return $recetaMedic;
     }
 
     /**

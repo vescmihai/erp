@@ -37,6 +37,15 @@ class especialidadApiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'nombre'=>'required',
+            'descripcion' => 'required',
+
+        ]);
+        $especialidad=Especialidad::create($request->all());
+        $especialidad->save();
+        return $especialidad;
+
     }
 
     /**

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HistoriaClinica;
+use App\Models\Personal;
 use Illuminate\Http\Request;
 
-class historiaClinicaApiController extends Controller
+class AdministrativoApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class historiaClinicaApiController extends Controller
     public function index()
     {
         //
-        return HistoriaClinica::all();
+        return Personal::all();
     }
 
     /**
@@ -37,18 +37,6 @@ class historiaClinicaApiController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request,[
-            'enfermedad'=>'required|string',
-            'manifestaciones'=>'required|string',
-            'fechaRegistro'=>'required|date',
-            'estadoPaciente'=>'required|string',
-            'idExpediente'=>'required',
-            'idAdministrativo'=>'required',
-        ]);
-
-        $historiaClinica=HistoriaClinica::create($request->all());
-        $historiaClinica->save();
-        return $historiaClinica;
     }
 
     /**
@@ -57,10 +45,11 @@ class historiaClinicaApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(HistoriaClinica $historiaClinica)
+    public function show($id)
     {
         //
-        return $historiaClinica;
+        $personal=Personal::find($id);
+        return $personal;
     }
 
     /**

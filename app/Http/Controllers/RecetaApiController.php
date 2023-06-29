@@ -37,6 +37,13 @@ class recetaApiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'idHojadeConsulta'=>'required',
+        ]);
+
+        $receta=Receta::create($request->all());
+        $receta->save();
+        return $receta;
     }
 
     /**

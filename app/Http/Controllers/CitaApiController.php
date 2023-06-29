@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cita;
+use App\Models\Consulta;
 use Facade\FlareClient\Http\Client;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
@@ -50,6 +51,23 @@ class citaApiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'motivo'=>'required',
+            'fecha' => 'required|date',
+            'citaConfirmada'=>'required',
+            'idConsulta' => 'required',
+            'idEspecialidad' => 'required',
+            'idDoctor' => 'required',
+            'idPaciente' => 'required',
+            'idAdministrativo' => 'required',
+        ]);
+
+        $cita = Cita::create($request->all());
+        $cita->save();
+        // return response()->json([
+        //     "cita"=>$cita,
+        // "consulta"=>\App\Models\Consulta::find($request->idConsulta)]);
+        return $cita;
     }
 
     /**
@@ -58,8 +76,9 @@ class citaApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Cita $cita)
+    public function show($id)
     {
+        $cita=Cita::find($id);
         return $cita;
     }
 

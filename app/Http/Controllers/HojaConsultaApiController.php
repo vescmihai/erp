@@ -37,6 +37,15 @@ class HojaConsultaApiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'diagnostico'=>'required',
+            'indicación'=>'required',
+            'proximaConsulta'=>'required',
+        ]);
+        $hojaConsulta=HojaConsulta::create($request->all());
+        $hojaConsulta->save();
+        return $hojaConsulta;
+
     }
 
     /**

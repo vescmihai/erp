@@ -37,6 +37,16 @@ class HorarioApiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'Dia'=>'required',
+            'mañana'=>'required',
+            'tarde'=>'required',
+            'noche'=>'required',
+
+        ]);
+        $horario=Horarios::create($request->all());
+        $horario->save();
+        return $horario;
     }
 
     /**
