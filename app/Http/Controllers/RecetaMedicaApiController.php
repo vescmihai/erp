@@ -84,6 +84,25 @@ class RecetaMedicaApiController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $recetaMedica=RecetaMedica::find($id);
+        if(!$recetaMedica){
+            return $data=[
+                'mensaje'=>'no se encontro la receta medica a eliminar',
+                'status'=>404
+            ];
+        }else{
+            $this->validate($request,[
+                'catnidad'=>'required',
+                'dosis'=>'required',
+                'frecuencia'=>'required',
+                'idReceta'=>'required',
+                'idMedicamento'=>'required',
+            ]);
+            $recetaMedica->fill($request->all());
+            $recetaMedica->save();
+            return $recetaMedica;
+        }
+
     }
 
     /**
@@ -95,5 +114,14 @@ class RecetaMedicaApiController extends Controller
     public function destroy($id)
     {
         //
+        $recetaMedica=RecetaMedica::find($id);
+        if(!$recetaMedica){
+            return $respuesta=[
+                'mensaje'=>'no se encontro la respuesta a eliminar',
+                'status'=>404
+            ];
+        }else{
+            $recetaMedica->delete();
+        }
     }
 }

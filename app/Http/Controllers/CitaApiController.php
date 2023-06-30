@@ -149,6 +149,10 @@ class citaApiController extends Controller
             ];
         }else{
             $cita->delete();
+            return $data=[
+                'mensaje'=>'se elimino con exito',
+                'status'=>200
+            ];
         }
 
     }

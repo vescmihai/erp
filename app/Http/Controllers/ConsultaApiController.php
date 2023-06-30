@@ -82,6 +82,22 @@ class ConsultaApiController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $consulta=Consulta::find($id);
+        if(!$consulta){
+            return $respuesta=[
+                'mensaje'=>'no se encontro la consulta para actualizar',
+                'status'=>404
+            ];
+        }else{
+           $this->validate($request,[
+            'descripcion'=>'required',
+            'idDoctor'=>'required'
+           ]);
+
+           $consulta->fill($request->all());
+           $consulta->save();
+           return $consulta;
+        }
     }
 
     /**
@@ -93,5 +109,16 @@ class ConsultaApiController extends Controller
     public function destroy($id)
     {
         //
+        $consulta=Consulta::find($id);
+        if(!$consulta){
+            return $respuesta=[
+            'mensaje'=>'no se encontro la consulta para eliminar',
+            'status'=>404];
+        }else{
+            $consulta->delete();
+            return $respuesta=[
+                'mensaje'=>'se elimino con exito',
+                'status'=>200];
+        }
     }
 }
