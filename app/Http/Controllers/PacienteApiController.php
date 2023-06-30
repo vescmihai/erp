@@ -38,6 +38,13 @@ class PacienteApiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+        'tutor'=>'required',
+        'nroTutor'=>'required',
+        ]);
+        $paciente=Paciente::create($request->all());
+        $paciente->save();
+        return $paciente;
     }
 
     /**

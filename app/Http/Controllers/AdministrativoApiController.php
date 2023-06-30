@@ -37,6 +37,21 @@ class AdministrativoApiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'nombre'=>'required',
+            'apellidoPaterno'=>'required',
+            'apellidoMaterno'=>'required',
+            'sexo'=>'required',
+            'edad'=>'required',
+            'fechaNac'=>'required',
+            'telefono'=>'required',
+            'direccion'=>'required',
+            'estado'=>'required',
+            'tipo'=>'required',
+        ]);
+        $admin=Personal::create($request->all());
+        $admin->save();
+        return $admin;
     }
 
     /**

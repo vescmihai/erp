@@ -20,6 +20,9 @@ class AuthenticateApi
         if (Auth::guard('sanctum')->check()) {
             return $next($request);
         }
-        return response()->json(['mensaje middleware' => 'No autorizado', 'status' => 401]);
+        return response()->json([
+        'mensaje middleware' => 'No autorizado',
+         'status' => 401
+        ]);
     }
 }

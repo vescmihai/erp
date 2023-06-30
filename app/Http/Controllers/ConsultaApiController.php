@@ -37,6 +37,14 @@ class ConsultaApiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'descripcion'=>'required',
+            'idDoctor'=>'required',
+        ]);
+        $consulta=Consulta::create($request->all());
+        $consulta->save();
+        return $consulta;
+
 
     }
 

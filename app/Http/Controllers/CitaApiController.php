@@ -79,7 +79,10 @@ class citaApiController extends Controller
     public function show($id)
     {
         $cita=Cita::find($id);
-        return $cita;
+        if(!$cita){
+            return $data=['mensaje'=>'erro, no se encontro la cita','status'=> 404];
+        }else{return $cita;}
+
     }
 
     /**
@@ -103,6 +106,30 @@ class citaApiController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $cita=Cita::find($id);
+        if(!$cita){
+            return $data=[
+                'mensaje'=>'cita no encontrada',
+                'status' =>404,
+            ];
+        }else{
+            $this->validate($request, [
+                'motivo'=>'required',
+                'fecha' => 'required|date',
+                'citaConfirmada'=>'required',
+                'idConsulta' => 'required',
+                'idEspecialidad' => 'required',
+                'idDoctor' => 'required',
+                'idPaciente' => 'required',
+                'idAdministrativo' => 'required',
+            ]);
+
+            $cita->fill($request->all());
+            $cita->save();
+            return $cita;
+        }
+
+
     }
 
     /**
@@ -114,5 +141,15 @@ class citaApiController extends Controller
     public function destroy($id)
     {
         //
+        $cita=Cita::find($id);
+        if(!$cita){
+            return $data=[
+                'mensaje'=>'no se encontro la cita a eliminar',
+                'status'=>404
+            ];
+        }else{
+            $cita->delete();
+        }
+
     }
 }
