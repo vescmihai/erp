@@ -18,6 +18,7 @@ class Cita extends Model
         'idDoctor',
         'idPaciente',
         'idAdministrativo',
+        'idUser',
     ];
 
     public function consulta()
@@ -49,5 +50,5 @@ class Cita extends Model
         return $this->hasMany('App\Models\Agenda','idCita','id');
     }
 
-    
+
 }

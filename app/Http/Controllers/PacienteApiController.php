@@ -41,6 +41,7 @@ class PacienteApiController extends Controller
         $this->validate($request,[
         'tutor'=>'required',
         'nroTutor'=>'required',
+        'idUser'=>'required',
         ]);
         $paciente=Paciente::create($request->all());
         $paciente->save();

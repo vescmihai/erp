@@ -28,13 +28,13 @@ class AuthController extends Controller
       if(!Auth::attempt($request->only('email','password'))){
             return response()->json([
                 'status'=>false,
-                'errors'=>['Unauthorized']
-            ],401);
+                'errors'=>'Unauthorized',
+                'status code'=>401]);
       }
       $user = User::where('email',$request->email)->first();
       return response()->json([
         'status'=>true,
-        'message'=>'User create successfully',
+        'message'=>'User logged in successfully',
         'data'=>$user,
         'token'=>$user->createToken('API_TOKEN')->plainTextToken
       ],200);

@@ -12,10 +12,15 @@ class Paciente extends Model
     protected $fillable = [
         'tutor',
         'nroTutor',
+        'idUser',
     ];
-    
+
     public function cita(){
         return $this->hasMany('App\Models\Cita','idPaciente','id');
     }
+    public function usuario(){
+        return $this->hasOne('App\Models\User','id','idUser');
+    }
+
 }
 

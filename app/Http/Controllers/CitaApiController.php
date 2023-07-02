@@ -80,7 +80,9 @@ class citaApiController extends Controller
     {
         $cita=Cita::find($id);
         if(!$cita){
-            return $data=['mensaje'=>'erro, no se encontro la cita','status'=> 404];
+            return $data=[
+                'mensaje'=>'error, no se encontro la cita',
+                'status'=> 404];
         }else{return $cita;}
 
     }
