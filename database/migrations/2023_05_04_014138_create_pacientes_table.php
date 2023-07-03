@@ -17,7 +17,15 @@ class CreatePacientesTable extends Migration
             $table->bigIncrements('id');
             $table->string('tutor', 100);
             $table->integer('nroTutor');
+            $table->bigInteger('idUser')->unsigned()->nullable();
             $table->timestamps();
+
+
+            $table->foreign('idUser')
+                  ->references('id')
+                  ->on('users')
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade');
         });
     }
 

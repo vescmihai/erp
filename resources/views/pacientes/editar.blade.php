@@ -26,6 +26,15 @@
 
                         {!! Form::model($paciente, ['method' => 'PATCH','route' => ['pacientes.update', $paciente->id]]) !!}
                         <div class="row">
+                            <div class="form-group">
+                                <label for="idUser"></label>
+                                {{ Form::label('Usuario') }}
+                                <select name="idUser" class="focus border-primary  form-control">
+                                    @foreach ($usuario as $usuarios)
+                                        <option value="{{ $usuarios->id }}">{{ $usuarios->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 mb-3">
                                 <div class="form-group">
                                     <label for="tutor">Tutor</label>

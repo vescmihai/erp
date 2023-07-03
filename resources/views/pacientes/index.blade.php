@@ -16,6 +16,7 @@
                             <table class="table table-striped mt-2">
                               <thead style="background-color:#6777ef">                                     
                                   <th style="display: none;">ID</th>
+                                  <th style=>idUser</th>
                                   <th style=>Tutor</th>
                                   <th style=>Nro Tutor</th>
                                   <th style=>Acciones</th>                                                                   
@@ -23,9 +24,15 @@
                               <tbody>
                                 @foreach ($pacientes as $paciente)
                                   <tr>
+                                     @foreach ($usuario as $usuarios)
+                                            @if ($usuarios->id == $paciente->idUser)
+                                                    <td>{{ $usuarios->id }}</td>
+                                            @endif
+                                      @endforeach
                                     <td style="display: none;">{{ $paciente->id }}</td>
                                     <td>{{ $paciente->tutor }}</td>
                                     <td>{{ $paciente->nroTutor }}</td>
+                                    
                                     <td>                                  
                                       <a class="btn btn-primary" href="{{ route('pacientes.edit',$paciente->id) }}">Editar</a>
                                       <a class="btn btn-success" href="{{ route('pacientes.pdf',$paciente->id) }}">Descargar</a>

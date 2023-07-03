@@ -17,57 +17,68 @@ class PacientesSeeder extends Seeder
     {
         DB::table('pacientes')->insert([
             'tutor'=>'Maria velasco',
-            'nroTutor'=>'12'
+            'nroTutor'=>'7604567',
+            'idUser'=>'1'
         ]);
 
         DB::table('pacientes')->insert([
             'tutor'=>'Valentina Suarez',
-            'nroTutor'=>'10'
+            'nroTutor'=>'75641313',
+            'idUser'=>'3'
         ]);
 
         DB::table('pacientes')->insert([
             'tutor'=>'Gonzalo Fuentes',
-            'nroTutor'=>'11'
+            'nroTutor'=>'62548945',
+            'idUser'=>'2'
         ]);
 
         DB::table('pacientes')->insert([
             'tutor'=>'Marcela Herrera',
-            'nroTutor'=>'13'
+            'nroTutor'=>'76489123',
+            'idUser'=>'4'
         ]);
 
         DB::table('pacientes')->insert([
             'tutor'=>'Fernanda Moltalvan',
-            'nroTutor'=>'14'
+            'nroTutor'=>'68975133',
+            'idUser'=>'6'
         ]);
 
         DB::table('pacientes')->insert([
             'tutor'=>'Carlos espinoza',
-            'nroTutor'=>'15'
+            'nroTutor'=>'78956135',
+            'idUser'=>'5'
         ]);
     
         DB::table('pacientes')->insert([
             'tutor'=>'Dasha vaquero',
-            'nroTutor'=>'16'
+            'nroTutor'=>'79893356',
+            'idUser'=>'4'
         ]);
         
         DB::table('pacientes')->insert([
             'tutor'=>'Yerlin osinaga',
-            'nroTutor'=>'17'
+            'nroTutor'=>'67894624',
+            'idUser'=>'9'
         ]);
 
         DB::table('pacientes')->insert([
             'tutor'=>'Rolando Perez',
-            'nroTutor'=>'18'
+            'nroTutor'=>'78123456',
+            'idUser'=>'8'
         ]);
         
         DB::table('pacientes')->insert([
             'tutor'=>'Kevin Justiniano',
-            'nroTutor'=>'19'
+            'nroTutor'=>'789113664',
+            'idUser'=>'3'
         ]);
 
         DB::table('pacientes')->insert([
             'tutor'=>'Sabrina Mendoza',
-            'nroTutor'=>'20'
+            'nroTutor'=>'795611352',
+            'idUser'=>'7'
         ]);
 
     }
