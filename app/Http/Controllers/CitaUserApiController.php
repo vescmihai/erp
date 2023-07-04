@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Cita;
+use App\Models\Consulta;
 
-use App\Models\Doctor;
 use Illuminate\Http\Request;
 
-class doctorApiController extends Controller
+class CitaUserApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,6 @@ class doctorApiController extends Controller
     public function index()
     {
         //
-        return Doctor::all()->load('especialidad');
     }
 
     /**
@@ -48,8 +48,14 @@ class doctorApiController extends Controller
     public function show($id)
     {
         //
-        $doctor=Doctor::find($id);
-        return $doctor;
+        $_cita = Cita::where('idUsuario', $id)->get();
+        $_cita->load('consulta', 'especialidad');
+
+        foreach ($_cita as $cita) {
+            $cita->consulta->load('doctores');
+        }
+
+        return $_cita;
     }
 
     /**

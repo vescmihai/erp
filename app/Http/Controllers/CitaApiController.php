@@ -29,7 +29,8 @@ class citaApiController extends Controller
         //     return response()->json(['mensaje' => 'No autorizado, citas', 'status' => 401]);
         // }
 
-        return Cita::all();
+        //return Cita::all();
+        return Cita::with('consulta', 'especialidad', 'doctores', 'paciente', 'personal', 'usuario')->get();
     }
 
     /**
@@ -57,9 +58,10 @@ class citaApiController extends Controller
             'citaConfirmada'=>'required',
             'idConsulta' => 'required',
             'idEspecialidad' => 'required',
-            'idDoctor' => 'required',
-            'idPaciente' => 'required',
-            'idAdministrativo' => 'required',
+            //'idDoctor' => 'required',
+            //'idPaciente' => 'required',
+            //'idAdministrativo' => 'required',
+            'idUsuario'=>'required'
         ]);
 
         $cita = Cita::create($request->all());
@@ -67,7 +69,31 @@ class citaApiController extends Controller
         // return response()->json([
         //     "cita"=>$cita,
         // "consulta"=>\App\Models\Consulta::find($request->idConsulta)]);
-        return $cita;
+
+        $idCita = $cita->id;
+        $motivo = $request->motivo;
+        $fecha = $request->fecha;
+        $citaConfirmada = $request->citaConfirmada;
+        $consulta = Consulta::find($request->idConsulta);
+        $especialidad = \App\Models\Especialidad::find($request->idEspecialidad);
+        $doctor = \App\Models\Doctor::find($request->idDoctor);
+        $paciente = \App\Models\Paciente::find($request->idPaciente);
+        /* $administrativo = \App\Models\Personal::find($request->idAdministrativo); */
+        $usuario = \App\Models\User::find($request->idUsuario);
+
+        $data = [
+            'id' => $idCita,
+            'motivo' => $motivo,
+            'fecha' => $fecha,
+            'citaConfirmada' => $citaConfirmada,
+            'consulta' => $consulta,
+            'especialidad' => $especialidad,
+            'doctor' => $doctor,
+            'paciente' => $paciente,
+            /* 'administrativo' => $administrativo, */
+            'usuario' => $usuario,
+        ];
+        return $data;
     }
 
     /**
@@ -121,8 +147,8 @@ class citaApiController extends Controller
                 'citaConfirmada'=>'required',
                 'idConsulta' => 'required',
                 'idEspecialidad' => 'required',
-                'idDoctor' => 'required',
-                'idPaciente' => 'required',
+                //'idDoctor' => 'required',
+                //'idPaciente' => 'required',
                 'idAdministrativo' => 'required',
             ]);
 

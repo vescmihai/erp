@@ -15,6 +15,7 @@ class RecetaMedica extends Model
         'frecuencia',
         'idReceta',
         'idMedicamento',
+        'idUsuario',
     ];
 
     public function receta()
@@ -25,5 +26,9 @@ class RecetaMedica extends Model
     public function medicamento()
     {
         return $this->hasOne('App\Models\Medicamento', 'id', 'idMedicamento');
+    }
+    public function usuario()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'idUsuario');
     }
 }

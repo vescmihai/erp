@@ -23,6 +23,7 @@ class CreateCitaTable extends Migration
             $table->bigInteger('idDoctor')->unsigned()->nullable();
             $table->bigInteger('idPaciente')->unsigned()->nullable();
             $table->bigInteger('idAdministrativo')->unsigned()->nullable();
+            $table->bigInteger('idUsuario')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('idConsulta')
@@ -52,6 +53,11 @@ class CreateCitaTable extends Migration
             $table->foreign('idAdministrativo')
                 ->references('id')
                 ->on('personal')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreign('idUsuario')
+                ->references('id')
+                ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

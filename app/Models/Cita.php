@@ -16,9 +16,9 @@ class Cita extends Model
         'idConsulta',
         'idEspecialidad',
         'idDoctor',
-        'idPaciente',
+        /*'idPaciente',*/
         'idAdministrativo',
-        'idUser',
+        'idUsuario',
     ];
 
     public function consulta()
@@ -45,7 +45,9 @@ class Cita extends Model
     {
         return $this->hasOne('App\Models\Personal', 'id', 'idAdministrativo');
     }
-
+    public function usuario(){
+        return $this->hasOne('App\Models\User','id','idUsuario');
+    }
     public function Agenda(){
         return $this->hasMany('App\Models\Agenda','idCita','id');
     }

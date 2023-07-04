@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Doctor;
+use App\Models\HistoriaClinica;
 use Illuminate\Http\Request;
 
-class doctorApiController extends Controller
+class HistoriaClinicaUserApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,6 @@ class doctorApiController extends Controller
     public function index()
     {
         //
-        return Doctor::all()->load('especialidad');
     }
 
     /**
@@ -48,8 +46,9 @@ class doctorApiController extends Controller
     public function show($id)
     {
         //
-        $doctor=Doctor::find($id);
-        return $doctor;
+        $_historiaClinica = HistoriaClinica::where('idUsuario', $id)->get();
+        $_historiaClinica->load('expediente');
+        return $_historiaClinica;
     }
 
     /**

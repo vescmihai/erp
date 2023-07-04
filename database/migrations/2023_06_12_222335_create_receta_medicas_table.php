@@ -20,6 +20,7 @@ class CreateRecetaMedicasTable extends Migration
             $table->string('frecuencia',100);
             $table->bigInteger('idReceta')->unsigned()->nullable();
             $table->bigInteger('idMedicamento')->unsigned()->nullable();
+            $table->unsignedBigInteger('idUsuario')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('idReceta')
@@ -33,6 +34,12 @@ class CreateRecetaMedicasTable extends Migration
             ->on('medicamentos')
             ->onUpdate('cascade')
             ->onDelete('cascade');
+
+            $table->foreign('idUsuario')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
