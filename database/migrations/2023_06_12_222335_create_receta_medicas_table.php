@@ -20,7 +20,7 @@ class CreateRecetaMedicasTable extends Migration
             $table->string('frecuencia',100);
             $table->bigInteger('idReceta')->unsigned()->nullable();
             $table->bigInteger('idMedicamento')->unsigned()->nullable();
-            $table->unsignedBigInteger('idUsuario')->unsigned()->nullable();
+            $table->bigInteger('idUsuario')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('idReceta')

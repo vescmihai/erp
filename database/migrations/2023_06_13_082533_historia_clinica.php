@@ -21,7 +21,7 @@ class HistoriaClinica extends Migration
             $table->string('estadoPaciente', 100);
             $table->unsignedBigInteger('idExpediente');
             $table->unsignedBigInteger('idAdministrativo');
-            $table->unsignedBigInteger('idUsuario')->unsigned()->nullable();
+            $table->bigInteger('idUsuario')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('idExpediente')

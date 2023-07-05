@@ -16,6 +16,7 @@
                             <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">
                                     <th style="display: none;">ID</th>
+                                    <th style=>Id-Usuario</th>
                                     <th style=>Motivo</th>
                                     <th style=>Fecha</th>
                                     <th style=>Confirmacion</th>
@@ -28,10 +29,16 @@
                                 <tbody>
                                     @foreach ($citas as $cita)
                                         <tr>
+                                            @foreach ($usuario as $usuarios)
+                                              @if ($usuarios->id == $cita->idUsuario)
+                                                    <td>{{ $usuarios->id }}</td>
+                                              @endif
+                                            @endforeach
                                             <td style="display: none;">{{ $cita->id }}</td>
                                             <td>{{ $cita->motivo }}</td>
                                             <td>{{ $cita->fecha }}</td>
                                             <td>{{ $cita->citaConfirmada }}</td>
+
                                             @foreach ($consultas as $consulta)
                                                 @if ($consulta->id == $cita->idConsulta)
                                                     <td>{{ $consulta->descripcion }}</td>

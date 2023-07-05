@@ -16,6 +16,7 @@
                                 <table class="table table-striped mt-2">
                                     <thead style="background-color:#6777ef">
                                         <th style="display: none;">ID</th>
+                                        <th style=>Id-Usuario</th>
                                         <th style=>receta</th>
                                         <th style=>medicamento</th>
                                         <th style=>cantidad</th>
@@ -26,6 +27,11 @@
                                     <tbody>
                                         @foreach ($recetamedicas as $recetamedica)
                                             <tr>
+                                                @foreach ($usuario as $usuarios)
+                                              @if ($usuarios->id == $recetamedica->idUsuario)
+                                                    <td>{{ $usuarios->id }}</td>
+                                              @endif
+                                            @endforeach
                                                 <td style="display: none;">{{ $recetamedica->id }}</td>
                                                 @foreach ($recetas as $receta)
                                                     @if ($receta->id == $recetamedica->idReceta)

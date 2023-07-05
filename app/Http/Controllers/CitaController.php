@@ -10,6 +10,7 @@ use App\Models\Especialidad;
 use App\Models\Doctor;
 use App\Models\Paciente;
 use App\Models\Personal;
+use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -26,8 +27,9 @@ class CitaController extends Controller
         $pacientes=Paciente::all();
         $personales=Personal::all();
         $doctores=Doctor::all();
+        $usuario=User::all();
         $citas = Cita::paginate(5);
-        return view('cita.index', compact('citas','doctores','consultas','especialidades','pacientes','personales'));
+        return view('cita.index', compact('citas','doctores','consultas','especialidades','pacientes','personales','usuario'));
     }
 
     public function create()
@@ -37,7 +39,8 @@ class CitaController extends Controller
         $pacientes=Paciente::all();
         $personales=Personal::all();
         $doctores=Doctor::all();
-        return view('cita.crear',compact('doctores','consultas','especialidades','pacientes','personales'));
+        $usuario=User::all();
+        return view('cita.crear',compact('doctores','consultas','especialidades','pacientes','personales','usuario'));
     }
 
     public function store(Request $request)
@@ -54,14 +57,14 @@ class CitaController extends Controller
         ]);
 
         $cita = Cita::create($request->all());
-
+        $usuario=User::all();
         date_default_timezone_set("America/La_Paz");
         activity()->useLog('Cita')->log('Registró')->subject();
         $lastActivity=Activity::all()->last();
         $lastActivity->subject_id= $cita->id;
         $lastActivity->save(); 
 
-        return redirect()->route('cita.index');
+        return redirect()->route('cita.index',compact('usuario'));
     }
 
     public function edit($id)
@@ -72,13 +75,14 @@ class CitaController extends Controller
         $pacientes=Paciente::all();
         $personales=Personal::all();
         $doctores=Doctor::all();
+        $usuario=User::all();
 
         date_default_timezone_set("America/La_Paz");
         activity()->useLog('Cita')->log('Editó')->subject();
         $lastActivity=Activity::all()->last();
         $lastActivity->subject_id= $citas->id;
         $lastActivity->save(); 
-        return view('cita.edit', compact('citas','doctores','consultas','especialidades','pacientes','personales'));
+        return view('cita.edit', compact('citas','doctores','consultas','especialidades','pacientes','personales','usuario'));
     }
 
     public function update(Request $request, $id)
@@ -123,6 +127,7 @@ class CitaController extends Controller
         $pacientes=Paciente::all();
         $personales=Personal::all();
         $doctores=Doctor::all();
+        $usuario=User::all();
         $cita = Cita::where('id', $citas->id)->get();
 
         date_default_timezone_set("America/La_Paz");
@@ -131,7 +136,7 @@ class CitaController extends Controller
         $lastActivity->subject_id= $citas->id;
         $lastActivity->save();
 
-        $pdf =PDF::loadView('cita.pdf', compact('citas','cita','doctores','consultas','especialidades','pacientes','personales'));
+        $pdf =PDF::loadView('cita.pdf', compact('citas','cita','doctores','consultas','especialidades','pacientes','personales','usuario'));
         return $pdf->download('cita-'.$citas->id.'.pdf');
     }
 }

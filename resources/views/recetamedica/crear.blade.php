@@ -26,6 +26,15 @@
 
                                 {!! Form::open(['route' => 'recetamedica.store', 'method' => 'POST']) !!}
                                 <div class="row">
+                                    <div class="form-group">
+                                        <label for="idUsuario"></label>
+                                        {{ Form::label('Usuario') }}
+                                        <select name="idUsuario" class="focus border-primary  form-control">
+                                            @foreach ($usuario as $usuarios)
+                                                <option value="{{ $usuarios->id }}">{{ $usuarios->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <label for="idReceta"></label>

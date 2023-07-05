@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\HistoriaClinica;
 use App\Models\Expediente;
 use App\Models\Personal;
+use App\Models\User;
 use Spatie\Activitylog\Models\Activity;
 use Barryvdh\DomPDF\Facade\pdf;
 
@@ -16,15 +17,17 @@ class HistoriaClinicaController extends Controller
     {
         $expedientes=Expediente::all();
         $personales=Personal::all();
+        $usuario=User::all();
         $historiasClinicas = HistoriaClinica::paginate(5);
-        return view('historiaclinica.index', compact('historiasClinicas', 'expedientes', 'personales'));
+        return view('historiaclinica.index', compact('historiasClinicas', 'expedientes', 'personales','usuario'));
     }
 
     public function create()
     {
         $expedientes=Expediente::all();
         $personales=Personal::all();
-        return view('historiaclinica.create', compact('expedientes', 'personales'));
+        $usuario=User::all();
+        return view('historiaclinica.create', compact('expedientes', 'personales','usuario'));
     }
 
     public function store(Request $request)
@@ -36,6 +39,7 @@ class HistoriaClinicaController extends Controller
             'estadoPaciente' => 'required',
             'idExpediente' => 'required',
             'idAdministrativo' => 'required',
+            
         ]);
 
         $historiaClinica = HistoriaClinica::create($request->all());
@@ -54,13 +58,14 @@ class HistoriaClinicaController extends Controller
         $historiaClinica = HistoriaClinica::find($id);
         $expedientes=Expediente::all();
         $personales=Personal::all();
+        $usuario=User::all();
 
         date_default_timezone_set("America/La_Paz");
         activity()->useLog('HistoriaClinica')->log('Editó')->subject();
         $lastActivity=Activity::all()->last();
         $lastActivity->subject_id= $historiaClinica->id;
         $lastActivity->save(); 
-        return view('historiaclinica.edit', compact('historiaClinica','expedientes','personales'));
+        return view('historiaclinica.edit', compact('historiaClinica','expedientes','personales','usuario'));
     }
 
     public function update(Request $request, $id)
@@ -72,6 +77,7 @@ class HistoriaClinicaController extends Controller
             'estadoPaciente' => 'required',
             'idExpediente' => 'required',
             'idAdministrativo' => 'required',
+            
         ]);
 
         $input = $request->all();
@@ -100,6 +106,7 @@ class HistoriaClinicaController extends Controller
     {
         $expedientes = Expediente::all();
         $personales = Personal::all();
+        $usuario=User::all();
         $historiasClinicas = HistoriaClinica::where('id', $historiaClinica->id)->get();
 
         date_default_timezone_set("America/La_Paz");
@@ -108,7 +115,7 @@ class HistoriaClinicaController extends Controller
         $lastActivity->subject_id= $historiaClinica->id;
         $lastActivity->save();
 
-        $pdf =PDF::loadView('historiaclinica.pdf', compact('historiaClinica','historiasClinicas','expedientes','personales'));
+        $pdf =PDF::loadView('historiaclinica.pdf', compact('historiaClinica','historiasClinicas','expedientes','personales','usuario'));
         return $pdf->download('historia_clinica_'.$historiaClinica->id.'.pdf');
     }
 

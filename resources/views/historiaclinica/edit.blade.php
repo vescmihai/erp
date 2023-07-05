@@ -26,6 +26,15 @@
 
                             {!! Form::model($historiaClinica, ['method' => 'PATCH', 'route' => ['historiaclinica.update', $historiaClinica->id]]) !!}
                             <div class="row">
+                                <div class="form-group">
+                                    <label for="idUsuario"></label>
+                                    {{ Form::label('ID-Usuario') }}
+                                    <select name="idUsuario" class="focus border-primary  form-control">
+                                        @foreach ($usuario as $usuarios)
+                                            <option value="{{ $usuarios->id }}">{{ $usuarios->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group mb-3">
                                         <label for="enfermedad">Enfermedad</label>

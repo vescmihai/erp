@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Medicamento;
 use App\Models\Receta;
+use App\Models\User;
 use App\Models\RecetaMedica;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
@@ -15,8 +16,9 @@ class RecetaMedicaController extends Controller
     {
         $recetas = Receta::all();
         $medicamentos = Medicamento::all();
+        $usuario=User::all();
         $recetamedicas = RecetaMedica::paginate(5);
-        return view('recetamedica.index', compact('recetas', 'medicamentos', 'recetamedicas'));
+        return view('recetamedica.index', compact('recetas', 'medicamentos', 'recetamedicas','usuario'));
     }
 
     public function create()
@@ -24,7 +26,8 @@ class RecetaMedicaController extends Controller
         $recetamedicas = new RecetaMedica();
         $recetas = Receta::all();
         $medicamentos = Medicamento::all();
-        return view('recetamedica.crear', compact('recetamedicas', 'recetas', 'medicamentos'));
+        $usuario=User::all();
+        return view('recetamedica.crear', compact('recetamedicas', 'recetas', 'medicamentos','usuario'));
     }
 
     public function store(Request $request)
@@ -35,25 +38,27 @@ class RecetaMedicaController extends Controller
             'frecuencia' => 'required',
             'idReceta' => 'required',
             'idMedicamento' => 'required',
+            'idUsuario'=>'required',
         ]);
 
         $recetamedica = RecetaMedica::create($request->all());
-
+        $usuario=User::all();
         date_default_timezone_set("America/La_Paz");
         activity()->useLog('Receta Medica')->log('Registró')->subject();
         $lastActivity=Activity::all()->last();
         $lastActivity->subject_id= $recetamedica->id;
         $lastActivity->save(); 
 
-        return redirect()->route('recetamedica.index');
+        return redirect()->route('recetamedica.index',compact('usuario'));
     }
 
     public function edit($id)
     {
         $recetamedica = RecetaMedica::find($id);
         $recetas = Receta::all();
+        $usuario=User::all();
         $medicamentos = Medicamento::all();
-        return view('recetamedica.editar', compact('recetamedica', 'recetas', 'medicamentos'));
+        return view('recetamedica.editar', compact('recetamedica', 'recetas', 'medicamentos','usuario'));
     }
 
     public function update(Request $request, $id)
@@ -64,6 +69,7 @@ class RecetaMedicaController extends Controller
             'frecuencia' => 'required',
             'idReceta' => 'required',
             'idMedicamento' => 'required',
+            'idUsuario'=>'required',
         ]);
 
         $input = $request->all();
@@ -99,6 +105,7 @@ class RecetaMedicaController extends Controller
         $recetas = Receta::all();
         $medicamentos = Medicamento::all();
         $recetamedica = RecetaMedica::all();
+        $usuario=User::all();
 
         date_default_timezone_set("America/La_Paz");
         activity()->useLog('RecetaMedica')->log('Generó reporte')->subject();
@@ -106,7 +113,7 @@ class RecetaMedicaController extends Controller
         $lastActivity->subject_id= $recetamedicas->id;
         $lastActivity->save();
 
-        $pdf =PDF::loadView('recetamedica.pdf', compact('recetamedicas','recetamedica','recetas','medicamentos'));
+        $pdf =PDF::loadView('recetamedica.pdf', compact('recetamedicas','recetamedica','recetas','medicamentos','usuario'));
         return $pdf->download('recetamedica-'.$recetamedicas->id.'.pdf');
     }
 }

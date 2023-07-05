@@ -4,7 +4,7 @@
     <div class="container-xl">
         <section class="section">
             <div class="section-header">
-                <h3 class="page__heading">Crear Nueva Receta Medica</h3>
+                <h3 class="page__heading">Editar Receta Medica</h3>
             </div>
             <div class="section-body">
                 <div class="row">
@@ -26,6 +26,15 @@
 
                                 {!! Form::model($recetamedica, ['method' => 'PATCH', 'route' => ['recetamedica.update', $recetamedica->id]]) !!}
                                 <div class="row">
+                                    <div class="form-group">
+                                        <label for="idUsuario"></label>
+                                        {{ Form::label('Usuario') }}
+                                        <select name="idUsuario" class="focus border-primary  form-control">
+                                            @foreach ($usuario as $usuarios)
+                                                <option value="{{ $usuarios->id }}">{{ $usuarios->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <label for="idReceta"></label>

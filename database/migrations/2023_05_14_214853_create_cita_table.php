@@ -55,6 +55,7 @@ class CreateCitaTable extends Migration
                 ->on('personal')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+                
             $table->foreign('idUsuario')
                 ->references('id')
                 ->on('users')

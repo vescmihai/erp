@@ -16,6 +16,7 @@
                             <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">
                                     <th style="display: none;">ID</th>
+                                    <th style=>Id-Usuario</th>
                                     <th style=>Enfermedad</th>
                                     <th style=>Manifestaciones</th>
                                     <th style=>Fecha de Registro</th>
@@ -27,6 +28,11 @@
                                 <tbody>
                                     @foreach ($historiasClinicas as $historiaClinica)
                                         <tr>
+                                            @foreach ($usuario as $usuarios)
+                                              @if ($usuarios->id == $historiaClinica->idUsuario)
+                                                    <td>{{ $usuarios->id }}</td>
+                                              @endif
+                                            @endforeach
                                             <td style="display: none;">{{ $historiaClinica->id }}</td>
                                             <td>{{ $historiaClinica->enfermedad }}</td>
                                             <td>{{ $historiaClinica->manifestaciones }}</td>

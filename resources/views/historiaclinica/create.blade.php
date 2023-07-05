@@ -28,6 +28,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="idUsuario"></label>
+                                        {{ Form::label('iD-Usuario') }}
+                                        <select name="idUsuario" class="focus border-primary  form-control">
+                                            @foreach ($usuario as $usuarios)
+                                                <option value="{{ $usuarios->id }}">{{ $usuarios->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         {!! Form::label('enfermedad', 'Enfermedad') !!}
                                         {!! Form::text('enfermedad', null, ['class' => 'form-control']) !!}
                                     </div>
