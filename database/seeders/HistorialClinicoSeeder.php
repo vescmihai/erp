@@ -20,7 +20,8 @@ class HistorialClinicoSeeder extends Seeder
             'fechaRegistro'=>'2023-06-14',
             'estadoPaciente'=>'Estable',
             'idExpediente'=>'1',
-            'idAdministrativo'=>'1'
+            'idAdministrativo'=>'1',
+            'idUsuario'=>'1'
         ]);
 
         DB::table('historia_clinicas')->insert([
@@ -30,7 +31,8 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2023-01-05',
                 'estadoPaciente' => 'Controlado',
                 'idExpediente' => '2',
-                'idAdministrativo' => '1'
+                'idAdministrativo' => '1',
+                'idUsuario'=>'2'
             ],
         ]);
 
@@ -41,16 +43,19 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2022-12-01',
                 'estadoPaciente' => 'Controlado',
                 'idExpediente' => '3',
-                'idAdministrativo' => '2'
+                'idAdministrativo' => '2',
+                'idUsuario'=>'3'
+
             ],
-            
+
             [
                 'enfermedad' => 'Diabetes tipo 2',
                 'manifestaciones' => 'Niveles altos de azúcar en sangre',
                 'fechaRegistro' => '2023-02-20',
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '4',
-                'idAdministrativo' => '2'
+                'idAdministrativo' => '2',
+                'idUsuario'=>'4'
             ],
 
             [
@@ -59,7 +64,8 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2022-11-10',
                 'estadoPaciente' => 'Estable',
                 'idExpediente' => '5',
-                'idAdministrativo' => '3'
+                'idAdministrativo' => '3',
+                'idUsuario'=>'5'
             ],
 
             [
@@ -68,7 +74,8 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2023-03-05',
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '6',
-                'idAdministrativo' => '3'
+                'idAdministrativo' => '3',
+                'idUsuario'=>'6'
             ],
 
             [
@@ -77,7 +84,8 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2023-01-18',
                 'estadoPaciente' => 'Controlado',
                 'idExpediente' => '7',
-                'idAdministrativo' => '4'
+                'idAdministrativo' => '4',
+                'idUsuario'=>'7'
             ],
 
             [
@@ -86,7 +94,9 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2022-11-28',
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '8',
-                'idAdministrativo' => '4'
+                'idAdministrativo' => '4',
+                'idUsuario'=>'8'
+
             ],
 
             [
@@ -95,7 +105,9 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2023-04-10',
                 'estadoPaciente' => 'Controlado',
                 'idExpediente' => '9',
-                'idAdministrativo' => '5'
+                'idAdministrativo' => '5',
+                'idUsuario'=>'9'
+
             ],
 
             [
@@ -104,7 +116,9 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2023-03-18',
                 'estadoPaciente' => 'Estable',
                 'idExpediente' => '10',
-                'idAdministrativo' => '5'
+                'idAdministrativo' => '5',
+                'idUsuario'=>'1'
+
             ],
 
             [
@@ -113,7 +127,9 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2023-01-25',
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '2',
-                'idAdministrativo' => '6'
+                'idAdministrativo' => '6',
+                'idUsuario'=>'2'
+
             ],
 
             [
@@ -122,7 +138,9 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2023-02-12',
                 'estadoPaciente' => 'Controlado',
                 'idExpediente' => '3',
-                'idAdministrativo' => '7'
+                'idAdministrativo' => '7',
+                'idUsuario'=>'3'
+
             ],
 
             [
@@ -131,7 +149,9 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2023-03-20',
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '4',
-                'idAdministrativo' => '7'
+                'idAdministrativo' => '7',
+                'idUsuario'=>'4'
+
             ],
 
             [
@@ -140,7 +160,9 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2022-12-15',
                 'estadoPaciente' => 'Estable',
                 'idExpediente' => '5',
-                'idAdministrativo' => '8'
+                'idAdministrativo' => '8',
+                'idUsuario'=>'5'
+
             ],
 
             [
@@ -149,7 +171,9 @@ class HistorialClinicoSeeder extends Seeder
                 'fechaRegistro' => '2023-01-25',
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '6',
-                'idAdministrativo' => '8'
+                'idAdministrativo' => '8',
+                'idUsuario'=>'6'
+
             ]
         ]);
     }

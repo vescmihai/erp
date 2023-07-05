@@ -22,7 +22,8 @@ class CitaSeeder extends Seeder
             'idEspecialidad'=>'2',
             'idDoctor'=>'10',
             'idPaciente'=>'3',
-            'idAdministrativo'=>'1'
+            'idAdministrativo'=>'1',
+            'idUsuario'=>'1'
         ]);
 
         DB::table('citas')->insert([
@@ -33,7 +34,8 @@ class CitaSeeder extends Seeder
             'idEspecialidad'=>'4',
             'idDoctor'=>'5',
             'idPaciente'=>'2',
-            'idAdministrativo'=>'3'
+            'idAdministrativo'=>'3',
+            'idUsuario'=>'1'
         ]);
 
         DB::table('citas')->insert([
@@ -44,7 +46,8 @@ class CitaSeeder extends Seeder
             'idEspecialidad'=>'3',
             'idDoctor'=>'3',
             'idPaciente'=>'1',
-            'idAdministrativo'=>'2'
+            'idAdministrativo'=>'2',
+            'idUsuario'=>'4'
         ]);
 
         DB::table('citas')->insert([
@@ -55,7 +58,8 @@ class CitaSeeder extends Seeder
             'idEspecialidad'=>'2',
             'idDoctor'=>'10',
             'idPaciente'=>'5',
-            'idAdministrativo'=>'6'
+            'idAdministrativo'=>'6',
+            'idUsuario'=>'3'
         ]);
 
         DB::table('citas')->insert([
@@ -66,7 +70,8 @@ class CitaSeeder extends Seeder
             'idEspecialidad'=>'4',
             'idDoctor'=>'8',
             'idPaciente'=>'6',
-            'idAdministrativo'=>'3'
+            'idAdministrativo'=>'3',
+            'idUsuario'=>'5'
         ]);
 
         DB::table('citas')->insert([
@@ -77,7 +82,8 @@ class CitaSeeder extends Seeder
             'idEspecialidad'=>'2',
             'idDoctor'=>'10',
             'idPaciente'=>'7',
-            'idAdministrativo'=>'4'
+            'idAdministrativo'=>'4',
+            'idUsuario'=>'2'
         ]);
 
         DB::table('citas')->insert([
@@ -88,7 +94,8 @@ class CitaSeeder extends Seeder
             'idEspecialidad'=>'4',
             'idDoctor'=>'5',
             'idPaciente'=>'8',
-            'idAdministrativo'=>'5'
+            'idAdministrativo'=>'5',
+            'idUsuario'=>'7'
         ]);
 
         DB::table('citas')->insert([
@@ -99,7 +106,8 @@ class CitaSeeder extends Seeder
             'idEspecialidad'=>'2',
             'idDoctor'=>'10',
             'idPaciente'=>'9',
-            'idAdministrativo'=>'9'
+            'idAdministrativo'=>'9',
+            'idUsuario'=>'8'
         ]);
 
         DB::table('citas')->insert([
@@ -110,7 +118,8 @@ class CitaSeeder extends Seeder
             'idEspecialidad'=>'2',
             'idDoctor'=>'10',
             'idPaciente'=>'10',
-            'idAdministrativo'=>'3'
+            'idAdministrativo'=>'3',
+            'idUsuario'=>'9'
         ]);
 
         DB::table('citas')->insert([
@@ -121,7 +130,9 @@ class CitaSeeder extends Seeder
             'idEspecialidad'=>'4',
             'idDoctor'=>'5',
             'idPaciente'=>'10',
-            'idAdministrativo'=>'7'
+            'idAdministrativo'=>'7',
+            'idUsuario'=>'7'
         ]);
+
     }
 }
