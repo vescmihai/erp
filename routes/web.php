@@ -26,6 +26,8 @@ use App\Http\Controllers\RecetaMedicaController;
 use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\HistoriaClinicaController;
 use App\Http\Controllers\BackupController;
+use App\Http\Controllers\QuirofanoController;
+use App\Http\Controllers\ReservaQuirofanoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,14 +68,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('expedientes', ExpedienteController::class);
     Route::resource('hojaConsultas', HojaConsultaController::class);
     Route::resource('consulta', ConsultaController::class);
-    Route::resource('horarios',HorariosController::class);
-    Route::resource('internacion',InternacionController::class);
-    Route::resource('receta',RecetaController::class);
-    Route::resource('medicamento',MedicamentoController::class);
-    Route::resource('recetamedica',RecetaMedicaController::class);
-    Route::resource('historiaclinica',HistoriaClinicaController::class);
-    
-    
+    Route::resource('horarios', HorariosController::class);
+    Route::resource('internacion', InternacionController::class);
+    Route::resource('receta', RecetaController::class);
+    Route::resource('medicamento', MedicamentoController::class);
+    Route::resource('recetamedica', RecetaMedicaController::class);
+    Route::resource('historiaclinica', HistoriaClinicaController::class);
+    Route::resource('quirofano', QuirofanoController::class);
+    Route::resource('reservaquirofano', ReservaQuirofanoController::class);
+
+
     Route::get('historiaclinica/pdf/{historiaClinica}', 'App\Http\Controllers\HistoriaClinicaController@pdf')->name('historiaclinica.pdf');
     Route::get('pacientes/pdf/{pacientes}', 'App\Http\Controllers\PacienteController@pdf')->name('pacientes.pdf');
     Route::get('citas/pdf/{citas}', 'App\Http\Controllers\CitaController@pdf')->name('cita.pdf');
@@ -85,5 +89,4 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::post('/backup', [BackupController::class, 'create'])->name('backup.create');
-
 });

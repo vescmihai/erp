@@ -4,7 +4,7 @@
 <div class="container-xl">
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Crear Internacion</h3>
+            <h3 class="page__heading">Crear Quirofano</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -24,17 +24,17 @@
                             </div>
                         @endif
 
-                        {!! Form::open(array('route' => 'internacion.store','method'=>'POST')) !!}
+                        {!! Form::open(array('route' => 'quirofano.store','method'=>'POST')) !!}
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <label for="tipoInternacion">Tipo de Internacion</label>
-                                    {!! Form::text('tipoInternacion', null, array('class' => 'form-control')) !!}
+                                    <label for="nombre">Nombre o Nro</label>
+                                    {!! Form::text('nombre', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <label for="idSala">Capacidad</label>
+                                    <label for="idSala"></label>
                                     {{ Form::label('Capacidad') }}
                                     <select name="idSala" class="focus border-primary  form-control">
                                         @foreach ($salas as $sala)

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'formacion',
         'cargo',
@@ -36,5 +36,9 @@ class Doctor extends Model
 
     public function consulta(){
         return $this->hasMany('App\Models\Consulta','idDoctor','id');
+    }
+
+    public function reserva_quirofano(){
+        return $this->hasMany('App\Models\ReservaQuirofano','idDoctor','id');
     }
 }

@@ -18,8 +18,13 @@ class Paciente extends Model
     public function cita(){
         return $this->hasMany('App\Models\Cita','idPaciente','id');
     }
+
     public function usuario(){
         return $this->hasOne('App\Models\User','id','idUser');
+    }
+
+    public function reserva_quirofano(){
+        return $this->hasMany('App\Models\ReservaQuirofano','idPaciente','id');
     }
 
 }

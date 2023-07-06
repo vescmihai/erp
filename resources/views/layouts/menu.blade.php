@@ -44,6 +44,11 @@
         <h5>Módulo administrador</h5>
     </div>
     <li class="side-menu-item">
+        <a href="/bitacora">
+            <i class="fas fa-door-open"></i><span>Gestionar bitacora</span>
+        </a>
+    </li>
+    <li class="side-menu-item">
         <a href="/doctors">
             <i class="fas fa-user-md"></i><span>Gestionar doctores</span>
         </a>
@@ -65,6 +70,16 @@
     <li class="side-menu-item">
         <a href="/sectores">
             <i class="fas fa-building"></i><span>Gestionar sectores</span>
+        </a>
+    </li>
+    <li class="side-menu-item">
+        <a href="/salas">
+            <i class="fas fa-door-open"></i><span>Gestionar salas</span>
+        </a>
+    </li>
+    <li class="side-menu-item">
+        <a href="/hojaConsultas">
+            <i class="fas fa-door-open"></i><span>Gestionar Quirofano</span>
         </a>
     </li>
     <div style="text-align: center;">
@@ -95,18 +110,6 @@
     <li class="side-menu-item">
         <a href="/agenda">
             <i class="fas fa-calendar-alt"></i><span>Gestionar agenda</span>
-        </a>
-    </li>
-
-    <li class="side-menu-item">
-        <a href="/salas">
-            <i class="fas fa-door-open"></i><span>Gestionar salas</span>
-        </a>
-    </li>
-
-    <li class="side-menu-item">
-        <a href="/bitacora">
-            <i class="fas fa-door-open"></i><span>Gestionar bitacora</span>
         </a>
     </li>
 

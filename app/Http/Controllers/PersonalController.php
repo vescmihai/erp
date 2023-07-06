@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Personal;
 use Spatie\Activitylog\Models\Activity;
-use Barryvdh\DomPDF\Facade\pdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PersonalController extends Controller
 {
@@ -57,7 +57,7 @@ class PersonalController extends Controller
         activity()->useLog('Personal')->log('Registró')->subject();
         $lastActivity=Activity::all()->last();
         $lastActivity->subject_id= $personal->id;
-        $lastActivity->save(); 
+        $lastActivity->save();
 
         return redirect()->route('personal.index');
     }
@@ -87,7 +87,7 @@ class PersonalController extends Controller
         activity()->useLog('Personal')->log('Editó')->subject();
         $lastActivity=Activity::all()->last();
         $lastActivity->subject_id= $personal->id;
-        $lastActivity->save(); 
+        $lastActivity->save();
         return view('personal.editar', compact('personal'));
     }
 
@@ -140,7 +140,7 @@ class PersonalController extends Controller
         return redirect()->route('personal.index');
     }
 
-    public function pdf(Personal $personals) 
+    public function pdf(Personal $personals)
     {
 
         $personal = Personal::all();
