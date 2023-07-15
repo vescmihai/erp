@@ -22,25 +22,32 @@ class HistoriaClinica extends Migration
             $table->unsignedBigInteger('idExpediente');
             $table->unsignedBigInteger('idAdministrativo');
             $table->bigInteger('idUsuario')->unsigned()->nullable();
+            $table->bigInteger('idDoctor')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('idExpediente')
-                  ->references('id')
-                  ->on('expedientes')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
+                ->references('id')
+                ->on('expedientes')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->foreign('idAdministrativo')
-                  ->references('id')
-                  ->on('personal')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
+                ->references('id')
+                ->on('personal')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
-                  $table->foreign('idUsuario')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
+            $table->foreign('idUsuario')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('idDoctor')
+                ->references('id')
+                ->on('doctors')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

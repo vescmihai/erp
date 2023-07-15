@@ -16,34 +16,34 @@ class DoctoresSeeder extends Seeder
     {
         DB::table('doctors')->insert([
             'formacion'=>'Universidad autonoma Gabriel Rene Moreno',
-            'cargo'=>'Armando',
+            'cargo'=>'Gino',
             'idEspecialidad'=>'1',
             'idSala'=>'1'
         ]);
         DB::table('doctors')->insert([
             'formacion'=>'Universida Privada de Santa Cruz',
-            'cargo'=>'Carlos',
+            'cargo'=>'Mihai',
             'idEspecialidad'=>'2',
             'idSala'=>'2'
         ]);
 
         DB::table('doctors')->insert([
             'formacion'=>'Universidad del Valle',
-            'cargo'=>'Sofia',
+            'cargo'=>'Jeanette',
             'idEspecialidad'=>'3',
             'idSala'=>'3'
         ]);
 
         DB::table('doctors')->insert([
             'formacion'=>'Universidad de los andes',
-            'cargo'=>'Dasha',
+            'cargo'=>'Carlos',
             'idEspecialidad'=>'1',
             'idSala'=>'4'
         ]);
 
         DB::table('doctors')->insert([
             'formacion'=>'Universidad Autonoma Gabriel Rene Moreno',
-            'cargo'=>'Emma',
+            'cargo'=>'Cristian',
             'idEspecialidad'=>'4',
             'idSala'=>'5'
         ]);

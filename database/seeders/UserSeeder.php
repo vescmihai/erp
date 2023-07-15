@@ -21,7 +21,8 @@ class UserSeeder extends Seeder
         $usuario = User::create([
             'name'=>'Gino',
             'email'=>'gino@gmail.com',
-            'password'=>Hash::make('12345678')
+            'password'=>Hash::make('12345678'),
+            'isDoctor'=>true,
         ]);
 
         $rol = Role::create(['name' => 'Administrador']);
@@ -32,7 +33,8 @@ class UserSeeder extends Seeder
         $usuario = User::create([
             'name'=>'Mihai',
             'email'=>'mihai@gmail.com',
-            'password'=>Hash::make('12345678')
+            'password'=>Hash::make('12345678'),
+            'isDoctor'=>true,
         ]);
 
         $permisos = Permission::pluck('id', 'id')->all();
@@ -42,7 +44,8 @@ class UserSeeder extends Seeder
         $usuario = User::create([
             'name'=>'Jeanette',
             'email'=>'Jeanette@gmail.com',
-            'password'=>Hash::make('12345678')
+            'password'=>Hash::make('12345678'),
+            'isDoctor'=>true,
         ]);
 
         $permisos = Permission::pluck('id', 'id')->all();
@@ -52,7 +55,8 @@ class UserSeeder extends Seeder
         $usuario = User::create([
             'name'=>'Carlos',
             'email'=>'carlos@gmail.com',
-            'password'=>Hash::make('12345678')
+            'password'=>Hash::make('12345678'),
+            'isDoctor'=>true,
         ]);
 
         $permisos = Permission::pluck('id', 'id')->all();
@@ -62,7 +66,8 @@ class UserSeeder extends Seeder
         $usuario = User::create([
             'name'=>'Cristian',
             'email'=>'cristian@gmail.com',
-            'password'=>Hash::make('12345678')
+            'password'=>Hash::make('12345678'),
+            'isDoctor'=>true,
         ]);
 
         $permisos = Permission::pluck('id', 'id')->all();
@@ -70,9 +75,10 @@ class UserSeeder extends Seeder
         $usuario->assignRole($rol->id);
 
         $usuario = User::create([
-            'name'=>'Adriana',
-            'email'=>'adriana@gmail.com',
-            'password'=>Hash::make('12345678')
+            'name'=>'Gonzalo',
+            'email'=>'gonzalo@gmail.com',
+            'password'=>Hash::make('12345678'),
+            'isDoctor'=>false,
         ]);
 
         $permisos = Permission::pluck('id', 'id')->all();
@@ -82,7 +88,8 @@ class UserSeeder extends Seeder
         $usuario = User::create([
             'name'=>'Manuel',
             'email'=>'manuel@gmail.com',
-            'password'=>Hash::make('12345678')
+            'password'=>Hash::make('12345678'),
+            'isDoctor'=>false,
         ]);
 
         $permisos = Permission::pluck('id', 'id')->all();
@@ -92,7 +99,8 @@ class UserSeeder extends Seeder
         $usuario = User::create([
             'name'=>'Sofia',
             'email'=>'sofi@gmail.com',
-            'password'=>Hash::make('12345678')
+            'password'=>Hash::make('12345678'),
+            'isDoctor'=>false,
         ]);
 
         $permisos = Permission::pluck('id', 'id')->all();
@@ -102,7 +110,8 @@ class UserSeeder extends Seeder
         $usuario = User::create([
             'name'=>'Dasha',
             'email'=>'Dasha@gmail.com',
-            'password'=>Hash::make('12345678')
+            'password'=>Hash::make('12345678'),
+            'isDoctor'=>false,
         ]);
 
         $permisos = Permission::pluck('id', 'id')->all();
@@ -112,7 +121,8 @@ class UserSeeder extends Seeder
         $usuario = User::create([
             'name'=>'Valentina',
             'email'=>'valet@gmail.com',
-            'password'=>Hash::make('12345678')
+            'password'=>Hash::make('12345678'),
+            'isDoctor'=>false,
         ]);
 
         $permisos = Permission::pluck('id', 'id')->all();
@@ -122,7 +132,8 @@ class UserSeeder extends Seeder
         $usuario = User::create([
             'name'=>'Gabriela',
             'email'=>'gabi@gmail.com',
-            'password'=>Hash::make('12345678')
+            'password'=>Hash::make('12345678'),
+            'isDoctor'=>false,
         ]);
 
         $permisos = Permission::pluck('id', 'id')->all();

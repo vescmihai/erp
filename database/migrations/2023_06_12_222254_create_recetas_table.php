@@ -16,9 +16,16 @@ class CreateRecetasTable extends Migration
         Schema::create('recetas', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('idHojadeConsulta')->unsigned()->nullable();
+            $table->bigInteger('idDoctor')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('idHojadeConsulta')
+            ->references('id')
+            ->on('hoja_consultas')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
+            $table->foreign('idDoctor')
             ->references('id')
             ->on('hoja_consultas')
             ->onUpdate('cascade')

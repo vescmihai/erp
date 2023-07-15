@@ -17,27 +17,34 @@ class CreateRecetaMedicasTable extends Migration
             $table->id();
             $table->integer('catnidad');
             $table->string('dosis', 100);
-            $table->string('frecuencia',100);
+            $table->string('frecuencia', 100);
             $table->bigInteger('idReceta')->unsigned()->nullable();
             $table->bigInteger('idMedicamento')->unsigned()->nullable();
             $table->bigInteger('idUsuario')->unsigned()->nullable();
+            $table->bigInteger('idDoctor')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('idReceta')
-            ->references('id')
-            ->on('recetas')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('recetas')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->foreign('idMedicamento')
-            ->references('id')
-            ->on('medicamentos')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('medicamentos')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->foreign('idUsuario')
                 ->references('id')
                 ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('idDoctor')
+                ->references('id')
+                ->on('doctors')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
