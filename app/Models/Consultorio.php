@@ -15,6 +15,8 @@ class Consultorio extends Model
         'nro_consultorio',
         'idSala',
         'idDoctor',
+        'idPaciente',
+        'idTurno'
     ];
 
     public function sala()
@@ -25,6 +27,16 @@ class Consultorio extends Model
     public function doctor()
     {
         return $this->belongsTo('App\Models\Doctor', 'idDoctor');
+    }
+
+    public function paciente()
+    {
+        return $this->belongsTo('App\Models\User' ,'idPaciente');
+    }
+
+    public function turno()
+    {
+        return $this->belongsTo('App\Models\Turno' ,'idTurno');
     }
 
 }
