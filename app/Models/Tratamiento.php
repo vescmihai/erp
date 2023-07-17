@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RecetaMedica extends Model
+class Tratamiento extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'catnidad',
-        'dosis',
-        'frecuencia',
-        'idReceta',
+        'descripcion',
+        'nombre',
+        'duracion',
+        'idPaciente',
         'idMedicamento',
-        'idUsuario',
+        'idDoctor',
     ];
 
-    public function receta()
+    public function paciente()
     {
-        return $this->hasOne('App\Models\Receta', 'id', 'idReceta');
+        return $this->hasOne('App\Models\Paciente', 'id', 'idPaciente');
     }
 
     public function medicamento()
@@ -28,8 +28,7 @@ class RecetaMedica extends Model
         return $this->hasOne('App\Models\Medicamento', 'id', 'idMedicamento');
     }
 
-    public function usuario()
-    {
-        return $this->hasOne('App\Models\User', 'id', 'idUsuario');
+    public function doctores(){
+        return $this->hasMany('App\Models\Doctor','id','idDoctor');
     }
 }
