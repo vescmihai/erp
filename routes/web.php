@@ -33,6 +33,8 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\ReservaConsultorioController;
 use App\Http\Controllers\SalaDeEmergenciaController;
+use App\Http\Controllers\TratamientoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -98,5 +100,4 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/backup', [BackupController::class, 'create'])->name('backup.create');
     Route::get('/backup/download/{fileName}', [BackupController::class, 'download'])->name('backup.download');
     Route::post('/backup/restore-database', [BackupController::class, 'restoreDatabase'])->name('backup.restoreDatabase');
-
 });
