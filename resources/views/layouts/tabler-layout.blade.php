@@ -147,6 +147,7 @@
                                 <li><a class="dropdown-item" href="/salas">Gestionar salas</a></li>
                                 <li><a class="dropdown-item" href="/quirofano">Gestionar Quirofano</a></li>
                                 <li><a class="dropdown-item" href="/reservaquirofano">Gestionar Reserva Quirofano</a></li>
+                                <li><a class="dropdown-item" href="/salasEmergencia">Gestionar Salas de Emergencia</a></li>
                             </ul>
                         </li>
 
