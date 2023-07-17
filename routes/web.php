@@ -29,6 +29,8 @@ use App\Http\Controllers\BackupController;
 use App\Http\Controllers\QuirofanoController;
 use App\Http\Controllers\ReservaQuirofanoController;
 use App\Http\Controllers\ConsultorioController;
+use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\ReservaConsultorioController;
 use App\Http\Controllers\SalaDeEmergenciaController;
 /*
@@ -81,6 +83,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('consultorio', ConsultorioController::class);
     Route::resource('reservaconsultorio', ReservaConsultorioController::class);
     Route::resource('salasEmergencia', SalaDeEmergenciaController::class);
+    Route::resource('productos', ProductosController::class);
+    Route::resource('proveedores', ProveedoresController::class);
 
     Route::get('historiaclinica/pdf/{historiaClinica}', 'App\Http\Controllers\HistoriaClinicaController@pdf')->name('historiaclinica.pdf');
     Route::get('pacientes/pdf/{pacientes}', 'App\Http\Controllers\PacienteController@pdf')->name('pacientes.pdf');

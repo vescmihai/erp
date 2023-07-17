@@ -182,6 +182,8 @@
                                 <li><a class="dropdown-item" href="/agenda">Gestionar agenda</a></li>
                                 <li><a class="dropdown-item" href="/hojaConsultas">Gestionar hoja de consulta</a></li>
                                 <li><a class="dropdown-item" href="/horarios">Gestionar Horarios de atencion</a></li>
+                                <li><a class="dropdown-item" href="/productos">Gestionar Productos</a></li>
+                                <li><a class="dropdown-item" href="/proveedores">Gestionar Proveedores</a></li>
                             </ul>
                         </li>
 
