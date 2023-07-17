@@ -109,6 +109,15 @@
                                     <button type="submit" class="dropdown-item" href="/bitacora">Crear
                                         Respaldo</button>
                                 </form>
+                                
+                                <form action="{{ route('backup.restoreDatabase') }}" method="POST">
+                                    @csrf
+                                    <label for="database_backup_file">Seleccionar archivo de respaldo de la base de datos:</label>
+                                    <input type="file" name="database_backup_file" id="database_backup_file">
+                                    <button type="submit">Restaurar base de datos</button>
+                                </form>
+                                
+
                             </ul>
                         </li>
 
@@ -260,6 +269,8 @@
                     @if (session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
+                            <br>
+                            <a href="{{ route('backup.download', ['fileName' => 'nombre_del_archivo_del_respaldo.extension']) }}">Descargar respaldo</a>
                         </div>
                     @endif
 

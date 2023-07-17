@@ -28,7 +28,8 @@ use App\Http\Controllers\HistoriaClinicaController;
 use App\Http\Controllers\BackupController;
 use App\Http\Controllers\QuirofanoController;
 use App\Http\Controllers\ReservaQuirofanoController;
-
+use App\Http\Controllers\ConsultorioController;
+use App\Http\Controllers\ReservaConsultorioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,7 +87,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('consulta/pdf/{consulta}', 'App\Http\Controllers\ConsultaController@pdf')->name('consulta.pdf');
     Route::get('hojas/pdf/{hojas}', 'App\Http\Controllers\HojaConsultaController@pdf')->name('hojaConsultas.pdf');
     Route::get('recetamedicas/pdf/{recetamedicas}', 'App\Http\Controllers\RecetaMedicaController@pdf')->name('recetamedica.pdf');
+    Route::resource('consultorio', ConsultorioController::class);
+    Route::resource('reservaconsultorio', ReservaConsultorioController::class);
 
 
     Route::post('/backup', [BackupController::class, 'create'])->name('backup.create');
+    Route::get('/backup/download/{fileName}', [BackupController::class, 'download'])->name('backup.download');
+    Route::post('/backup/restore-database', [BackupController::class, 'restoreDatabase'])->name('backup.restoreDatabase');
+
 });
