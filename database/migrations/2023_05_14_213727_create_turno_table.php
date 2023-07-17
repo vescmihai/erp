@@ -14,7 +14,7 @@ class CreateTurnoTable extends Migration
     public function up()
     {
         Schema::create('turnos', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('descripcion', 100);
             $table->time('horaInicio');
             $table->time('horaFin');

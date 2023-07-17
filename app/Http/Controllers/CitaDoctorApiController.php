@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\RecetaMedica;
-use App\Models\Receta;
+
+use App\Models\Cita;
 use Illuminate\Http\Request;
 
-class RecetaMedicaUserApiController extends Controller
+
+class CitaDoctorApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -47,17 +48,13 @@ class RecetaMedicaUserApiController extends Controller
     public function show($id)
     {
         //
-        $recetaMedica = RecetaMedica::where('idUsuario', $id)->get();
-        $recetaMedica->load('medicamento','usuario');
+        $cita=Cita::where('idDoctor',$id)->get();
+        $cita->load('consulta','especialidad');
 
-        foreach ($recetaMedica as $receta) {
-            $idReceta = $receta->idReceta;
-            $hojaConsulta = Receta::where('id', $idReceta)->get();
-            $receta->receta = $hojaConsulta->load('hojaConsulta');
+        foreach($cita as $cadaCita){
+            $cadaCita->consulta->load('doctores');
         }
-
-
-        return $recetaMedica;
+        return $cita;
     }
 
     /**

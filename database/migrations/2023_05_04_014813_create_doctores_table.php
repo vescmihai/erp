@@ -14,27 +14,29 @@ class CreateDoctoresTable extends Migration
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->engine="InnoDB";
+            $table->engine = "InnoDB";
             $table->bigIncrements('id');
             $table->string('formacion', 100);
             $table->string('cargo', 100);
             $table->bigInteger('idEspecialidad')->unsigned()->nullable();
             $table->bigInteger('idSala')->unsigned()->nullable();
-            $table->timestamps(); 
-            
+            $table->timestamps();
+
             $table->foreign('idEspecialidad')
-                  ->references('id')
-                  ->on('especialidads')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-                  
+                ->references('id')
+                ->on('especialidads')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
             $table->foreign('idSala')
-                  ->references('id')
-                  ->on('salas')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
+                ->references('id')
+                ->on('salas')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+
         });
-    }    
+    }
 
     /**
      * Reverse the migrations.
@@ -47,7 +49,7 @@ class CreateDoctoresTable extends Migration
             $table->dropForeign(['idEspecialidad']);
             $table->dropForeign(['idSala']);
         });*/
-    
+
         Schema::dropIfExists('doctors');
     }
 }

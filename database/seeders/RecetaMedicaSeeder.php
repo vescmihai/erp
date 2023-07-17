@@ -21,7 +21,8 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 8 horas',
                 'idReceta' => 1,
                 'idMedicamento' => 1,
-                'idUsuario'=>'1'
+                'idUsuario'=>'1',
+                'idDoctor'=>'1',
 
             ],
             [
@@ -30,7 +31,8 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 12 horas',
                 'idReceta' => 2,
                 'idMedicamento' => 2,
-                'idUsuario'=>'1'
+                'idUsuario'=>'7',
+                'idDoctor'=>'1',
 
             ],
             [
@@ -39,7 +41,8 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 24 horas',
                 'idReceta' => 3,
                 'idMedicamento' => 3,
-                'idUsuario'=>'2'
+                'idUsuario'=>'8',
+                'idDoctor'=>'2',
 
             ],
             [
@@ -48,7 +51,8 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 12 horas',
                 'idReceta' => 4,
                 'idMedicamento' => 4,
-                'idUsuario'=>'3'
+                'idUsuario'=>'9',
+                'idDoctor'=>'2',
 
             ],
             [
@@ -57,7 +61,8 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 24 horas',
                 'idReceta' => 5,
                 'idMedicamento' => 5,
-                'idUsuario'=>'4'
+                'idUsuario'=>'4',
+                'idDoctor'=>'3',
 
             ],
             [
@@ -66,7 +71,8 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 8 horas',
                 'idReceta' => 6,
                 'idMedicamento' => 6,
-                'idUsuario'=>'5'
+                'idUsuario'=>'5',
+                'idDoctor'=>'3',
 
             ],
             [
@@ -75,7 +81,8 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 12 horas',
                 'idReceta' => 7,
                 'idMedicamento' => 7,
-                'idUsuario'=>'6'
+                'idUsuario'=>'6',
+                'idDoctor'=>'4',
 
             ],
             [
@@ -84,7 +91,8 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 24 horas',
                 'idReceta' => 8,
                 'idMedicamento' => 8,
-                'idUsuario'=>'7'
+                'idUsuario'=>'7',
+                'idDoctor'=>'4',
 
             ],
             [
@@ -93,7 +101,8 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 12 horas',
                 'idReceta' => 9,
                 'idMedicamento' => 9,
-                'idUsuario'=>'8'
+                'idUsuario'=>'8',
+                'idDoctor'=>'5',
             ],
             [
                 'catnidad' => 1,
@@ -101,7 +110,8 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 8 horas',
                 'idReceta' => 10,
                 'idMedicamento' => 10,
-                'idUsuario'=>'9'
+                'idUsuario'=>'9',
+                'idDoctor'=>'5',
             ],
         ]);
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRecetaMedicasTable extends Migration
+class ConsultorioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,38 +13,37 @@ class CreateRecetaMedicasTable extends Migration
      */
     public function up()
     {
-        Schema::create('receta_medicas', function (Blueprint $table) {
-            $table->id();
-            $table->integer('catnidad');
-            $table->string('dosis', 100);
-            $table->string('frecuencia', 100);
-            $table->bigInteger('idReceta')->unsigned()->nullable();
-            $table->bigInteger('idMedicamento')->unsigned()->nullable();
-            $table->bigInteger('idUsuario')->unsigned()->nullable();
+        //
+        Schema::create('consultorios', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->boolean('estado');
+            $table->bigInteger('nro_consultorio');
+            $table->bigInteger('idSala')->unsigned()->nullable();
             $table->bigInteger('idDoctor')->unsigned()->nullable();
-            $table->timestamps();
+            $table->bigInteger('idPaciente')->unsigned()->nullable();
+            $table->bigInteger('idTurno')->unsigned()->nullable();
 
-            $table->foreign('idReceta')
+            $table->foreign('idSala')
                 ->references('id')
-                ->on('recetas')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
-            $table->foreign('idMedicamento')
-                ->references('id')
-                ->on('medicamentos')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
-            $table->foreign('idUsuario')
-                ->references('id')
-                ->on('users')
+                ->on('salas')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
             $table->foreign('idDoctor')
                 ->references('id')
                 ->on('doctors')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('idPaciente')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('idTurno')
+                ->references('id')
+                ->on('turnos')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -57,6 +56,7 @@ class CreateRecetaMedicasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receta_medicas');
+        //
+        Schema::dropIfExists('consultorios');
     }
 }

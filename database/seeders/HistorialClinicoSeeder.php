@@ -21,7 +21,8 @@ class HistorialClinicoSeeder extends Seeder
             'estadoPaciente'=>'Estable',
             'idExpediente'=>'1',
             'idAdministrativo'=>'1',
-            'idUsuario'=>'1'
+            'idUsuario'=>'6',
+            'idDoctor'=>'1'
         ]);
 
         DB::table('historia_clinicas')->insert([
@@ -32,7 +33,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'Controlado',
                 'idExpediente' => '2',
                 'idAdministrativo' => '1',
-                'idUsuario'=>'2'
+                'idUsuario'=>'7',
+                'idDoctor'=>'2'
             ],
         ]);
 
@@ -44,7 +46,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'Controlado',
                 'idExpediente' => '3',
                 'idAdministrativo' => '2',
-                'idUsuario'=>'3'
+                'idUsuario'=>'8',
+                'idDoctor'=>'3'
 
             ],
 
@@ -55,7 +58,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '4',
                 'idAdministrativo' => '2',
-                'idUsuario'=>'4'
+                'idUsuario'=>'9',
+                'idDoctor'=>'4'
             ],
 
             [
@@ -65,7 +69,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'Estable',
                 'idExpediente' => '5',
                 'idAdministrativo' => '3',
-                'idUsuario'=>'5'
+                'idUsuario'=>'10',
+                'idDoctor'=>'5'
             ],
 
             [
@@ -75,7 +80,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '6',
                 'idAdministrativo' => '3',
-                'idUsuario'=>'6'
+                'idUsuario'=>'11',
+                'idDoctor'=>'6'
             ],
 
             [
@@ -85,7 +91,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'Controlado',
                 'idExpediente' => '7',
                 'idAdministrativo' => '4',
-                'idUsuario'=>'7'
+                'idUsuario'=>'6',
+                'idDoctor'=>'7'
             ],
 
             [
@@ -95,7 +102,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '8',
                 'idAdministrativo' => '4',
-                'idUsuario'=>'8'
+                'idUsuario'=>'7',
+                'idDoctor'=>'8'
 
             ],
 
@@ -106,7 +114,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'Controlado',
                 'idExpediente' => '9',
                 'idAdministrativo' => '5',
-                'idUsuario'=>'9'
+                'idUsuario'=>'8',
+                'idDoctor'=>'9'
 
             ],
 
@@ -117,7 +126,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'Estable',
                 'idExpediente' => '10',
                 'idAdministrativo' => '5',
-                'idUsuario'=>'1'
+                'idUsuario'=>'9',
+                'idDoctor'=>'10'
 
             ],
 
@@ -128,7 +138,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '2',
                 'idAdministrativo' => '6',
-                'idUsuario'=>'2'
+                'idUsuario'=>'10',
+                'idDoctor'=>'1'
 
             ],
 
@@ -139,7 +150,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'Controlado',
                 'idExpediente' => '3',
                 'idAdministrativo' => '7',
-                'idUsuario'=>'3'
+                'idUsuario'=>'11',
+                'idDoctor'=>'2'
 
             ],
 
@@ -150,7 +162,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '4',
                 'idAdministrativo' => '7',
-                'idUsuario'=>'4'
+                'idUsuario'=>'6',
+                'idDoctor'=>'3'
 
             ],
 
@@ -161,7 +174,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'Estable',
                 'idExpediente' => '5',
                 'idAdministrativo' => '8',
-                'idUsuario'=>'5'
+                'idUsuario'=>'7',
+                'idDoctor'=>'5'
 
             ],
 
@@ -172,7 +186,8 @@ class HistorialClinicoSeeder extends Seeder
                 'estadoPaciente' => 'En tratamiento',
                 'idExpediente' => '6',
                 'idAdministrativo' => '8',
-                'idUsuario'=>'6'
+                'idUsuario'=>'8',
+                'idDoctor'=>'4'
 
             ]
         ]);

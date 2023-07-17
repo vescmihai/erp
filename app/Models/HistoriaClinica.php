@@ -16,7 +16,8 @@ class HistoriaClinica extends Model
         'estadoPaciente',
         'idExpediente',
         'idAdministrativo',
-        'idUsuario'
+        'idUsuario',
+        'idDoctor'
     ];
 
     public function expediente()
@@ -32,5 +33,9 @@ class HistoriaClinica extends Model
     public function usuario()
     {
         return $this->belongsTo('App\Models\User', 'idUsuario');
+    }
+    public function doctor()
+    {
+        return $this->belongsTo('App\Models\User', 'idDoctor');
     }
 }

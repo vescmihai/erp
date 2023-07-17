@@ -13,11 +13,16 @@ class HojaConsulta extends Model
         'diagnostico',
         'indicación',
         'proximaConsulta',
+        'idDoctor'
     ];
 
     public function receta()
     {
         return $this->hasOne('App\Models\Receta', 'id', 'idReceta');
+    }
+    public function doctor()
+    {
+        return $this->belongsTo('App\Models\Dcotor', 'id', 'idDoctor');
     }
 
 }

@@ -18,7 +18,15 @@ class CreateHojaConsultasTable extends Migration
             $table->string('diagnostico', 100);
             $table->string('indicación', 100);
             $table->string('proximaConsulta', 100);
-            $table->timestamps(); 
+            $table->bigInteger('idDoctor')->unsigned()->nullable();
+            $table->timestamps();
+
+            $table->foreign('idDoctor')
+            ->references('id')
+            ->on('doctors')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
         });
     }
 
