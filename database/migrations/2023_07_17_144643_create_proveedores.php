@@ -13,7 +13,7 @@ class CreateProveedores extends Migration
      */
     public function up()
     {
-        Schema::create('Proveedors',function(Blueprint $table){
+        Schema::create('proveedors',function(Blueprint $table){
             $table->bigIncrements('id');
             $table->string('nombre')->nullable();
             $table->string('contacto')->nullable();
@@ -23,7 +23,7 @@ class CreateProveedores extends Migration
             
             $table->foreign('idProducto')
             ->references('id')
-            ->on('Productos')
+            ->on('productos')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         } );
@@ -36,6 +36,6 @@ class CreateProveedores extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Proveedores');
+        Schema::dropIfExists('proveedores');
     }
 }

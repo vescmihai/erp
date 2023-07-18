@@ -64,6 +64,24 @@ class SalaDeEmergenciaController extends Controller
         return redirect()->route('salasEmergencia.index');
     }
 
+    public function destroy($id)
+    {
+        $salaEmergencia = SalaDeEmergencia::find($id);
+
+        if ($salaEmergencia) {
+            $salaEmergencia->delete();
+            date_default_timezone_set("America/La_Paz");
+            activity()->useLog('SalaDeEmergencia')->log('Eliminó')->subject();
+            $lastActivity=Activity::all()->last();
+            $lastActivity->subject_id= $id;
+            $lastActivity->save();
+
+            return redirect()->route('salasEmergencia.index')->with('success', 'La sala de emergencia ha sido eliminada correctamente');
+        } else {
+            return redirect()->route('salasEmergencia.index')->with('error', 'La sala de emergencia no se encontró');
+        }
+    }
+
 
     public function pdf(SalaDeEmergencia $salasEmergencia) 
     {
