@@ -34,6 +34,7 @@ use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\ReservaConsultorioController;
 use App\Http\Controllers\SalaDeEmergenciaController;
 use App\Http\Controllers\TratamientoController;
+use App\Http\Controllers\TerapiaIntensivaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +89,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('tratamiento',TratamientoController::class);
     Route::resource('productos', ProductosController::class);
     Route::resource('proveedores', ProveedoresController::class);
+    Route::resource('terapias', TerapiaIntensivaController::class);
 
     Route::get('historiaclinica/pdf/{historiaClinica}', 'App\Http\Controllers\HistoriaClinicaController@pdf')->name('historiaclinica.pdf');
     Route::get('pacientes/pdf/{pacientes}', 'App\Http\Controllers\PacienteController@pdf')->name('pacientes.pdf');

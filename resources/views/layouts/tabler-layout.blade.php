@@ -151,6 +151,7 @@
                                 <li><a class="dropdown-item" href="/reservaquirofano">Gestionar Reserva Quirofano</a>
                                 </li>
                                 <li><a class="dropdown-item" href="/salasEmergencia">Gestionar Salas de Emergencia</a>
+                                <li><a class="dropdown-item" href="/terapias">Gestionar Terapia Intensiva</a>
                                 </li>
                             </ul>
                         </li>
