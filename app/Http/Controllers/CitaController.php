@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use Spatie\Activitylog\Models\Activity;
-use Barryvdh\DomPDF\Facade\pdf;
+use \PDF;
+
 
 class CitaController extends Controller
 {
@@ -29,8 +30,8 @@ class CitaController extends Controller
         $doctores=Doctor::all();
         $usuario=User::all();
         $citas = Cita::paginate(5);
-        return view('cita.index', compact('citas','doctores','consultas','especialidades','pacientes','personales','usuario'));
-    }
+        return view('Cita.index', compact('citas','doctores','consultas','especialidades','pacientes','personales','usuario'));
+    } 
 
     public function create()
     {
@@ -64,7 +65,7 @@ class CitaController extends Controller
         $lastActivity->subject_id= $cita->id;
         $lastActivity->save(); 
 
-        return redirect()->route('cita.index',compact('usuario'));
+        return redirect()->route('Cita.index',compact('usuario'));
     }
 
     public function edit($id)
@@ -103,7 +104,7 @@ class CitaController extends Controller
         $cita = Cita::find($id);
         $cita->update($input);
 
-        return redirect()->route('cita.index');
+        return redirect()->route('Cita.index');
     }
 
     public function destroy($id)
@@ -117,10 +118,10 @@ class CitaController extends Controller
         $lastActivity->save();
 
         $cita->delete();
-        return redirect()->route('cita.index');
+        return redirect()->route('Cita.index');
     }
 
-    public function pdf(Cita $citas) 
+    public function pdf(Cita $citas)  
     {
         $consultas=Consulta::all();
         $especialidades=Especialidad::all();

@@ -28,6 +28,7 @@ class RecetaMedica extends Model
     {
         return $this->hasOne('App\Models\Medicamento', 'id', 'idMedicamento');
     }
+
     public function usuario()
     {
         return $this->hasOne('App\Models\User', 'id', 'idUsuario');

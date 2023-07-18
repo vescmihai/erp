@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Paciente;
 use App\Models\User;
 use Spatie\Activitylog\Models\Activity;
-use Barryvdh\DomPDF\Facade\pdf;
+use \PDF;
 
 class PacienteController extends Controller
 {

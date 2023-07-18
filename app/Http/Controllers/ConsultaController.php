@@ -44,7 +44,7 @@ class ConsultaController extends Controller
     }
 
     public function edit($id)
-    {
+    { 
         $consulta = Consulta::find($id);
         $doctores = Doctor::all()->pluck('cargo', 'id');
 
@@ -99,4 +99,19 @@ class ConsultaController extends Controller
         $pdf =PDF::loadView('consulta.pdf', compact('consulta','consultas','doctores'));
         return $pdf->download('consulta-'.$consulta->id.'.pdf');
     }
+
+    public function report(Request $request)
+    {
+        $fromDate = $request->input('from_date');
+        $toDate = $request->input('to_date');
+    
+        $consultas = Consulta::whereBetween('created_at', [$fromDate, $toDate])->get();
+        $doctores = Doctor::all();
+    
+        $pdf = PDF::loadView('consulta.report', ['consultas' => $consultas, 'doctores' => $doctores]);
+    
+        return $pdf->download('report.pdf');
+    }
+    
+    
 }

@@ -41,4 +41,8 @@ class Doctor extends Model
     public function reserva_quirofano(){
         return $this->hasMany('App\Models\ReservaQuirofano','idDoctor','id');
     }
+
+    public function tratamiento(){
+        return $this->hasMany('App\Models\Tratamiento','idDoctor','id');
+    }
 }

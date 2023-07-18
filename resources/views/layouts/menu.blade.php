@@ -86,6 +86,16 @@
         <h5>Módulo servicios</h5>
     </div>
     <li class="side-menu-item">
+        <a href="/productos">
+            <i class="fas fa-calendar-check"></i><span>Gestionar Productos</span>
+        </a>
+    </li>
+    <li class="side-menu-item">
+        <a href="/proveedores">
+            <i class="fas fa-calendar-check"></i><span>Gestionar Proveedores</span>
+        </a>
+    </li>
+    <li class="side-menu-item">
         <a href="/cita">
             <i class="fas fa-calendar-check"></i><span>Gestionar cita</span>
         </a>

@@ -12,13 +12,41 @@
                     <div class="card">
                         <div class="card-body">
                             <a class="btn btn-dark" href="{{ route('consulta.create') }}">Nuevo</a>
+                            <!-- Add the report button here -->
+                            <a class="btn btn-dark" data-toggle="modal" data-target="#reportModal">Reporte</a>
+                            <!-- Report Modal -->
+                            <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="reportModalLabel">Generar Reporte</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="{{ route('consulta.report') }}" method="post">
+                                            @csrf
+                                            <div class="modal-body">
+                                                <label for="from_date">Desde:</label>
+                                                <input type="date" id="from_date" name="from_date">
+                                                <label for="to_date">Hasta:</label>
+                                                <input type="date" id="to_date" name="to_date">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="submit" class="btn btn-primary">Generar Reporte</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
                             <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">
                                     <th style="display: none;">ID</th>
-                                    <th style="color:#fff;">Descripción</th>
-                                    <th style="color:#fff;">Doctor</th>
-                                    <th style="color:#fff;">Acciones</th>
+                                    <th style="color:#000000;">Descripción</th>
+                                    <th style="color:#000000;">Doctor</th>
+                                    <th style="color:#000000;">Acciones</th>
 
                                 </thead>
                                 <tbody>

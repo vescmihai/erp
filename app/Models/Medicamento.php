@@ -16,4 +16,8 @@ class Medicamento extends Model
     public function recetamedica(){
         return $this->hasMany('App\Models\RecetaMedica','idMedicamento','id');
     }
+
+    public function tratamiento(){
+        return $this->hasMany('App\Models\Tratamiento','idMedicamento','id');
+    }
 }

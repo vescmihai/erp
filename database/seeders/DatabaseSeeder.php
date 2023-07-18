@@ -38,7 +38,9 @@ class DatabaseSeeder extends Seeder
         $this->call(InternacionSeeder::class);
         $this->call(ConsultorioSeeder::class);
         $this->call(CitaForeingKeySeeder::class);
-
-
+        $this->call(SalaEmergenciaSeeder::class);
+        $this->call(ProductoSeeder::class);
+        $this->call(ProveedorSeeder::class);
+        $this->call(TratamientoSeeder::class);
     }
 }
