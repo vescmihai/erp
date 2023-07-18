@@ -97,6 +97,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('consulta/pdf/{consulta}', 'App\Http\Controllers\ConsultaController@pdf')->name('consulta.pdf');
     Route::get('hojas/pdf/{hojas}', 'App\Http\Controllers\HojaConsultaController@pdf')->name('hojaConsultas.pdf');
     Route::get('recetamedicas/pdf/{recetamedicas}', 'App\Http\Controllers\RecetaMedicaController@pdf')->name('recetamedica.pdf');
+    Route::post('consulta/report', [App\Http\Controllers\ConsultaController::class, 'report'])->name('consulta.report');
 
     Route::post('/backup', [BackupController::class, 'create'])->name('backup.create');
     Route::get('/backup/download/{fileName}', [BackupController::class, 'download'])->name('backup.download');
