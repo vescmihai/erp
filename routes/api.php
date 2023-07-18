@@ -21,6 +21,7 @@ use App\Http\Controllers\RecetaApiController;
 use App\Http\Controllers\RecetaMedicaApiController;
 use App\Http\Controllers\RecetaMedicaDoctorApiController;
 use App\Http\Controllers\RecetaMedicaUserApiController;
+use App\Http\Controllers\TratamientoApiController;
 use App\Http\Controllers\TurnoApiController;
 use App\Http\Controllers\TurnoController;
 use App\Http\Controllers\UserApiController;
@@ -68,6 +69,7 @@ Route::apiResource('citasUser',CitaUserApiController::class);
 Route::apiResource('citasDoctor',CitaDoctorApiController::class);
 Route::apiResource('medicamentos',MedicamentoApiController::class);
 Route::apiResource('turnos',TurnoApiController::class);
+Route::apiResource('tratamiento',TratamientoApiController::class);
 Route::get('auth/logout',[AuthController::class,'logout']);
 
 });

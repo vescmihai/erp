@@ -20,7 +20,7 @@ class Tratamiento extends Model
 
     public function paciente()
     {
-        return $this->hasOne('App\Models\Paciente', 'id', 'idPaciente');
+        return $this->hasOne('App\Models\User', 'id', 'idPaciente');
     }
 
     public function medicamento()

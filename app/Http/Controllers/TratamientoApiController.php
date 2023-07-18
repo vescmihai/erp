@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HojaConsulta;
+use App\Models\Tratamiento;
 use Illuminate\Http\Request;
 
-class HojaConsultaApiController extends Controller
+class TratamientoApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class HojaConsultaApiController extends Controller
     public function index()
     {
         //
-        return HojaConsulta::all();
+        return Tratamiento::all();
     }
 
     /**
@@ -37,24 +37,17 @@ class HojaConsultaApiController extends Controller
     public function store(Request $request)
     {
         //
-        // "id": 1,
-        // "diagnostico": "paciente delicado",
-        // "indicación": "permanecer en reposo",
-        // "proximaConsulta": "la proxima semana",
-        // "idDoctor": 1,
-        // "idUsuario": 6,
-        // "created_at": null,
-        // "updated_at": null,
         $this->validate($request, [
-            'diagnostico' => 'required',
-            'indicación' => 'required',
-            'proximaConsulta' => 'required',
+            'descripcion' => 'required',
+            'nombre' => 'required',
+            'duracion' => 'required',
+            'idPaciente' => 'required',
+            'idMedicamento' => 'required',
             'idDoctor' => 'required',
-            'idUsuario' => 'required',
         ]);
-        $hojaConsulta = HojaConsulta::create($request->all());
-        $hojaConsulta->save();
-        return $hojaConsulta;
+        $tratamiento = Tratamiento::create($request->all());
+        $tratamiento->save();
+        return $tratamiento;
     }
 
     /**
@@ -65,10 +58,10 @@ class HojaConsultaApiController extends Controller
      */
     public function show($id)
     {
-
-        $hojaConsult = HojaConsulta::where('idDoctor', $id)->get();
-        $hojaConsult->load('doctor', 'usuario');
-        return $hojaConsult;
+        //
+        $tratamiento = Tratamiento::where('idDoctor', $id)->get();
+        $tratamiento->load('paciente','medicamento', 'doctores');
+        return $tratamiento;
     }
 
     /**
@@ -92,24 +85,31 @@ class HojaConsultaApiController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $hojaConsulta = HojaConsulta::find($id);
-        if (!$hojaConsulta) {
+        // "descripcion": "Tomar medicamento cada 8h",
+        // "nombre": "Tos Grave",
+        // "duracion": "1 mes",
+        // "idPaciente": 6,
+        // "idMedicamento": 1,
+        // "idDoctor": 1
+        $tratamiento = Tratamiento::find($id);
+        if (!$tratamiento) {
             return $data = [
                 'mensaje' => 'cita no encontrada',
                 'status' => 404,
             ];
         } else {
             $this->validate($request, [
-                'diagnostico' => 'required',
-                'indicación' => 'required',
-                'proximaConsulta' => 'required',
-                'idDoctor' => 'required',
-                'idUsuario' => 'required',
+                'descripcion' => 'required',
+            'nombre' => 'required',
+            'duracion' => 'required',
+            'idPaciente' => 'required',
+            'idMedicamento' => 'required',
+            'idDoctor' => 'required',
             ]);
 
-            $hojaConsulta->fill($request->all());
-            $hojaConsulta->save();
-            return $hojaConsulta;
+            $tratamiento->fill($request->all());
+            $tratamiento->save();
+            return $tratamiento;
         }
     }
 
@@ -122,14 +122,14 @@ class HojaConsultaApiController extends Controller
     public function destroy($id)
     {
         //
-        $hojaConsulta = HojaConsulta::find($id);
-        if (!$hojaConsulta) {
+        $tratamiento = Tratamiento::find($id);
+        if (!$tratamiento) {
             return $data = [
                 'mensaje' => 'no se encontro la receta a eliminar',
                 'status' => 404
             ];
         } else {
-            $hojaConsulta->delete();
+            $tratamiento->delete();
             return $data = [
                 'mensaje' => 'se elimino con exito',
                 'status' => 200

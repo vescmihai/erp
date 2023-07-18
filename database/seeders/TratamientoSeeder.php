@@ -18,7 +18,7 @@ class TratamientoSeeder extends Seeder
             'descripcion' => 'Tomar medicamento cada 8h',
             'nombre' => 'Tos Grave',
             'duracion' => '1 mes',
-            'idPaciente' => '1',
+            'idPaciente' => '6',
             'idMedicamento' => '1',
             'idDoctor' => '1',
         ]);
@@ -27,7 +27,7 @@ class TratamientoSeeder extends Seeder
             'descripcion' => 'Tomar medicamento cada 6h',
             'nombre' => 'Dolor de Cabeza',
             'duracion' => '10 días',
-            'idPaciente' => '2',
+            'idPaciente' => '7',
             'idMedicamento' => '2',
             'idDoctor' => '2',
         ]);
@@ -36,7 +36,7 @@ class TratamientoSeeder extends Seeder
             'descripcion' => 'Tomar de 2 a 4 veces al dia',
             'nombre' => 'Espasmo muscular',
             'duracion' => '2 semanas',
-            'idPaciente' => '3',
+            'idPaciente' => '8',
             'idMedicamento' => '3',
             'idDoctor' => '3',
         ]);
@@ -45,7 +45,7 @@ class TratamientoSeeder extends Seeder
             'descripcion' => 'Tomar antibióticos cada 8h',
             'nombre' => 'Infección Urinaria',
             'duracion' => '7 días',
-            'idPaciente' => '4',
+            'idPaciente' => '9',
             'idMedicamento' => '4',
             'idDoctor' => '4',
         ]);
@@ -54,7 +54,7 @@ class TratamientoSeeder extends Seeder
             'descripcion' => 'Inyectar insulina antes de cada comida',
             'nombre' => 'Diabetes Tipo 1',
             'duracion' => 'Indefinido',
-            'idPaciente' => '5',
+            'idPaciente' => '10',
             'idMedicamento' => '5',
             'idDoctor' => '5',
         ]);

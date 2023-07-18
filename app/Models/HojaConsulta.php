@@ -15,20 +15,16 @@ class HojaConsulta extends Model
         'proximaConsulta',
         'idDoctor',
         'idUsuario',
-    ];
 
-    public function receta()
-    {
-        return $this->hasOne('App\Models\Receta', 'id', 'idReceta');
-    }
-    public function doctor()
-    {
-        return $this->belongsTo('App\Models\Doctor', 'id', 'idDoctor');
-    }
+    ];
 
     public function usuario()
     {
-        return $this->belongsTo('App\Models\Dcotor', 'id', 'idUsuario');
+        return $this->hasOne('App\Models\User', 'id', 'idUsuario');
+    }
+    public function doctor()
+    {
+        return $this->hasMany('App\Models\User', 'id', 'idDoctor');
     }
 
 }
