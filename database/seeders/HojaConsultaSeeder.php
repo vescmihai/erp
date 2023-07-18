@@ -19,6 +19,7 @@ class HojaConsultaSeeder extends Seeder
             'indicación'=>'permanecer en reposo',
             'proximaConsulta'=>'la proxima semana',
             'idDoctor'=>1,
+            'idUsuario'=>6,
         ]);
 
         DB::table('hoja_consultas')->insert([
@@ -26,6 +27,7 @@ class HojaConsultaSeeder extends Seeder
             'indicación'=>'seguir con los medicamentos',
             'proximaConsulta'=>'dentro de 5 dias',
             'idDoctor'=>2,
+            'idUsuario'=>7,
         ]);
 
         DB::table('hoja_consultas')->insert([
@@ -33,6 +35,7 @@ class HojaConsultaSeeder extends Seeder
             'indicación'=>'permanecer hospitalizado',
             'proximaConsulta'=>'tiene que permanecer en el hospital',
             'idDoctor'=>3,
+            'idUsuario'=>8,
         ]);
 
         DB::table('hoja_consultas')->insert([
@@ -40,6 +43,7 @@ class HojaConsultaSeeder extends Seeder
             'indicación'=>'permanecer en reposo en su domicilio',
             'proximaConsulta'=>'dentro de 15 dias',
             'idDoctor'=>4,
+            'idUsuario'=>9,
         ]);
 
 
@@ -48,6 +52,7 @@ class HojaConsultaSeeder extends Seeder
             'indicación'=>'Seguir con los medicamentos',
             'proximaConsulta'=>'dentro de 7 dias',
             'idDoctor'=>5,
+            'idUsuario'=>10,
         ]);
 
 
@@ -56,6 +61,7 @@ class HojaConsultaSeeder extends Seeder
             'indicación'=>'Seguir tomando la medicina',
             'proximaConsulta'=>'dentro de 20 dias',
             'idDoctor'=>6,
+            'idUsuario'=>11,
         ]);
 
 
@@ -63,7 +69,8 @@ class HojaConsultaSeeder extends Seeder
             'diagnostico'=>'grave',
             'indicación'=>'permanecer internado',
             'proximaConsulta'=>'dentro de 60 dias',
-            'idDoctor'=>7,
+            'idDoctor'=>5,
+            'idUsuario'=>6,
         ]);
 
 
@@ -72,6 +79,7 @@ class HojaConsultaSeeder extends Seeder
             'indicación'=>'permanecer en reposo en su domicilio',
             'proximaConsulta'=>'dentro de 5 dias',
             'idDoctor'=>1,
+            'idUsuario'=>7,
         ]);
 
 
@@ -80,6 +88,7 @@ class HojaConsultaSeeder extends Seeder
             'indicación'=>'Seguir con el tratamiento',
             'proximaConsulta'=>'dentro de 20 dias',
             'idDoctor'=>2,
+            'idUsuario'=>8,
         ]);
 
 
@@ -88,6 +97,7 @@ class HojaConsultaSeeder extends Seeder
             'indicación'=>'seguir los cuidados que le dijo el doctor',
             'proximaConsulta'=>'dentro de 4 dias',
             'idDoctor'=>3,
+            'idUsuario'=>9,
         ]);
     }
 }

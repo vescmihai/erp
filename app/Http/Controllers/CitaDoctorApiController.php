@@ -49,10 +49,11 @@ class CitaDoctorApiController extends Controller
     {
         //
         $cita=Cita::where('idDoctor',$id)->get();
-        $cita->load('consulta','especialidad');
+        $cita->load('consulta','especialidad','usuario','consultorio');
 
         foreach($cita as $cadaCita){
             $cadaCita->consulta->load('doctores');
+            $cadaCita->consultorio->load('turno');
         }
         return $cita;
     }

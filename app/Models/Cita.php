@@ -19,6 +19,7 @@ class Cita extends Model
         /*'idPaciente',*/
         'idAdministrativo',
         'idUsuario',
+        'idConsultorio',
     ];
 
     public function consulta()
@@ -50,6 +51,10 @@ class Cita extends Model
     }
     public function Agenda(){
         return $this->hasMany('App\Models\Agenda','idCita','id');
+    }
+
+    public function consultorio(){
+        return $this->belongsTo('App\Models\Consultorio','idConsultorio');
     }
 
 

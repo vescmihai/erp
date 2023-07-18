@@ -36,6 +36,28 @@ class HistoriaClinicaDoctorApiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            // "enfermedad": "Gripe",
+            // "manifestaciones": "Fiebre,tos,dolor de garganta",
+            // "fechaRegistro": "2023-06-14",
+            // "estadoPaciente": "Estable",
+            // "idExpediente": 1,
+            // "idAdministrativo": 1,
+            // "idUsuario": 6,
+            // "idDoctor": 1
+            'enfermedad' => 'required|string',
+            'manifestaciones' => 'required|string',
+            'fechaRegistro' => 'required|date',
+            'estadoPaciente' => 'required|string',
+            'idExpediente' => 'required|integer',
+            'idAdministrativo' => 'required|integer',
+            'idUsuario' => 'required|integer',
+            'idDoctor' => 'required|integer',
+        ]);
+
+        $historioClinica = HistoriaClinica::create($request->all());
+        $historioClinica->save();
+        return $historioClinica;
     }
 
     /**
@@ -47,8 +69,8 @@ class HistoriaClinicaDoctorApiController extends Controller
     public function show($id)
     {
         //
-        $historiaClinica = HistoriaClinica::where('idDoctor',$id)->get();
-        $historiaClinica->load('usuario','doctor');
+        $historiaClinica = HistoriaClinica::where('idDoctor', $id)->get();
+        $historiaClinica->load('usuario', 'doctor');
         return $historiaClinica;
     }
 
@@ -73,6 +95,28 @@ class HistoriaClinicaDoctorApiController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $historioClinica = HistoriaClinica::find($id);
+        if (!$historioClinica) {
+            return $data = [
+                'mensaje' => 'cita no encontrada',
+                'status' => 404,
+            ];
+        } else {
+            $this->validate($request, [
+                'enfermedad' => 'required|string',
+                'manifestaciones' => 'required|string',
+                'fechaRegistro' => 'required|date',
+                'estadoPaciente' => 'required|string',
+                'idExpediente' => 'required|integer',
+                'idAdministrativo' => 'required|integer',
+                'idUsuario' => 'required|integer',
+                'idDoctor' => 'required|integer',
+            ]);
+
+            $historioClinica->fill($request->all());
+            $historioClinica->save();
+            return $historioClinica;
+        }
     }
 
     /**

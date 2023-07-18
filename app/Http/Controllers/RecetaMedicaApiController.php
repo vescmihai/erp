@@ -43,6 +43,7 @@ class RecetaMedicaApiController extends Controller
             'frecuencia'=>'required',
             'idReceta'=>'required',
             'idMedicamento'=>'required',
+            'idDoctor'=>'required'
         ]);
         $recetaMedica=RecetaMedica::create($request->all());
         $recetaMedica->save();
@@ -97,6 +98,7 @@ class RecetaMedicaApiController extends Controller
                 'frecuencia'=>'required',
                 'idReceta'=>'required',
                 'idMedicamento'=>'required',
+                'idDoctor'=>'required'
             ]);
             $recetaMedica->fill($request->all());
             $recetaMedica->save();

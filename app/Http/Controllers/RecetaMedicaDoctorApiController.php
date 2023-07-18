@@ -37,6 +37,19 @@ class RecetaMedicaDoctorApiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'catnidad' => 'required|integer',
+            'dosis' => 'required|string',
+            'frecuencia' => 'required|string',
+            'idReceta' => 'required|integer',
+            'idMedicamento' => 'required|integer',
+            'idUsuario' => 'required|integer',
+            'idDoctor' => 'required|integer',
+        ]);
+
+        $recetaMedica = RecetaMedica::create($request->all());
+        $recetaMedica->save();
+        return $recetaMedica;
     }
 
     /**
@@ -48,13 +61,13 @@ class RecetaMedicaDoctorApiController extends Controller
     public function show($id)
     {
         //
-        $recetaMedica = RecetaMedica::where('idDoctor',$id)->get();
-        $recetaMedica->load('medicamento');
+        $recetaMedica = RecetaMedica::where('idDoctor', $id)->get();
+        $recetaMedica->load('medicamento', 'usuario');
 
-        foreach($recetaMedica as $recetaMedic){
-            $idReceta=$recetaMedic->idReceta;
-            $receta=Receta::where('id',$idReceta)->get();
-            $recetaMedic->receta=$receta->load('hojaConsulta');
+        foreach ($recetaMedica as $recetaMedic) {
+            $idReceta = $recetaMedic->idReceta;
+            $receta = Receta::where('id', $idReceta)->get();
+            $recetaMedic->receta = $receta->load('hojaConsulta');
         }
         return $recetaMedica;
     }
@@ -80,6 +93,27 @@ class RecetaMedicaDoctorApiController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $recetaMedica = RecetaMedica::find($id);
+        if (!$recetaMedica) {
+            return $data = [
+                'mensaje' => 'cita no encontrada',
+                'status' => 404,
+            ];
+        } else {
+            $this->validate($request, [
+                'catnidad' => 'required|integer',
+                'dosis' => 'required|string',
+                'frecuencia' => 'required|string',
+                'idReceta' => 'required|integer',
+                'idMedicamento' => 'required|integer',
+                'idUsuario' => 'required|integer',
+                'idDoctor' => 'required|integer',
+            ]);
+
+            $recetaMedica->fill($request->all());
+            $recetaMedica->save();
+            return $recetaMedica;
+        }
     }
 
     /**
@@ -91,5 +125,19 @@ class RecetaMedicaDoctorApiController extends Controller
     public function destroy($id)
     {
         //
+        //
+        $recetaMedica = RecetaMedica::find($id);
+        if (!$recetaMedica) {
+            return $data = [
+                'mensaje' => 'no se encontro la receta a eliminar',
+                'status' => 404
+            ];
+        } else {
+            $recetaMedica->delete();
+            return $data = [
+                'mensaje' => 'se elimino con exito',
+                'status' => 200
+            ];
+        }
     }
 }

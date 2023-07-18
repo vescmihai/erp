@@ -21,7 +21,7 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 8 horas',
                 'idReceta' => 1,
                 'idMedicamento' => 1,
-                'idUsuario'=>'1',
+                'idUsuario'=>'6',
                 'idDoctor'=>'1',
 
             ],
@@ -32,7 +32,7 @@ class RecetaMedicaSeeder extends Seeder
                 'idReceta' => 2,
                 'idMedicamento' => 2,
                 'idUsuario'=>'7',
-                'idDoctor'=>'1',
+                'idDoctor'=>'2',
 
             ],
             [
@@ -61,7 +61,7 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 24 horas',
                 'idReceta' => 5,
                 'idMedicamento' => 5,
-                'idUsuario'=>'4',
+                'idUsuario'=>'10',
                 'idDoctor'=>'3',
 
             ],
@@ -71,7 +71,7 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 8 horas',
                 'idReceta' => 6,
                 'idMedicamento' => 6,
-                'idUsuario'=>'5',
+                'idUsuario'=>'11',
                 'idDoctor'=>'3',
 
             ],
@@ -92,7 +92,7 @@ class RecetaMedicaSeeder extends Seeder
                 'idReceta' => 8,
                 'idMedicamento' => 8,
                 'idUsuario'=>'7',
-                'idDoctor'=>'4',
+                'idDoctor'=>'1',
 
             ],
             [
@@ -101,7 +101,7 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 12 horas',
                 'idReceta' => 9,
                 'idMedicamento' => 9,
-                'idUsuario'=>'8',
+                'idUsuario'=>'7',
                 'idDoctor'=>'5',
             ],
             [
@@ -110,7 +110,7 @@ class RecetaMedicaSeeder extends Seeder
                 'frecuencia' => 'Cada 8 horas',
                 'idReceta' => 10,
                 'idMedicamento' => 10,
-                'idUsuario'=>'9',
+                'idUsuario'=>'8',
                 'idDoctor'=>'5',
             ],
         ]);

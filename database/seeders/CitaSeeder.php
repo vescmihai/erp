@@ -20,10 +20,11 @@ class CitaSeeder extends Seeder
             'citaConfirmada'=>'confirmada',
             'idConsulta'=>'1',
             'idEspecialidad'=>'2',
-            'idDoctor'=>'10',
+            'idDoctor'=>'1',
             'idPaciente'=>'6',
             'idAdministrativo'=>'1',
-            'idUsuario'=>'6'
+            'idUsuario'=>'6',
+            //'idConsultorio'=>1,
         ]);
 
         DB::table('citas')->insert([
@@ -32,10 +33,11 @@ class CitaSeeder extends Seeder
             'citaConfirmada'=>'confirmada',
             'idConsulta'=>'7',
             'idEspecialidad'=>'4',
-            'idDoctor'=>'5',
+            'idDoctor'=>'2',
             'idPaciente'=>'7',
             'idAdministrativo'=>'3',
-            'idUsuario'=>'7'
+            'idUsuario'=>'7',
+            //'idConsultorio'=>2,
         ]);
 
         DB::table('citas')->insert([
@@ -47,7 +49,8 @@ class CitaSeeder extends Seeder
             'idDoctor'=>'3',
             'idPaciente'=>'8',
             'idAdministrativo'=>'2',
-            'idUsuario'=>'8'
+            'idUsuario'=>'8',
+            //'idConsultorio'=>3,
         ]);
 
         DB::table('citas')->insert([
@@ -56,10 +59,11 @@ class CitaSeeder extends Seeder
             'citaConfirmada'=>'confirmada',
             'idConsulta'=>'3',
             'idEspecialidad'=>'2',
-            'idDoctor'=>'10',
-            'idPaciente'=>'5',
+            'idDoctor'=>'4',
+            'idPaciente'=>'3',
             'idAdministrativo'=>'6',
-            'idUsuario'=>'3'
+            'idUsuario'=>'3',
+            //'idConsultorio'=>4,
         ]);
 
         DB::table('citas')->insert([
@@ -68,10 +72,11 @@ class CitaSeeder extends Seeder
             'citaConfirmada'=>'confirmada',
             'idConsulta'=>'4',
             'idEspecialidad'=>'4',
-            'idDoctor'=>'8',
-            'idPaciente'=>'6',
+            'idDoctor'=>'5',
+            'idPaciente'=>'5',
             'idAdministrativo'=>'3',
-            'idUsuario'=>'5'
+            'idUsuario'=>'5',
+            //'idConsultorio'=>5,
         ]);
 
         DB::table('citas')->insert([
@@ -80,10 +85,11 @@ class CitaSeeder extends Seeder
             'citaConfirmada'=>'confirmada',
             'idConsulta'=>'1',
             'idEspecialidad'=>'2',
-            'idDoctor'=>'10',
+            'idDoctor'=>'5',
             'idPaciente'=>'7',
             'idAdministrativo'=>'4',
-            'idUsuario'=>'2'
+            'idUsuario'=>'7',
+            //'idConsultorio'=>6,
         ]);
 
         DB::table('citas')->insert([
@@ -92,10 +98,11 @@ class CitaSeeder extends Seeder
             'citaConfirmada'=>'confirmada',
             'idConsulta'=>'9',
             'idEspecialidad'=>'4',
-            'idDoctor'=>'5',
+            'idDoctor'=>'1',
             'idPaciente'=>'8',
             'idAdministrativo'=>'5',
-            'idUsuario'=>'7'
+            'idUsuario'=>'8',
+            //'idConsultorio'=>7,
         ]);
 
         DB::table('citas')->insert([
@@ -104,10 +111,11 @@ class CitaSeeder extends Seeder
             'citaConfirmada'=>'confirmada',
             'idConsulta'=>'10',
             'idEspecialidad'=>'2',
-            'idDoctor'=>'10',
+            'idDoctor'=>'2',
             'idPaciente'=>'9',
             'idAdministrativo'=>'9',
-            'idUsuario'=>'8'
+            'idUsuario'=>'9',
+//'idConsultorio'=>8,
         ]);
 
         DB::table('citas')->insert([
@@ -116,10 +124,11 @@ class CitaSeeder extends Seeder
             'citaConfirmada'=>'confirmada',
             'idConsulta'=>'8',
             'idEspecialidad'=>'2',
-            'idDoctor'=>'10',
+            'idDoctor'=>'3',
             'idPaciente'=>'10',
             'idAdministrativo'=>'3',
-            'idUsuario'=>'9'
+            'idUsuario'=>'10',
+            //'idConsultorio'=>1,
         ]);
 
         DB::table('citas')->insert([
@@ -129,9 +138,10 @@ class CitaSeeder extends Seeder
             'idConsulta'=>'4',
             'idEspecialidad'=>'4',
             'idDoctor'=>'5',
-            'idPaciente'=>'6',
+            'idPaciente'=>'11',
             'idAdministrativo'=>'7',
-            'idUsuario'=>'6'
+            'idUsuario'=>'11',
+            //'idConsultorio'=>2,
         ]);
 
     }

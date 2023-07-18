@@ -13,7 +13,8 @@ class HojaConsulta extends Model
         'diagnostico',
         'indicación',
         'proximaConsulta',
-        'idDoctor'
+        'idDoctor',
+        'idUsuario',
     ];
 
     public function receta()
@@ -22,7 +23,12 @@ class HojaConsulta extends Model
     }
     public function doctor()
     {
-        return $this->belongsTo('App\Models\Dcotor', 'id', 'idDoctor');
+        return $this->belongsTo('App\Models\Doctor', 'id', 'idDoctor');
+    }
+
+    public function usuario()
+    {
+        return $this->belongsTo('App\Models\Dcotor', 'id', 'idUsuario');
     }
 
 }

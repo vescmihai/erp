@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SalasSeeder::class);
         $this->call(DoctoresSeeder::class);
         $this->call(ConsultaSeeder::class);
+
         $this->call(CitaSeeder::class);
         $this->call(TurnoSeeder::class);
         $this->call(AgendaSeeder::class);
@@ -36,5 +37,8 @@ class DatabaseSeeder extends Seeder
         $this->call(HistorialClinicoSeeder::class);
         $this->call(InternacionSeeder::class);
         $this->call(ConsultorioSeeder::class);
+        $this->call(CitaForeingKeySeeder::class);
+
+
     }
 }
